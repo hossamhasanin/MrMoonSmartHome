@@ -1,0 +1,47 @@
+version: "3.1"
+nlu:
+- synonym: lights
+  examples: |
+    - light
+    - lights
+    - lamp
+    - lamps
+    - bulb
+    - bulbs
+    - LED
+    - LEDs
+    - LED light
+    - LED lights
+    - LED lamp
+    - LED lamps
+    - LED bulb
+    - LED bulbs
+    - incandescent light
+    - incandescent lights
+    - incandescent lamp
+    - incandescent lamps
+    - incandescent bulb
+    - incandescent bulbs
+    - fluorescent light
+    - fluorescent lights
+    - fluorescent lamp
+    - fluorescent lamps
+    - fluorescent bulb
+    - fluorescent bulbs
+    - halogen light
+    - halogen lights
+    - halogen lamp
+    - halogen lamps
+    - halogen bulb
+    - halogen bulbs
+    - neon light
+    - neon lights
+    - neon lamp
+    - neon lamps
+    - neon bulb
+    - neon bulbs
+    - xenon light
+    - xenon lights
+    - xenon lamp
+    - xenon lamps
+    - xenon bulb

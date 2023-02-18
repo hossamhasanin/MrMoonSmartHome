@@ -1,0 +1,54 @@
+version: "3.1"
+
+stories:
+
+- story: trun on kitchen light
+  steps:
+  - intent: turn_on_device
+  - entities:
+    - room_name: kitchen
+    - device_type: lights
+  - slot_was_set:
+    - room_name: kitchen
+    - device_type: lights
+  - action: utter_turned_on_light
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: trun on bedroom light
+  steps:
+  - intent: turn_on_device
+  - entities:
+    - room_name: bedroom
+    - device_type: lights
+  - slot_was_set:
+    - room_name: bedroom
+    - device_type: lights
+  - action: utter_turned_on_light
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: trun on all lights
+  steps:
+  - intent: turn_on_device
+  - entities:
+    - device_type: lights
+  - slot_was_set:
+    - device_type: lights
+  - action: utter_turned_on_light
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: trun off kitchen light
+  steps:
+  - intent: turn_off_device
+  - entities:
+    - room_name: kitchen
+    - device_type: lights
+  - slot_was_set:
+    - room_name: kitchen
+    - device_type: lights
+  - action: utter_turned_off_light
+  - intent: goodbye
+  - action: utter_goodbye
+

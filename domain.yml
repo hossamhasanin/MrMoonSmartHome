@@ -1,0 +1,61 @@
+version: '3.1'
+intents:
+- goodbye
+- turn_on_device
+- turn_off_device
+- turn_on_device_false
+- check_temprature_value
+- number_of_people_in_home
+
+entities:
+- room_name
+- room_number
+- device_name
+- device_number
+- device_type
+
+slots:
+  room_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: room_name
+  room_number:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: room_number
+  device_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: device_name
+  device_number:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: device_number
+  device_type:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: device_type
+
+responses:
+  utter_turned_on_light:
+  - text: Lights turned on successfully in {room_name}
+  - text: Lights turned on successfully
+  - text: Lights turned on in {room_name}
+  - text: Lights are on
+  utter_goodbye:
+  - text: Bye
+  utter_turned_off_light:
+  - text: Lights turned off successfully
+  - text: Lights turned off
+  - text: Lights are off
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+actions:
+- utter_goodbye
+- utter_turned_on_light

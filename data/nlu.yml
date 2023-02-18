@@ -1,0 +1,124 @@
+version: "3.1"
+nlu:
+- intent: turn_on_device
+  examples: |
+    - Turn on the [light]{"entity":"device_type" , "value":"lights"} please
+    - turn on the [lights]{"entity":"device_type" , "value":"lights"}
+    - turn on the [light]{"entity":"device_type" , "value":"lights"}
+    - turn the [lights]{"entity":"device_type" , "value":"lights"} on
+    - trun on the [kitchen](room_name) [light]{"entity":"device_type" , "value":"lights"}
+    - trun on this room's [light]{"entity":"device_type" , "value":"lights"}
+    - turn on the [bedroom](room_name) [light]{"entity":"device_type" , "value":"lights"} please
+    - could you turn on the [light]{"entity":"device_type" , "value":"lights"}
+    - could you turn on [bedroom](room_name) [lights]{"entity":"device_type" , "value":"lights"}
+    - help me turn on the [kitchen](room_name) [light]{"entity":"device_type" , "value":"lights"}
+    - Could you please turn on [kitchen](room_name) [light]{"entity":"device_type" , "value":"lights"}
+    - [kitchen](room_name) [light]{"entity":"device_type" , "value":"lights"} on
+    - trun on bedroom [lights]{"entity":"device_type" , "value":"lights"}
+    - turn on the [light]{"entity":"device_type" , "value":"lights"} in the [kitchen](room_name)
+    - turn on the [light]{"entity":"device_type" , "value":"lights"} in the [bedroom](room_name)
+    - turn on the [light]{"entity":"device_type" , "value":"lights"} in the [living room](room_name)
+    - turn on the [light]{"entity":"device_type" , "value":"lights"} in the [bathroom](room_name)
+    - turn on the [light]{"entity":"device_type" , "value":"lights"} in the [dining room](room_name)
+    - turn on the [light]{"entity":"device_type" , "value":"lights"} in the [study room](room_name)
+    - turn on [kitchen](room_name) [lights]{"entity":"device_type" , "value":"lights"}
+    - could turn that on ?
+    - could turn that on please ?
+    - could turn that on buddy ?
+    - turn it on.
+    - trun on the [light bulbs]{"entity":"device_type" , "value":"lights"} in the [kitchen](room_name)
+    - trun on the [light bulbs]{"entity":"device_type" , "value":"lights"} in the [bedroom](room_name)
+    - trun on the [light bulbs]{"entity":"device_type" , "value":"lights"} everywhere
+    - trun on the [light bulbs]{"entity":"device_type" , "value":"lights"} in the [living room](room_name)
+    - trun on the [light bulbs]{"entity":"device_type" , "value":"lights"} in the [bathroom](room_name)
+    - turn the [lights]{"entity":"device_type" , "value":"lights"} on
+    
+- intent: turn_off_device
+  examples: |
+    - Turn off the light please
+    - turn off the lights
+    - turn off the light
+    - turn the lights off
+    - trun off the [kitchen](room_name) light
+    - trun off this room's light
+    - turn off the [bedroom](room_name) light please
+    - could you turn off the light
+    - could you turn off [bedroom](room_name) lights
+    - help me turn off the [kitchen](room_name) light
+    - Could you please turn off [kitchen](room_name) light
+    - [kitchen](room_name) light off
+    - trun off bedroom lights
+    - turn off the light in the [kitchen](room_name)
+    - turn off the light in the [bedroom](room_name)
+    - turn off the light in the [living room](room_name)
+    - turn off the light in the [bathroom](room_name)
+    - turn off the light in the [dining room](room_name)
+    - turn off the light in the [study room](room_name)
+    - turn off [kitchen](room_name) lights
+    - turn off the gas leak alarm
+    - turn off the gas leak alarm please
+    - please turn off the gas leak alarm
+    - could you turn off the gas leak alarm
+    - could you please turn off the gas leak alarm
+    - Oh god it is a gas leak alarm, turn it off please
+    - Oh god turn that off !.
+    - turn it off.
+
+- intent: turn_on_device_false
+  examples: |
+    - Oh god I am so truned on right now
+    - Oh god I am so truned on right now, I can't stand it
+    - This thing is really turning me on
+    - I get turned on so easily
+    - I get turned on so easily, I can't stand it
+
+- intent: check_temprature_value
+  examples: |
+    - what is the temprature ?
+    - What is the temprature in the [kitchen](room_name) ?
+    - What is the temprature in the [bedroom](room_name) ?
+    - Could you please tell me the temprature in the [kitchen](room_name) ?
+    - Could you please tell me the temprature in the [bedroom](room_name) ?
+    - Could you please tell me the temprature in the [living room](room_name) ?
+    - Could you please tell me the temprature in the [bathroom](room_name) ?
+    - Could you please tell me the temprature in the [dining room](room_name) ?
+    - Could you please tell me the temprature in the [study room](room_name) ?
+    - What is the temprature in the [kitchen](room_name) ?
+    - What is the temprature in the [bedroom](room_name) ?
+    - buddy tell me the temprature in the [kitchen](room_name) .
+    - Oh it is hot in the [kitchen](room_name) .
+    - It is really hot in here isn't it ? what is the current temprature buddy ?
+    - Oh I can't stand this heat , what is the current temprature buddy ?
+    - It is really hot in here isn't it ? what is the current temprature in the [kitchen](room_name) ?
+    - Oh I can't stand this heat , what is the current temprature in the [living](room_name) ?
+    - It is really hot in here isn't it ? what is the current temprature in the [bedroom](room_name) ?
+    - It is so cold in here , I can't stand it !
+    - It is so cold in here , I can't stand it ! what is the current temprature buddy ?
+    - It is so cold in here , I can't stand it ! what is the current temprature in the [kitchen](room_name) ?
+    - It is so cold in here , I can't stand it ! what is the current temprature in the [bedroom](room_name) ?
+    - It is so cold in here , I can't stand it ! what is the current temprature in the [living room](room_name)?
+
+- intent: number_of_people_in_home
+  examples: |
+    - How many people are in the house ?
+    - How many people are in the house right now ?
+    - How many persons are in the house right now ?
+    - How many person is in the house ?
+    - Is there anyone in the house ?
+    - Is there anyone in the house right now ?
+    - Is there someone in the house ?
+
+
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
