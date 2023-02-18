@@ -108,6 +108,26 @@ nlu:
     - Is there anyone in the house right now ?
     - Is there someone in the house ?
 
+- intent: electricity_usage
+  examples: |
+    - How much electricity have we used [today](period) ?
+    - How much electricity have we used [today](period) buddy ?
+    - What is the electricity usage [today](period) ?
+    - What is our electricity usage ?
+    - What was our electricity usage over the [last week]{"entity":"period" , "value": "last week"} ?
+    - What was our electricity usage over the [last month]{"entity":"period" , "value": "last month"} ?
+    - What was our electricity usage over the [last year]{"entity":"period" , "value": "last year"} ?
+    - What was our electricity usage over the [past week]{"entity":"period" , "value": "last week"} buddy ?
+    - What was our electricity usage over the [past month]{"entity":"period" , "value": "last month"} buddy ?
+    - What was our electricity usage over the [past year]{"entity":"period" , "value": "last year"} buddy ?
+    - What was our electricity usage over the [last 7 days]{"entity":"period" , "value": "last week"} buddy ?
+    - What was our electricity usage over the [last 30 days]{"entity":"period" , "value": "last month"} buddy ?
+    - What was our electricity usage over the [last 365 days]{"entity":"period" , "value": "last year"} buddy ?
+    - Could you show me my electricity statistics in the [past 10 days](period) ?
+    - Could you show me my electricity statistics in the [past 40 days](period) buddy ?
+    - Could you show me my electricity statistics ?
+    - Show me my electricity statistics in the [past 10 days](period).
+
 
 
 - intent: goodbye

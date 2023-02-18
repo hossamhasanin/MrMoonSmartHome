@@ -45,3 +45,24 @@ nlu:
     - xenon lamp
     - xenon lamps
     - xenon bulb
+
+- synonym: last week
+  examples: |
+    - last week
+    - past week
+    - last 7 days
+    - past 7 days
+
+- synonym: last month
+  examples: |
+    - last month
+    - past month
+    - last 30 days
+    - past 30 days
+
+- synonym: last year
+  examples: |
+    - last year
+    - past year
+    - last 365 days
+    - past 365 days

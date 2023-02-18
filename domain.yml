@@ -13,6 +13,7 @@ entities:
 - device_name
 - device_number
 - device_type
+- period
 
 slots:
   room_name:
@@ -40,6 +41,11 @@ slots:
     mappings:
     - type: from_entity
       entity: device_type
+  period:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: period
 
 responses:
   utter_turned_on_light:
