@@ -6,6 +6,7 @@ intents:
 - turn_on_device_false
 - check_temprature_value
 - number_of_people_in_home
+- electricity_usage
 
 entities:
 - room_name
@@ -13,7 +14,8 @@ entities:
 - device_name
 - device_number
 - device_type
-- period
+- period_num
+- period_type
 
 slots:
   room_name:
@@ -41,11 +43,24 @@ slots:
     mappings:
     - type: from_entity
       entity: device_type
-  period:
-    type: text
+  period_num:
+    type: any
     mappings:
     - type: from_entity
-      entity: period
+      entity: period_num
+  period_type:
+    type: categorical
+    mappings:
+    - type: from_entity
+      entity: period_type
+    values:
+    - minute
+    - hour
+    - day
+    - yesterday
+    - week
+    - month
+    - year
 
 responses:
   utter_turned_on_light:
@@ -59,6 +74,8 @@ responses:
   - text: Lights turned off successfully
   - text: Lights turned off
   - text: Lights are off
+  utter_electricity_usage:
+  - text: Electricity usage over the last {period_num} {period_type} is 500 kWh
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

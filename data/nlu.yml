@@ -110,23 +110,28 @@ nlu:
 
 - intent: electricity_usage
   examples: |
-    - How much electricity have we used [today](period) ?
-    - How much electricity have we used [today](period) buddy ?
-    - What is the electricity usage [today](period) ?
+    - How much electricity have we used today ?
+    - How much electricity have we used today ?
+    - What is the electricity usage today ?
     - What is our electricity usage ?
-    - What was our electricity usage over the [last week]{"entity":"period" , "value": "last week"} ?
-    - What was our electricity usage over the [last month]{"entity":"period" , "value": "last month"} ?
-    - What was our electricity usage over the [last year]{"entity":"period" , "value": "last year"} ?
-    - What was our electricity usage over the [past week]{"entity":"period" , "value": "last week"} buddy ?
-    - What was our electricity usage over the [past month]{"entity":"period" , "value": "last month"} buddy ?
-    - What was our electricity usage over the [past year]{"entity":"period" , "value": "last year"} buddy ?
-    - What was our electricity usage over the [last 7 days]{"entity":"period" , "value": "last week"} buddy ?
-    - What was our electricity usage over the [last 30 days]{"entity":"period" , "value": "last month"} buddy ?
-    - What was our electricity usage over the [last 365 days]{"entity":"period" , "value": "last year"} buddy ?
-    - Could you show me my electricity statistics in the [past 10 days](period) ?
-    - Could you show me my electricity statistics in the [past 40 days](period) buddy ?
+    - What was our electricity usage over the last [week]{"entity": "period_type" , "value": "week"} ?
+    - What was our electricity usage over the last [month]{"entity": "period_type" , "value": "month"} ?
+    - What was our electricity usage over the last [year]{"entity": "period_type" , "value": "year"} ?
+    - What was our electricity usage over the past [week]{"entity": "period_type" , "value": "week"} buddy ?
+    - What was our electricity usage over the past [month](period_type) buddy ?
+    - What was our electricity usage over the past [year](period_type) buddy ?
+    - What was our electricity usage over the last [7](period_num) [days]{"entity": "period_type" , "value": "day"} buddy ?
+    - What was our electricity usage over the last [30](period_num) [days]{"entity": "period_type" , "value": "day"} buddy ?
+    - What was our electricity usage over the last [365](period_num) [days]{"entity": "period_type" , "value": "day"} buddy ?
+    - Could you show me my electricity statistics in the past [10](period_num) [days]{"entity": "period_type" , "value": "day"} ?
+    - Could you show me my electricity statistics in the past [40](period_num) [days]{"entity": "period_type" , "value": "day"} buddy ?
     - Could you show me my electricity statistics ?
-    - Show me my electricity statistics in the [past 10 days](period).
+    - Show me my electricity statistics in the past [10](period_num) [days]{"entity": "period_type" , "value": "day"}.
+    - Show me my electricity statistics in the past [40](period_num) [weeks]{"entity": "period_type" , "value": "week"} buddy ?
+    - Show me my electricity statistics in the past [10](period_num) [months]{"entity": "period_type" , "value": "month"} buddy ?
+    - What was my electricity usage [yesterday](period_type) ?
+    - Was my electricity usage [yesterday](period_type) good ?
+    - Was my electricity usage [yesterday](period_type) bad ?
 
 
 

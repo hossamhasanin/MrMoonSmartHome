@@ -6,11 +6,11 @@ stories:
   steps:
   - intent: turn_on_device
   - entities:
-    - room_name: kitchen
-    - device_type: lights
+    - room_name: "kitchen"
+    - device_type: "lights"
   - slot_was_set:
-    - room_name: kitchen
-    - device_type: lights
+    - room_name: "kitchen"
+    - device_type: "lights"
   - action: utter_turned_on_light
   - intent: goodbye
   - action: utter_goodbye
@@ -19,11 +19,11 @@ stories:
   steps:
   - intent: turn_on_device
   - entities:
-    - room_name: bedroom
-    - device_type: lights
+    - room_name: "bedroom"
+    - device_type: "lights"
   - slot_was_set:
-    - room_name: bedroom
-    - device_type: lights
+    - room_name: "bedroom"
+    - device_type: "lights"
   - action: utter_turned_on_light
   - intent: goodbye
   - action: utter_goodbye
@@ -32,9 +32,9 @@ stories:
   steps:
   - intent: turn_on_device
   - entities:
-    - device_type: lights
+    - device_type: "lights"
   - slot_was_set:
-    - device_type: lights
+    - device_type: "lights"
   - action: utter_turned_on_light
   - intent: goodbye
   - action: utter_goodbye
@@ -43,12 +43,53 @@ stories:
   steps:
   - intent: turn_off_device
   - entities:
-    - room_name: kitchen
-    - device_type: lights
+    - room_name: "kitchen"
+    - device_type: "lights"
   - slot_was_set:
     - room_name: kitchen
-    - device_type: lights
+    - device_type: "lights"
   - action: utter_turned_off_light
   - intent: goodbye
   - action: utter_goodbye
+
+- story: get electricity usage over the last 3 days
+  steps:
+  - intent: electricity_usage
+  - entities:
+    - period_num: 3
+    - period_type: days
+  - slot_was_set:
+    - period_num: 3
+    - period_type: days
+  - action: utter_electricity_usage
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: get electricity usage over the last 3 weeks
+  steps:
+  - intent: electricity_usage
+  - entities:
+    - period_num: 3
+    - period_type: weeks
+  - slot_was_set:
+    - period_num: 3
+    - period_type: weeks
+  - action: utter_electricity_usage
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: get electricity usage over the last 3 months
+  steps:
+  - intent: electricity_usage
+  - entities:
+    - period_num: 3
+    - period_type: months
+  - slot_was_set:
+    - period_num: 3
+    - period_type: month
+  - action: utter_electricity_usage
+  - intent: goodbye
+  - action: utter_goodbye
+
+
 
