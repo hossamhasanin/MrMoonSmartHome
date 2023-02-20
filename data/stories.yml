@@ -52,6 +52,21 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
+- story: trun off some device
+  steps:
+  - intent: turn_off_device
+  - action: utter_which_device
+  - intent: turn_off_device
+  - entities:
+    - device_type: "lights"
+    - device_name: "kitchen light"
+  - slot_was_set:
+    - device_type: "lights"
+    - device_name: "kitchen light"
+  -action: utter_turned_off_light
+  - intent: goodbye
+  - action: utter_goodbye
+
 - story: get electricity usage over the last 3 days
   steps:
   - intent: electricity_usage

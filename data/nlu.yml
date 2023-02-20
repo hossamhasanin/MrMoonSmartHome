@@ -133,6 +133,15 @@ nlu:
     - Was my electricity usage [yesterday](period_type) good ?
     - Was my electricity usage [yesterday](period_type) bad ?
 
+- intent: show_home_state
+  examples: |
+    - Could you show me the devices states in home ?
+    - Show me the devices states in home.
+    - Show me devices states.
+    - Is everything alright in home ?
+    - Is everything working fine in home ?
+    - How is everything in home ?
+
 
 
 - intent: goodbye

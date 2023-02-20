@@ -7,6 +7,7 @@ intents:
 - check_temprature_value
 - number_of_people_in_home
 - electricity_usage
+- show_home_state
 
 entities:
 - room_name
@@ -63,6 +64,12 @@ slots:
     - year
 
 responses:
+  utter_turned_on_device:
+  - text: Device turned on successfully
+  - text: turned on successfully
+  utter_turned_off_device:
+  - text: Device turned off successfully
+  - text: turned off successfully
   utter_turned_on_light:
   - text: Lights turned on successfully in {room_name}
   - text: Lights turned on successfully
