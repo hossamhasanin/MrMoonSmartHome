@@ -63,7 +63,7 @@ stories:
   - slot_was_set:
     - device_type: "lights"
     - device_name: "kitchen light"
-  -action: utter_turned_off_light
+  - action: utter_turned_off_light
   - intent: goodbye
   - action: utter_goodbye
 

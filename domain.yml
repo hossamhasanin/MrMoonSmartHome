@@ -83,9 +83,18 @@ responses:
   - text: Lights are off
   utter_electricity_usage:
   - text: Electricity usage over the last {period_num} {period_type} is 500 kWh
+  utter_which_device:
+  - text: Which device ?
+  utter_fallback_to_llm:
+  - text: Sorry, I didn't get that. Could you please rephrase?
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 actions:
 - utter_goodbye
 - utter_turned_on_light
+- utter_which_device
+- utter_fallback_to_llm
+- action_fallback_to_llm
+- action_turn_on_device
+- action_turn_off_device

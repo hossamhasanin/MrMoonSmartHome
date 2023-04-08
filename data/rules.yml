@@ -1,5 +1,9 @@
 version: "3.1"
 
 rules:
+- rule: Fallback to large language model to continue the conversation
+  steps:
+  - intent: nlu_fallback
+  - action: action_fallback_to_llm
 
 
