@@ -46,35 +46,35 @@ nlu:
     - xenon lamps
     - xenon bulb
 
-- synonym: month
-  examples: |
-    - Month
-    - Months
-    - month
-    - months
+# - synonym: month
+#   examples: |
+#     - Month
+#     - Months
+#     - month
+#     - months
 
-- synonym: year
-  examples: |
-    - Year
-    - Years
-    - year
-    - years
+# - synonym: year
+#   examples: |
+#     - Year
+#     - Years
+#     - year
+#     - years
 
-- synonym: week
-  examples: |
-    - Week
-    - Weeks
-    - week
-    - weeks
+# - synonym: week
+#   examples: |
+#     - Week
+#     - Weeks
+#     - week
+#     - weeks
 
-- synonym: day
-  examples: |
-    - Day
-    - Days
-    - day
-    - days
+# - synonym: day
+#   examples: |
+#     - Day
+#     - Days
+#     - day
+#     - days
 
-- synonym: yesterday
-  examples: |
-    - Yesterday
-    - yesterday
+# - synonym: yesterday
+#   examples: |
+#     - Yesterday
+#     - yesterday

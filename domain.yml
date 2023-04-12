@@ -8,6 +8,7 @@ intents:
 - number_of_people_in_home
 - electricity_usage
 - show_home_state
+- out_of_scope_electricity_usage_queries
 
 entities:
 - room_name
@@ -15,8 +16,9 @@ entities:
 - device_name
 - device_number
 - device_type
-- period_num
-- period_type
+- device_state
+# - period_num
+# - period_type
 
 slots:
   room_name:
@@ -44,24 +46,32 @@ slots:
     mappings:
     - type: from_entity
       entity: device_type
-  period_num:
-    type: any
+  device_state:
+    type: text
     mappings:
     - type: from_entity
-      entity: period_num
-  period_type:
-    type: categorical
-    mappings:
-    - type: from_entity
-      entity: period_type
-    values:
-    - minute
-    - hour
-    - day
-    - yesterday
-    - week
-    - month
-    - year
+      entity: device_state
+    values: |
+    - on
+    - off
+  # period_num:
+  #   type: any
+  #   mappings:
+  #   - type: from_entity
+  #     entity: period_num
+  # period_type:
+  #   type: categorical
+  #   mappings:
+  #   - type: from_entity
+  #     entity: period_type
+  #   values:
+  #   - minute
+  #   - hour
+  #   - day
+  #   - yesterday
+  #   - week
+  #   - month
+  #   - year
 
 responses:
   utter_turned_on_device:
@@ -87,6 +97,8 @@ responses:
   - text: Which device ?
   utter_fallback_to_llm:
   - text: Sorry, I didn't get that. Could you please rephrase?
+  utter_out_of_scope_electricity_usage_queries:
+  - text: Sorry, But currently I can't execute that order but latter we would add this features to electricity usage commands.
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -98,3 +110,8 @@ actions:
 - action_fallback_to_llm
 - action_turn_on_device
 - action_turn_off_device
+- action_check_temprature_value
+- action_number_of_people_in_home
+- action_electricity_usage
+- action_show_home_state
+- utter_out_of_scope_electricity_usage_queries

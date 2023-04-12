@@ -63,6 +63,15 @@ nlu:
     - Oh god it is a gas leak alarm, turn it off please
     - Oh god turn that off !.
     - turn it off.
+- intent: get_device_state
+  examples: |
+    - what is the state of the [bedroom](room_name) [light]{"entity":"device_type" , "value":"lights"} ?
+    - what is the state of the [kitchen](room_name) [light]{"entity":"device_type" , "value":"lights"} ?
+    - what is the state of the [living room](room_name) [light]{"entity":"device_type" , "value":"lights"} ?
+    - Is [kitchen](room_name) [light]{"entity":"device_type" , "value":"lights"} [on](device_state) ?
+    - Is [bedroom](room_name) [light]{"entity":"device_type" , "value":"lights"} [on](device_state) ?
+    - Is [living room](room_name) [light]{"entity":"device_type" , "value":"lights"} [off](device_state) ?
+    - Is my [bedroom](room_name) [light]{"entity":"device_type" , "value":"lights"} [off](device_state) ?
 
 - intent: turn_on_device_false
   examples: |
@@ -114,24 +123,32 @@ nlu:
     - How much electricity have we used today ?
     - What is the electricity usage today ?
     - What is our electricity usage ?
-    - What was our electricity usage over the last [week]{"entity": "period_type" , "value": "week"} ?
-    - What was our electricity usage over the last [month]{"entity": "period_type" , "value": "month"} ?
-    - What was our electricity usage over the last [year]{"entity": "period_type" , "value": "year"} ?
-    - What was our electricity usage over the past [week]{"entity": "period_type" , "value": "week"} buddy ?
-    - What was our electricity usage over the past [month](period_type) buddy ?
-    - What was our electricity usage over the past [year](period_type) buddy ?
-    - What was our electricity usage over the last [7](period_num) [days]{"entity": "period_type" , "value": "day"} buddy ?
-    - What was our electricity usage over the last [30](period_num) [days]{"entity": "period_type" , "value": "day"} buddy ?
-    - What was our electricity usage over the last [365](period_num) [days]{"entity": "period_type" , "value": "day"} buddy ?
-    - Could you show me my electricity statistics in the past [10](period_num) [days]{"entity": "period_type" , "value": "day"} ?
-    - Could you show me my electricity statistics in the past [40](period_num) [days]{"entity": "period_type" , "value": "day"} buddy ?
+    - Could you show me how much electricity we have used today ?
+    - I want to see how much electricity we have used today, please.
+    - How much electricity have we used ?
+    - What is the electricity usage currently ?
+    - what does the current electricity meter show you ?
+
+- intent: out_of_scope_electricity_usage_queries
+  examples: |
+    - What was our electricity usage over the last week ?
+    - What was our electricity usage over the last month ?
+    - What was our electricity usage over the last year ?
+    - What was our electricity usage over the past week buddy ?
+    - What was our electricity usage over the past month buddy ?
+    - What was our electricity usage over the past year buddy ?
+    - What was our electricity usage over the last 7 days buddy ?
+    - What was our electricity usage over the last 30 days buddy ?
+    - What was our electricity usage over the last 365 days buddy ?
+    - Could you show me my electricity statistics in the past 10 days ?
+    - Could you show me my electricity statistics in the past 40 days buddy ?
     - Could you show me my electricity statistics ?
-    - Show me my electricity statistics in the past [10](period_num) [days]{"entity": "period_type" , "value": "day"}.
-    - Show me my electricity statistics in the past [40](period_num) [weeks]{"entity": "period_type" , "value": "week"} buddy ?
-    - Show me my electricity statistics in the past [10](period_num) [months]{"entity": "period_type" , "value": "month"} buddy ?
-    - What was my electricity usage [yesterday](period_type) ?
-    - Was my electricity usage [yesterday](period_type) good ?
-    - Was my electricity usage [yesterday](period_type) bad ?
+    - Show me my electricity statistics in the past 10 days.
+    - Show me my electricity statistics in the past 40 weeks buddy ?
+    - Show me my electricity statistics in the past 10 months buddy ?
+    - What was my electricity usage yesterday ?
+    - Was my electricity usage yesterday good ?
+    - Was my electricity usage yesterday bad ?
 
 - intent: show_home_state
   examples: |
