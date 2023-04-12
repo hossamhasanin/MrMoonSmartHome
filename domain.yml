@@ -17,6 +17,7 @@ entities:
 - device_number
 - device_type
 - device_state
+- all_devices_selected
 # - period_num
 # - period_type
 
@@ -54,6 +55,11 @@ slots:
     values: |
     - on
     - off
+  all_devices_selected:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: device_type
   # period_num:
   #   type: any
   #   mappings:

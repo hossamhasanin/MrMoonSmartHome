@@ -13,6 +13,6 @@ class ActionShowHomeState(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(response="utter_turned_on_device")
+        dispatcher.utter_message(text="Home state is good")
 
         return []

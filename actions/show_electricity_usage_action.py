@@ -13,6 +13,6 @@ class ActionShowElectricityUsage(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(response="utter_turned_on_device")
+        dispatcher.utter_message(text="Electricity usage is 1000 units")
 
         return []

@@ -46,6 +46,15 @@ nlu:
     - xenon lamps
     - xenon bulb
 
+- synonym: rgb
+  examples: |
+    - rgb light
+    - rgb lights
+    - RGB
+    - RGBs
+    - rgb
+    - rgb leds
+    - colored leds
 # - synonym: month
 #   examples: |
 #     - Month
