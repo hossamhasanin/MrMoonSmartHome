@@ -13,7 +13,9 @@ class ActionTurnOnDevice(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(response="utter_turned_on_device")
+        # get device_id entity
+        device_id = tracker.get_slot("device_id")
+        dispatcher.utter_message(text="device_id: " + str(device_id))
 
         return []
     

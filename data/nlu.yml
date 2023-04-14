@@ -2,47 +2,50 @@ version: "3.1"
 nlu:
 - intent: turn_on_device
   examples: |
-    - Turn on the [light]{"entity":"device_type" , "value":"lights"} please
-    - turn on the [lights]{"entity":"device_type" , "value":"lights"}
-    - turn on the [light]{"entity":"device_type" , "value":"lights"}
-    - turn the [lights]{"entity":"device_type" , "value":"lights"} on
-    - trun on the [kitchen](room_name) [light]{"entity":"device_type" , "value":"lights"}
-    - trun on this room's [light]{"entity":"device_type" , "value":"lights"}
-    - turn on the [bedroom](room_name) [light]{"entity":"device_type" , "value":"lights"} please
-    - could you turn on the [light]{"entity":"device_type" , "value":"lights"}
-    - could you turn on [bedroom](room_name) [lights]{"entity":"device_type" , "value":"lights"}
-    - help me turn on the [kitchen](room_name) [light]{"entity":"device_type" , "value":"lights"}
-    - Could you please turn on [kitchen](room_name) [light]{"entity":"device_type" , "value":"lights"}
-    - [kitchen](room_name) [light]{"entity":"device_type" , "value":"lights"} on
-    - trun on bedroom [lights]{"entity":"device_type" , "value":"lights"}
-    - turn on the [light]{"entity":"device_type" , "value":"lights"} in the [kitchen](room_name)
-    - turn on the [light]{"entity":"device_type" , "value":"lights"} in the [bedroom](room_name)
-    - turn on the [light]{"entity":"device_type" , "value":"lights"} in the [living room](room_name)
-    - turn on the [light]{"entity":"device_type" , "value":"lights"} in the [bathroom](room_name)
-    - turn on the [light]{"entity":"device_type" , "value":"lights"} in the [dining room](room_name)
-    - turn on the [light]{"entity":"device_type" , "value":"lights"} in the [study room](room_name)
-    - turn on [kitchen](room_name) [lights]{"entity":"device_type" , "value":"lights"}
+    - Turn on the [light](device_type) please
+    - turn on the [lights](device_type)
+    - turn on the [light](device_type)
+    - turn the [lights](device_type) on
+    - trun on the [kitchen](room_name) [light](device_type)
+    - trun on this room's [light](device_type)
+    - turn on the [bedroom](room_name) [light](device_type) please
+    - could you turn on the [light](device_type)
+    - could you turn on [bedroom](room_name) [lights](device_type)
+    - help me turn on the [kitchen](room_name) [light](device_type)
+    - Could you please turn on [kitchen](room_name) [light](device_type)
+    - [kitchen](room_name) [light](device_type) on
+    - trun on bedroom [lights](device_type)
+    - turn on the [light](device_type) in the [kitchen](room_name)
+    - turn on the [light](device_type) in the [bedroom](room_name)
+    - turn on the [light](device_type) in the [living room](room_name)
+    - turn on the [light](device_type) in the [bathroom](room_name)
+    - turn on the [light](device_type) in the [dining room](room_name)
+    - turn on the [light](device_type) in the [study room](room_name)
+    - turn on [kitchen](room_name) [lights](device_type)
+    - turn the [purple light](device_type) on please
+    - turn on the [kitchen](room_name) [colored leds](device_type) please
     - could turn that on ?
     - could turn that on please ?
     - could turn that on buddy ?
     - turn it on.
-    - trun on the [light bulbs]{"entity":"device_type" , "value":"lights"} in the [kitchen](room_name)
-    - trun on the [light bulbs]{"entity":"device_type" , "value":"lights"} in the [bedroom](room_name)
-    - trun on the [light bulbs]{"entity":"device_type" , "value":"lights"} everywhere
-    - trun on the [light bulbs]{"entity":"device_type" , "value":"lights"} in the [living room](room_name)
-    - trun on the [light bulbs]{"entity":"device_type" , "value":"lights"} in the [bathroom](room_name)
-    - turn the [lights]{"entity":"device_type" , "value":"lights"} on.
+    - trun on the [light bulbs](device_type) in the [kitchen](room_name)
+    - trun on the [light bulbs](device_type) in the [bedroom](room_name)
+    - trun on the [light bulbs](device_type) everywhere
+    - trun on the [light bulbs](device_type) in the [living room](room_name)
+    - trun on the [light bulbs](device_type) in the [bathroom](room_name)
+    - turn the [lights](device_type) on.
     - Turn on [all](all_devices_selected) devices please.
     - Turn [every single](all_devices_selected) device on please .
     - Could run the power of [the whole home](all_devices_selected) again ?
     - Turn on [all](all_devices_selected) [kitchen](room_name) [lights](device_type).
     - Could you turn on the [rgb leds](device_type) please ?.
     - Turn on [kitchen](room_name) [rgbs](device_type) please.
-    - Turn on [all](all_devices_selected) the [rgbs]{"entity":"device_type" , "value":"rgb"}. 
-    
+    - Turn on [all](all_devices_selected) the [rgbs](device_type).
+    - Turn on the [rgb lights](device_type) of the [kitchen](room_name).
+    - turn on [living room](room_name) [light bulbs](device_type)
 - intent: turn_off_device
   examples: |
-    - Turn off the [light]{"entity":"device_type" , "value":"lights"} please
+    - Turn off the [light](device_type) please
     - turn off the [lights](device_type)
     - turn off the [light](device_type)
     - turn the [lights]((device_type)) off
@@ -72,14 +75,13 @@ nlu:
     - turn it off.
 - intent: get_device_state
   examples: |
-    - what is the state of the [bedroom](room_name) [light]{"entity":"device_type" , "value":"lights"} ?
-    - what is the state of the [kitchen](room_name) [light]{"entity":"device_type" , "value":"lights"} ?
-    - what is the state of the [living room](room_name) [light]{"entity":"device_type" , "value":"lights"} ?
-    - Is [kitchen](room_name) [light]{"entity":"device_type" , "value":"lights"} [on](device_state) ?
-    - Is [bedroom](room_name) [light]{"entity":"device_type" , "value":"lights"} [on](device_state) ?
-    - Is [living room](room_name) [light]{"entity":"device_type" , "value":"lights"} [off](device_state) ?
-    - Is my [bedroom](room_name) [light]{"entity":"device_type" , "value":"lights"} [off](device_state) ?
-
+    - what is the state of the [bedroom](room_name) [light](device_type) ?
+    - what is the state of the [kitchen](room_name) [light](device_type) ?
+    - what is the state of the [living room](room_name) [light](device_type) ?
+    - Is [kitchen](room_name) [light](device_type) [on](device_state) ?
+    - Is [bedroom](room_name) [light](device_type) [on](device_state) ?
+    - Is [living room](room_name) [light](device_type) [off](device_state) ?
+    - Is my [bedroom](room_name) [light](device_type) [off](device_state) ?
 - intent: turn_on_device_false
   examples: |
     - Oh god I am so truned on right now
@@ -87,7 +89,6 @@ nlu:
     - This thing is really turning me on
     - I get turned on so easily
     - I get turned on so easily, I can't stand it
-
 - intent: check_temprature_value
   examples: |
     - what is the temprature ?
@@ -99,8 +100,6 @@ nlu:
     - Could you please tell me the temprature in the [bathroom](room_name) ?
     - Could you please tell me the temprature in the [dining room](room_name) ?
     - Could you please tell me the temprature in the [study room](room_name) ?
-    - What is the temprature in the [kitchen](room_name) ?
-    - What is the temprature in the [bedroom](room_name) ?
     - buddy tell me the temprature in the [kitchen](room_name) .
     - Oh it is hot in the [kitchen](room_name) .
     - It is really hot in here isn't it ? what is the current temprature buddy ?
@@ -113,7 +112,6 @@ nlu:
     - It is so cold in here , I can't stand it ! what is the current temprature in the [kitchen](room_name) ?
     - It is so cold in here , I can't stand it ! what is the current temprature in the [bedroom](room_name) ?
     - It is so cold in here , I can't stand it ! what is the current temprature in the [living room](room_name)?
-
 - intent: number_of_people_in_home
   examples: |
     - How many people are in the house ?
@@ -123,10 +121,8 @@ nlu:
     - Is there anyone in the house ?
     - Is there anyone in the house right now ?
     - Is there someone in the house ?
-
 - intent: electricity_usage
   examples: |
-    - How much electricity have we used today ?
     - How much electricity have we used today ?
     - What is the electricity usage today ?
     - What is our electricity usage ?
@@ -135,7 +131,6 @@ nlu:
     - How much electricity have we used ?
     - What is the electricity usage currently ?
     - what does the current electricity meter show you ?
-
 - intent: out_of_scope_electricity_usage_queries
   examples: |
     - What was our electricity usage over the last week ?
@@ -156,7 +151,6 @@ nlu:
     - What was my electricity usage yesterday ?
     - Was my electricity usage yesterday good ?
     - Was my electricity usage yesterday bad ?
-
 - intent: show_home_state
   examples: |
     - Could you show me the devices states in home ?
@@ -165,9 +159,6 @@ nlu:
     - Is everything alright in home ?
     - Is everything working fine in home ?
     - How is everything in home ?
-
-
-
 - intent: goodbye
   examples: |
     - cu
@@ -180,3 +171,11 @@ nlu:
     - see you around
     - bye bye
     - see you later
+# - synonym: lights
+#   examples: |
+#     - light
+#     - light bulbs
+#     - leds
+# - synonym: rgb
+#   examples: |
+#     - rgbs

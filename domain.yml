@@ -1,26 +1,23 @@
 version: '3.1'
 intents:
-- goodbye
-- turn_on_device
-- turn_off_device
-- turn_on_device_false
 - check_temprature_value
-- number_of_people_in_home
 - electricity_usage
-- show_home_state
+- goodbye
+- number_of_people_in_home
 - out_of_scope_electricity_usage_queries
-
+- show_home_state
+- turn_off_device
+- turn_on_device
+- turn_on_device_false
 entities:
+- device_id
 - room_name
+- device_type
 - room_number
 - device_name
 - device_number
-- device_type
 - device_state
 - all_devices_selected
-# - period_num
-# - period_type
-
 slots:
   room_name:
     type: text
@@ -52,33 +49,16 @@ slots:
     mappings:
     - type: from_entity
       entity: device_state
-    values: |
-    - on
-    - off
   all_devices_selected:
     type: text
     mappings:
     - type: from_entity
       entity: device_type
-  # period_num:
-  #   type: any
-  #   mappings:
-  #   - type: from_entity
-  #     entity: period_num
-  # period_type:
-  #   type: categorical
-  #   mappings:
-  #   - type: from_entity
-  #     entity: period_type
-  #   values:
-  #   - minute
-  #   - hour
-  #   - day
-  #   - yesterday
-  #   - week
-  #   - month
-  #   - year
-
+  device_id:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: device_id
 responses:
   utter_turned_on_device:
   - text: Device turned on successfully
@@ -109,12 +89,12 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 actions:
+- action_turn_on_device
 - utter_goodbye
 - utter_turned_on_light
 - utter_which_device
 - utter_fallback_to_llm
 - action_fallback_to_llm
-- action_turn_on_device
 - action_turn_off_device
 - action_check_temprature_value
 - action_number_of_people_in_home
