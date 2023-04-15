@@ -43,6 +43,26 @@ nlu:
     - Turn on [all](all_devices_selected) the [rgbs](device_type).
     - Turn on the [rgb lights](device_type) of the [kitchen](room_name).
     - turn on [living room](room_name) [light bulbs](device_type)
+    - Turn on the [stove](device_type) please
+    - Could you turn off the [fan](device_type) in the [bedroom](room_name)?
+    - Can you turn off the [kettle](device_type)?
+    - Turn on the [TV](device_type) in the [living room](room_name)
+    - Turn on the [AC](device_type) please
+    - Turn off the [oven](device_type) in the [kitchen](room_name)
+    - Could you turn on the [ceiling fan](device_type) in the [dining area](room_name)?
+    - Please turn off the [lamp](device_type) in the [study room](room_name)
+    - Could you turn on the [heater](device_type) in the [bedroom](room_name) please?
+    - Turn on the [light bulb](device_type) in the [bathroom](room_name)
+    - Could you turn off the [air purifier](device_type) in the [living room](room_name)?
+    - Please turn on the [blender](device_type) in the [kitchen](room_name)
+    - Could you turn off the [table lamp](device_type) in the [study room](room_name)?
+    - Turn on the [projector](device_type) in the [home theater](room_name)
+    - Can you turn off the [hair dryer](device_type) in the [bathroom](room_name)?
+    - Please turn on the [microwave](device_type) in the [kitchen](room_name)
+    - Could you turn off the [computer](device_type) in the [study room](room_name)?
+    - Turn on the [smart speaker](device_type) in the [bedroom](room_name)
+    - Turn on the [stereo](device_type) in the [living room](room_name)
+    - Please turn off the [night light](device_type) in the [nursery](room_name)
 - intent: turn_off_device
   examples: |
     - Turn off the [light](device_type) please
@@ -73,6 +93,26 @@ nlu:
     - Oh god it is a [gas leak alarm](device_type), turn it off please
     - Oh god turn that off !.
     - turn it off.
+    - Please turn off the [TV](device_type) in the [living room](room_name)
+    - Could you turn off the [stove](device_type) please?
+    - Turn off the [lamp](device_type) in the [bedroom](room_name)
+    - Could you turn off the [ceiling fan](device_type) in the [dining area](room_name)?
+    - Can you turn off the [AC](device_type) in the [office](room_name)?
+    - Please turn off the [computer](device_type) in the [study room](room_name)
+    - Turn off the [oven](device_type) in the [kitchen](room_name)
+    - Could you turn off the [table lamp](device_type) in the [study room](room_name)?
+    - Turn off the [smart speaker](device_type) in the [bedroom](room_name)
+    - Could you turn off the [air purifier](device_type) in the [living room](room_name)?
+    - Please turn off the [blender](device_type) in the [kitchen](room_name)
+    - Could you turn off the [night light](device_type) in the [nursery](room_name)?
+    - Turn off the [heater](device_type) in the [bedroom](room_name)
+    - Please turn off the [hair dryer](device_type) in the [bathroom](room_name)
+    - Can you turn off the [smart TV](device_type) in the [living room](room_name)?
+    - Could you turn off the [projector](device_type) in the [home theater](room_name)?
+    - Turn off the [stereo](device_type) in the [living room](room_name)
+    - Please turn off the [microwave](device_type) in the [kitchen](room_name)
+    - Could you turn off the [desktop computer](device_type) in the [study room](room_name)?
+
 - intent: get_device_state
   examples: |
     - what is the state of the [bedroom](room_name) [light](device_type) ?
@@ -121,16 +161,61 @@ nlu:
     - Is there anyone in the house ?
     - Is there anyone in the house right now ?
     - Is there someone in the house ?
+    - How many individuals are currently inside the house?
+    - How many people are currently in the household?
+    - What's the headcount in the house right now?
+    - Can you tell me the number of occupants in the home?
+    - How many individuals are residing in the house at the moment?
+    - How many people are currently living in the house?
+    - What's the occupancy count in the house?
+    - How many people are inside the house presently?
+    - Is the house currently occupied, and if so, by how many people?
+    - Can you give me an idea of how many people are inside the house?
+    - How many people currently call the house their home?
+    - How many people are in the premises?
+    - How many people are inside the residence?
+    - What is the total number of people in the house?
+    - How many people are present in the home currently?
+    - How many individuals are currently occupying the house?
+    - How many persons are presently in the house?
+    - What's the current count of people in the house?
 - intent: electricity_usage
   examples: |
-    - How much electricity have we used today ?
-    - What is the electricity usage today ?
-    - What is our electricity usage ?
-    - Could you show me how much electricity we have used today ?
+    - How much electricity have we used today?
+    - What is the electricity usage today?
+    - What is our electricity usage?
+    - Could you show me how much electricity we have used today?
     - I want to see how much electricity we have used today, please.
-    - How much electricity have we used ?
-    - What is the electricity usage currently ?
-    - what does the current electricity meter show you ?
+    - How much electricity have we used?
+    - What is the electricity usage currently?
+    - what does the current electricity meter show you?
+    - Can you tell me our current electricity consumption?
+    - How much electricity have we consumed so far today?
+    - What's our current electricity usage?
+    - How much electricity have we used up until now?
+    - What is the current electricity consumption?
+    - Can you give me a reading of our electricity usage?
+    - What's the current electricity meter reading?
+    - Show me our current electricity usage.
+    - Can you provide me with the current electricity usage?
+    - How much electricity have we consumed today so far?
+    - Can you tell me the current electricity usage level?
+    - What is the electricity consumption for today?
+    - Could you give me an update on our electricity usage?
+    - How much power did we consume today?
+    - Can you tell me the current electricity consumption?
+    - I need to know the electricity usage for today.
+    - What is the electricity consumption right now?
+    - What is our electricity consumption rate?
+    - How many kilowatt hours have we consumed so far?
+    - How much electricity have we used up to this moment?
+    - Could you show me our electricity usage in real-time?
+    - What is the current electricity consumption rate?
+    - Is our electricity usage high or low today?
+    - Can you give me a summary of our electricity usage today?
+    - How much electricity have we used in the past 24 hours?
+    - Could you tell me the amount of electricity we have consumed today?
+
 - intent: out_of_scope_electricity_usage_queries
   examples: |
     - What was our electricity usage over the last week ?
@@ -151,26 +236,61 @@ nlu:
     - What was my electricity usage yesterday ?
     - Was my electricity usage yesterday good ?
     - Was my electricity usage yesterday bad ?
+    - Can you give me insights on my electricity usage?
+    - How can I improve my electricity usage?
+    - I want to learn more about how electricity is measured.
+    - How do I read my electricity meter?
+    - Can you help me understand my electricity bill?
+    - What is the cost of electricity in my area?
+    - How does my electricity usage compare to others?
+    - Is my electricity usage sustainable?
+    - What are some ways to reduce my electricity usage?
+    - How does weather affect my electricity usage?
+    - What appliances use the most electricity in my home?
+    - How can I monitor my electricity usage?
+    - Can you recommend an electricity monitoring device?
+    - How can I switch to a more eco-friendly electricity provider?
+    - Can you give me tips for saving electricity in the summer/winter?
+    - How does my electricity usage impact the environment?
+    - How do I calculate my electricity usage?
+    - Can you explain the difference between kW and kWh?
+    - How can I estimate my next electricity bill?
+    - Can you explain time-of-use electricity rates?
+    - What is peak electricity usage?
+    - How does time-of-use pricing impact my electricity bill?
+    - Can you tell me about renewable energy options?
+    - What is net metering?
+    - How do I calculate my carbon footprint from electricity usage?
+    - Can you recommend energy-efficient appliances?
+    - How do I report an electricity outage?
+    - Can you explain the electricity distribution system?
+    - What is a smart grid?
+    - How can I participate in demand response programs?
+    - What is the future of electricity generation?
+    - Can you explain the differences between AC and DC electricity?
+    - What is a brownout?
+    - How do I dispose of old electronics?
+    - What are some common causes of high electricity bills?
+    - How can I reduce phantom power usage?
+    - What are some common myths about electricity usage?
+
 - intent: show_home_state
   examples: |
-    - Could you show me the devices states in home ?
-    - Show me the devices states in home.
-    - Show me devices states.
-    - Is everything alright in home ?
-    - Is everything working fine in home ?
-    - How is everything in home ?
-- intent: goodbye
-  examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+    - What's the current status of my home devices?
+    - What is the status of all my devices at home?
+    - Can you tell me about the status of my devices in the house?
+    - Give me an overview of the current state of all devices at home.
+    - Show me the current state of all the devices in the house.
+    - Is there anything that needs my attention at home?
+    - What is the current state of the devices in the house?
+    - How are the devices in the house functioning?
+    - What is the status of my smart home devices?
+    - Can you provide a summary of my home devices?
+    - Please give me an update on my home devices status.
+    - I want to know if all the devices in the house are working.
+    - What are the statuses of my home appliances?
+    - Tell me about the state of my home devices.
+
 # - synonym: lights
 #   examples: |
 #     - light
