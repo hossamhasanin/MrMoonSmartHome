@@ -101,6 +101,12 @@ responses:
   - text: Sorry, I didn't get that. Could you please rephrase?
   utter_out_of_scope_electricity_usage_queries:
   - text: Sorry, But currently I can't execute that order but latter we would add this features to electricity usage commands.
+  utter_which_room_to_change_light_color:
+  - text: Which room should I change the light color in?
+  - text: What do you mean you didn't say the room name?
+  utter_please_mention_room_name_and_light_color:
+  - text: Please mention the room name and light color
+  - text: Hey what the heck is that supposed to mean , how should I change room light without telling me room name or light color ?!
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -117,3 +123,9 @@ actions:
 - action_electricity_usage
 - action_show_home_state
 - utter_out_of_scope_electricity_usage_queries
+- action_change_light_color
+- utter_which_room_to_change_light_color
+- utter_please_mention_room_name_and_light_color
+- action_set_temperature_value
+- action_increase_temperature_value
+- action_decrease_temperature_value

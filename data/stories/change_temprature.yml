@@ -1,0 +1,36 @@
+version: "3.1"
+
+stories:
+
+- story: set the ac in the kitchen at 35 degrees
+  steps:
+  - intent: set_temperature_to
+  - entities:
+    - room_name: "kitchen"
+    - temperature: "25"
+  - slot_was_set:
+    - room_name: "kitchen"
+    - temperature: "25"
+  - action: action_set_temperature_value
+
+- story: increase the ac in the kitchen by 2 degrees
+  steps:
+  - intent: increase_temperature_by
+  - entities:
+    - room_name: "kitchen"
+    - temperature: "2"
+  - slot_was_set:
+    - room_name: "kitchen"
+    - temperature: "2"
+  - action: action_increase_temperature_value
+
+- story: decrease the ac in the bedroom by 2 degrees
+  steps:
+  - intent: decrease_temperature_by
+  - entities:
+    - room_name: "bedroom"
+    - temperature: "2"
+  - slot_was_set:
+    - room_name: "bedroom"
+    - temperature: "2"
+  - action: action_decrease_temperature_value
