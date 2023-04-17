@@ -113,15 +113,6 @@ nlu:
     - Please turn off the [microwave](device_type) in the [kitchen](room_name)
     - Could you turn off the [desktop computer](device_type) in the [study room](room_name)?
 
-- intent: get_device_state
-  examples: |
-    - what is the state of the [bedroom](room_name) [light](device_type) ?
-    - what is the state of the [kitchen](room_name) [light](device_type) ?
-    - what is the state of the [living room](room_name) [light](device_type) ?
-    - Is [kitchen](room_name) [light](device_type) [on](device_state) ?
-    - Is [bedroom](room_name) [light](device_type) [on](device_state) ?
-    - Is [living room](room_name) [light](device_type) [off](device_state) ?
-    - Is my [bedroom](room_name) [light](device_type) [off](device_state) ?
 - intent: turn_on_device_false
   examples: |
     - Oh god I am so truned on right now
@@ -290,6 +281,186 @@ nlu:
     - I want to know if all the devices in the house are working.
     - What are the statuses of my home appliances?
     - Tell me about the state of my home devices.
+    - what is the state of the [bedroom](room_name) [light](device_type) ?
+    - what is the state of the [kitchen](room_name) [light](device_type) ?
+    - what is the state of the [living room](room_name) [light](device_type) ?
+    - Is [kitchen](room_name) [light](device_type) [on](device_state) ?
+    - Is [bedroom](room_name) [light](device_type) [on](device_state) ?
+    - Is [living room](room_name) [light](device_type) [off](device_state) ?
+    - Is my [bedroom](room_name) [light](device_type) [off](device_state) ?
+    - What is the status of the [ceiling fan](device_type) in the [living room](room_name)?
+    - Is the [coffee machine](device_type) in the [kitchen](room_name) turned on?
+    - Can you check if the [TV](device_type) in the [bedroom](room_name) is off?
+    - Show me the current state of the [thermostat](device_type) in the [living room](room_name).
+    - Is the [garage door](device_type) in the [backyard](room_name) closed?
+    - Can you tell me if the [air conditioner](device_type) in the [office](room_name) is running?
+    - What is the state of the [lamp](device_type) in the [dining room](room_name)?
+    - Is the [security camera](device_type) in the [front yard](room_name) on?
+    - Check if the [blender](device_type) in the [kitchen](room_name) is plugged in.
+    - What is the state of the [thermostat](device_type) ?
+    - Is the [air conditioner](device_type) on ?
+    - What is the state of the [TV](device_type) ?
+    - Is the [ceiling fan](device_type) off ?
+    - Is the [smart plug](device_type) connected ?
+    - What is the state of the [coffee maker](device_type) ?
+    - Is the [speaker](device_type) playing music ?
+    - What is the state of the [door lock](device_type) ?
+
+- intent: change_light_color
+  examples: |
+    - Change the [bedroom](room_name) [light](device_type) to [red](light_color).
+    - Set the [kitchen](room_name) [light](device_type) to [green](light_color).
+    - Can you make the [living room](room_name) [light](device_type) [blue](light_color)?
+    - I want to change the [bedroom](room_name) [light](device_type) to [purple](light_color).
+    - Could you please set the [kitchen](room_name) [light](device_type) to [orange](light_color)?
+    - Turn the [living room](room_name) [light](device_type) to [pink](light_color).
+    - Change the [bedroom](room_name) [light](device_type) color to [yellow](light_color).
+    - Can you make the [kitchen](room_name) [light](device_type) [white](light_color)?
+    - I want to change the [living room](room_name) [light](device_type) to [cyan](light_color).
+    - Change the [RGB light](device_type) in the [kitchen](room_name) to [blue](light_color).
+    - Can you turn the [colored light](device_type) in the [living room](room_name) to [green](light_color)?
+    - Set the [LEDs](device_type) in the [bedroom](room_name) to [red](light_color).
+    - Turn on the [smart bulb](device_type) in the [study room](room_name) and set it to [yellow](light_color).
+    - Change the color of the [strip lights](device_type) in the [basement](room_name) to [purple](light_color).
+    - Could you please change the [color-changing light](device_type) in the [dining area](room_name) to [pink](light_color)?
+    - Turn off the [Hue light](device_type) in the [guest bedroom](room_name) and change its color to [orange](light_color).
+    - Dim the [table lamp](device_type) in the [living room](room_name) and set its color to [white](light_color).
+    - Can you change the color of the [ceiling light](device_type) in the [master bedroom](room_name) to [cyan](light_color)?
+    - Adjust the [spotlights](device_type) in the [home theater](room_name) and change their color to [magenta](light_color).
+
+- intent: set_temperature_to
+  examples: |
+    - Set the temperature to [70](temperature) degrees in the [living room](room_name) please.
+    - Can you set the temperature to [68](temperature) degrees in the [bedroom](room_name)?
+    - I want to set the temperature to [72](temperature) degrees in the [kitchen](room_name).
+    - Please set the temperature to [65](temperature) degrees in the [office](room_name).
+    - Please set the temperature to [68](temperature) degrees in the [bedroom](room_name).
+    - Set the temperature to [72](temperature) in the [office](room_name), please.
+    - Can you set the temperature in the [living room](room_name) to [75](temperature) degrees?
+    - I want the temperature to be set to [71](temperature) in the [kitchen](room_name).
+    - Set the temperature to [68](temperature) degrees in the [guest room](room_name).
+    - Please adjust the temperature to [70](temperature) degrees in the [master bedroom](room_name).
+    - Set the temperature in the [dining room](room_name) to [68](temperature) degrees, please.
+    - Can you set the temperature to [74](temperature) degrees in the [playroom](room_name)?
+    - I'd like to set the temperature to [73](temperature) degrees in the [home theater](room_name).
+    - Set the temperature in the [sunroom](room_name) to [68](temperature) degrees, please.
+    - Can you set the temperature in the [bedroom](room_name) for me?
+    - Please adjust the temperature in the [living room](room_name).
+    - I need the air conditioner in the [office](room_name) to cool down a bit.
+    - Can you turn up the AC in the [guest room](room_name)?
+    - Make it a bit cooler in the [kitchen](room_name), please.
+    - Can you set the temperature to [70](temperature) degrees?
+    - I need to turn up the AC by [3](temperature) degrees.
+    - Please decrease the temperature by [5](temperature) degrees.
+    - Make it a bit cooler in here, can you adjust the temperature?
+    - I want to set the air conditioner to [65](temperature) degrees, can you help me with that?
+
+
+
+- intent: increase_temperature_by
+  examples: |
+    - Increase the temperature by [5](temperature) degrees in the [living room](room_name).
+    - Can you make the room [2](temperature) degrees warmer in the [bedroom](room_name)?
+    - Please increase the temperature by [3](temperature) degrees in the [kitchen](room_name).
+    - I want to make the room [4](temperature) degrees hotter in the [office](room_name).
+    - I want to make it warmer in the [bedroom](room_name) by [5](temperature) degrees
+    - Increase the temperature in the [kitchen](room_name) by [2](temperature) degrees please
+    - Can you turn up the heat in the [living room](room_name) by [3](temperature) degrees?
+    - Raise the temperature by [4](temperature) degrees in the [guest room](room_name)
+    - Can you increase the temperature by [2](temperature) degrees in the [office](room_name) please?
+    - I'd like to make it [3](temperature) degrees warmer in the [master bedroom](room_name)
+    - Please increase the temperature in the [dining room](room_name) by [1](temperature) degree
+    - Let's increase the temperature by [2](temperature) degrees in the [family room](room_name)
+    - Can you increase the temperature in the [bedroom](room_name) by [3](temperature) degrees?
+    - The air conditioner in the [guest room](room_name) needs to be warmer by [5](temperature) degrees.
+    - Can you make it [2](temperature) degrees hotter in the [living room](room_name), please?
+    - The temperature needs to go up by [4](temperature) degrees in the [office](room_name).
+    - I want to raise the temperature by [6](temperature) degrees in the [master bedroom](room_name).
+    - Can you turn up the heat by [2](temperature) degrees in the [kitchen](room_name)?
+    - Please increase the temperature in the [dining room](room_name) by [7](temperature) degrees.
+    - Could you make it [3](temperature) degrees warmer in the [guest bedroom](room_name), please?
+    - Can you raise the temperature by [5](temperature) degrees in the [basement](room_name)?
+
+
+
+- intent: decrease_temperature_by
+  examples: |
+    - Decrease the temperature by [3](temperature) degrees in the [living room](room_name).
+    - Can you make the room [2](temperature) degrees cooler in the [bedroom](room_name)?
+    - Please decrease the temperature by [4](temperature) degrees in the [kitchen](room_name).
+    - I want to make the room [5](temperature) degrees colder in the [office](room_name).
+    - Decrease the temperature in the [bedroom](room_name) by [4](temperature) degrees please.
+    - Can you please lower the temperature by [2](temperature) degrees in the [living room](room_name)?
+    - Reduce the temperature by [5](temperature) degrees in the [guest room](room_name), thank you.
+    - Could you turn down the heat by [3](temperature) degrees in the [kitchen](room_name)?
+    - Please decrease the temperature in the [master bedroom](room_name) by [2](temperature) degrees.
+    - Can you turn down the temperature by [1](temperature) degree in the [dining room](room_name)?
+    - Lower the temperature by [4](temperature) degrees in the [office](room_name) please.
+    - Can you decrease the temperature in the [basement](room_name) by [5](temperature) degrees?
+    - Please reduce the temperature by [2](temperature) degrees in the [attic](room_name).
+    - Turn down the temperature by [3](temperature) degrees in the [game room](room_name) please.
+    - Can you please lower the temperature by [6](temperature) degrees in the [study](room_name)?
+    - Reduce the temperature in the [nursery](room_name) by [2](temperature) degrees please.
+    - Could you turn down the heat by [4](temperature) degrees in the [garage](room_name)?
+    - Please decrease the temperature by [3](temperature) degrees in the [home theater](room_name).
+    - Lower the temperature by [1](temperature) degree in the [workshop](room_name) please.
+    - Can you decrease the temperature in the [playroom](room_name) by [2](temperature) degrees?
+    - Please reduce the temperature by [4](temperature) degrees in the [sunroom](room_name).
+    - Turn down the temperature by [2](temperature) degrees in the [gym](room_name) please.
+    - Can you please lower the temperature by [3](temperature) degrees in the [pool house](room_name)?
+    - Reduce the temperature in the [laundry room](room_name) by [1](temperature) degree please.
+    - Could you turn down the heat by [5](temperature) degrees in the [mudroom](room_name)?
+    - Please decrease the temperature by [1](temperature) degree in the [closet](room_name).
+    - Lower the temperature by [3](temperature) degrees in the [library](room_name) please.
+    - Can you decrease the temperature in the [bathroom](room_name) by [2](temperature) degrees?
+    - Please reduce the temperature by [5](temperature) degrees in the [game room](room_name).
+    - Turn down the temperature by [4](temperature) degrees in the [guest bathroom](room_name) please.
+    - Can you please lower the temperature by [2](temperature) degrees in the [pantry](room_name)?
+    - Reduce the temperature in the [sauna](room_name) by [6](temperature) degrees please.
+    - Could you turn down the heat by [3](temperature) degrees in the [wine cellar](room_name)?
+    - Please decrease the temperature by [4](temperature) degrees in the [foyer](room_name).
+    - Lower the temperature by [2](temperature) degrees in the [entryway](room_name) please.
+
+## Note: currently we only support unlocking the front home door
+- intent: unlock_door_lock
+  examples: |
+    - Open the [front door](room_name) please.
+    - Can you unlock the [bedroom door](room_name)?
+    - I want to open the [patio door](room_name).
+    - Please unlock the [garage door](room_name).
+    - Can you open the [back door](room_name) for me?
+    - I need to unlock the [basement door](room_name).
+    - Open the [kitchen door](room_name), please.
+    - Can you unlock the [office door](room_name)?
+    - I want to open the [dining room door](room_name).
+    - Please unlock the [utility room door](room_name).
+    - Can you open the [balcony door](room_name) for me?
+    - I need to unlock the [storage room door](room_name).
+    - Open the [bathroom door](room_name), please.
+    - Can you unlock the [laundry room door](room_name)?
+    - I want to open the [guest room door](room_name).
+    - Please unlock the [attic door](room_name).
+    - Can you open the [entryway door](room_name) for me?
+    - I need to unlock the [pantry door](room_name).
+    - Open the [closet door](room_name), please.
+    - Can you unlock the [fence gate](room_name)?
+    - Can you please unlock my home's door?
+    - I forgot to unlock my home's door before leaving, can you do it for me?
+    - Can you check if my home's door is unlocked?
+    - I think I left my home's door locked, can you unlock it?
+    - Can you unlock the door of my home?
+    - Can you unlock my home's front door?
+    - Can you unlock the door to my home please?
+    - Can you open the door of my home?
+    - Can you open my home's door lock?
+    - Please unlock the door to my home.
+    - I locked myself out of my home, can you unlock the door?
+    - Can you please unlock the front door of my home?
+    - Can you unlock my home's back door for me?
+    - I need to get inside my home, can you unlock the door?
+    - Can you unlock the door to my house?
+
+
 
 # - synonym: lights
 #   examples: |
