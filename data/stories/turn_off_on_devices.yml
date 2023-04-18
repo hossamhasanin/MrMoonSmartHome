@@ -101,4 +101,3 @@ stories:
     - device_type: "lights"
     - all_devices_selected: "all"
   - action: action_turn_on_device
-

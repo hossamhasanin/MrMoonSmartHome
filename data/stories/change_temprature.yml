@@ -34,3 +34,40 @@ stories:
     - room_name: "bedroom"
     - temperature: "2"
   - action: action_decrease_temperature_value
+
+- story: decrease the ac in the bedroom
+  steps:
+  - intent: decrease_temperature_by
+  - entities:
+    - room_name: "bedroom"
+  - slot_was_set:
+    - room_name: "bedroom"
+  - action: action_decrease_temperature_value
+
+- story: increase the ac in the kitchen
+  steps:
+  - intent: increase_temperature_by
+  - entities:
+    - room_name: "kitchen"
+  - slot_was_set:
+    - room_name: "kitchen"
+  - action: action_increase_temperature_value
+
+- story: increase the main ac
+  steps:
+  - intent: increase_temperature_by
+  - action: action_increase_temperature_value
+
+- story: decrease the main ac
+  steps:
+  - intent: decrease_temperature_by
+  - action: action_decrease_temperature_value
+
+- story: set the main ac at 35 degrees
+  steps:
+  - intent: set_temperature_to
+  - entities:
+    - temperature: "35"
+  - slot_was_set:
+    - temperature: "35"
+  - action: action_set_temperature_value

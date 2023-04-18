@@ -107,6 +107,9 @@ responses:
   utter_please_mention_room_name_and_light_color:
   - text: Please mention the room name and light color
   - text: Hey what the heck is that supposed to mean , how should I change room light without telling me room name or light color ?!
+  utter_we_do_not_allow_these:
+  - text: We do not allow these queries in here
+  - text: You can't say that at all buddy be respectful a little !
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -129,3 +132,4 @@ actions:
 - action_set_temperature_value
 - action_increase_temperature_value
 - action_decrease_temperature_value
+- utter_we_do_not_allow_these

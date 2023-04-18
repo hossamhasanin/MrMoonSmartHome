@@ -6,25 +6,15 @@ rules:
   - intent: nlu_fallback
   - action: action_fallback_to_llm
 
-# - rule: Turn on device
-#   steps:
-#   - intent: turn_on_device
-#   - action: action_turn_on_device
+- rule: Check temprature value
+  steps:
+  - intent: check_temprature_value
+  - action: action_check_temprature_value
 
-# - rule: Turn off device
-#   steps:
-#   - intent: turn_off_device
-#   - action: action_turn_off_device
-
-# - rule: Check temprature value
-#   steps:
-#   - intent: check_temprature_value
-#   - action: action_check_temprature_value
-
-# - rule: Number of people in home
-#   steps:
-#   - intent: number_of_people_in_home
-#   - action: action_number_of_people_in_home
+- rule: Number of people in home
+  steps:
+  - intent: number_of_people_in_home
+  - action: action_number_of_people_in_home
 
 - rule: Electricity usage
   steps:
@@ -40,4 +30,9 @@ rules:
   steps:
   - intent: out_of_scope_electricity_usage_queries
   - action: utter_out_of_scope_electricity_usage_queries
+
+- rule: trun on false statement
+  steps:
+  - intent: turn_on_device_false
+  - action: utter_we_do_not_allow_these
 
