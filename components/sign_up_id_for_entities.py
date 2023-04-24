@@ -154,31 +154,44 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
             if entity.get(ENTITY_ATTRIBUTE_TYPE) == "device_type":
                 extracted_device_type = entity.get(ENTITY_ATTRIBUTE_VALUE)
         
-        if extracted_room_name == "" or extracted_device_type == "":
+        if extracted_device_type == "":
             self._return_empty_entity(message)
             return
         
-        room_name_embed = self.model.encode(extracted_room_name)
         device_type_embed = self.model.encode(extracted_device_type)
-        room_score , room_index = self.rooms_index.search(np.array([room_name_embed]), 1)
         device_score , device_index = self.devices_index.search(np.array([device_type_embed]), 1)
-        logger.info("SignUpIdForEntities device: " + str(device_score[0][0]) + " " + str(device_index[0][0]))
-        if room_score[0][0] > self.threshold and device_score[0][0] > self.threshold:
-            query = self.current_rooms[room_index[0][0]] + "_" + self.current_devices[device_index[0][0]]
-            logger.info("SignUpIdForEntities query: " + query)
-            if query not in self.current_devices_ids:
-                self._return_empty_entity(message)
-                return
 
-            extracted_entities.append({
-                ENTITY_ATTRIBUTE_TYPE: self.entity_name,
-                ENTITY_ATTRIBUTE_VALUE: self.current_devices_ids[query],
-                ENTITY_ATTRIBUTE_START: 0,
-                ENTITY_ATTRIBUTE_END: 0
-            })
-            message.set(ENTITIES, extracted_entities, add_to_output=True)
-        else:
+        if device_score[0][0] < self.threshold:
             self._return_empty_entity(message)
+            return
+        
+        stored_device_type = self.current_devices[device_index[0][0]]
+        stored_room_name = ""
+
+        if extracted_room_name != "":
+            room_name_embed = self.model.encode(extracted_room_name)
+            room_score , room_index = self.rooms_index.search(np.array([room_name_embed]), 1)
+            if room_score[0][0] > self.threshold:
+                stored_room_name = self.current_rooms[room_index[0][0]]
+
+        query = ""
+        if stored_room_name == "":
+            query = stored_device_type
+        else:    
+            query = stored_room_name + "_" + stored_device_type
+
+        if query not in self.current_devices_ids:
+            self._return_empty_entity(message)
+            return
+
+        logger.info("SignUpIdForEntities query: " + query)
+        extracted_entities.append({
+            ENTITY_ATTRIBUTE_TYPE: self.entity_name,
+            ENTITY_ATTRIBUTE_VALUE: self.current_devices_ids[query],
+            ENTITY_ATTRIBUTE_START: 0,
+            ENTITY_ATTRIBUTE_END: 0
+        })
+        message.set(ENTITIES, extracted_entities, add_to_output=True)
     
     def _return_empty_entity(self, message: Message) -> None:
         extracted_entities = message.get(ENTITIES, [])
