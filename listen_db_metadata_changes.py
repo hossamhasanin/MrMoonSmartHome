@@ -66,7 +66,7 @@ my_listener = ref.listen(callback)
 
 
 try: 
-    while True:
+    while True: 
         time.sleep(1)
 except KeyboardInterrupt: 
     print('Closing listener wait a bit...')
