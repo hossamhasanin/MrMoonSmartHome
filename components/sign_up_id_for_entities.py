@@ -180,6 +180,12 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
         else:    
             query = stored_room_name + "_" + stored_device_type
 
+        for entity in extracted_entities:
+            if entity.get(ENTITY_ATTRIBUTE_TYPE) == "room_name":
+                extracted_entities[ENTITY_ATTRIBUTE_VALUE] = stored_room_name if stored_room_name != "" else extracted_room_name
+            elif entity.get(ENTITY_ATTRIBUTE_TYPE) == "device_type":
+                extracted_entities[ENTITY_ATTRIBUTE_VALUE] = stored_device_type
+
         if query not in self.current_devices_ids:
             self._return_empty_entity(message)
             return
