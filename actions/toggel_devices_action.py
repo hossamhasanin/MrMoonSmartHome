@@ -2,8 +2,8 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from firebase_controller.results import Result
-from firebase_controller.firebase_controller import FirebaseController
+from actions.firebase_controller.results import Results
+from actions.firebase_controller.firebase_controller import FirebaseController
 
 
 class ActionTurnOnDevice(Action):
@@ -18,11 +18,16 @@ class ActionTurnOnDevice(Action):
         controller = FirebaseController.instance()
 
         device_id = tracker.get_slot("device_id")
-        result = controller.updateSwitchingState(state= True , device_type_id = device_id , device_id= device_id)
+        result = controller.updateSwitchingState(
+            state= True ,
+            device_type_id = device_id ,
+            device_id= device_id,
+            device_type= tracker.get_slot("device_type")
+        )
 
-        if result == Result.NOT_ALLOWED_OPERATION_ON_DEVICE:
+        if result == Results.NOT_ALLOWED_OPERATION_ON_DEVICE:
             dispatcher.utter_message(response="utter_cannot_turn_on_or_off_device")
-        elif result == Result.DEVICE_NOT_FOUND:
+        elif result == Results.DEVICE_NOT_FOUND:
             dispatcher.utter_message(response="utter_device_not_found")
         else:
             if tracker.get_slot("room_name") != None:
@@ -45,11 +50,16 @@ class ActionTurnOffDevice(Action):
             controller = FirebaseController.instance()
 
             device_id = tracker.get_slot("device_id")
-            result = controller.updateSwitchingState(state= False , device_type_id = device_id , device_id= device_id)
+            result = controller.updateSwitchingState(
+                state= False ,
+                device_type_id = device_id ,
+                device_id= device_id ,
+                device_type= tracker.get_slot("device_type")
+            )
 
-            if result == Result.NOT_ALLOWED_OPERATION_ON_DEVICE:
+            if result == Results.NOT_ALLOWED_OPERATION_ON_DEVICE:
                 dispatcher.utter_message(response="utter_cannot_turn_on_or_off_device")
-            elif result == Result.DEVICE_NOT_FOUND:
+            elif result == Results.DEVICE_NOT_FOUND:
                 dispatcher.utter_message(response="utter_device_not_found")
             else:
                 if tracker.get_slot("room_name") != None:

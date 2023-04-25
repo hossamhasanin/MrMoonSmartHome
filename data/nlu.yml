@@ -41,6 +41,27 @@ nlu:
     - Could you turn on the [rgb leds](device_type) please ?.
     - Turn on [kitchen](room_name) [rgbs](device_type) please.
     - Turn on [all](all_devices_selected) the [rgbs](device_type).
+    - Turn on [all](all_devices_selected) the [rgbs](device_type).  
+    - Activate [everything](all_devices_selected)  
+    - Switch on [all](all_devices_selected) the lights  
+    - Turn on [each and every](all_devices_selected) device
+    - Power on [any](all_devices_selected) device that is off .
+    - Turn on [all](all_devices_selected) lights
+    - Activate [everything](all_devices_selected) electrical  
+    - Power on [each](all_devices_selected) appliance 
+    - Start [whatever](all_devices_selected) needs starting  
+    - Boot [anything](all_devices_selected) that's currently off
+    - Wake [every](all_devices_selected) dormant system  
+    - Fire up [all](all_devices_selected) inactive components  
+    - Switch on [whatever's](all_devices_selected) currently disabled
+    - Engage [each and every](all_devices_selected) idle device
+    - Energize [all](all_devices_selected) presently offline equipment
+    - Turn on [any](all_devices_selected) non-functional units
+    - Spin up [every](all_devices_selected) slumbering element    
+    - Reboot [whatsoever](all_devices_selected) is down   
+    - Reactivate [all](all_devices_selected) suspended apparatus
+    - Restart [each](all_devices_selected) dormant mechanism
+    - Power up [whatever](all_devices_selected) is currently offline
     - Turn on the [rgb lights](device_type) of the [kitchen](room_name).
     - turn on [living room](room_name) [light bulbs](device_type)
     - Turn on the [stove](device_type) please
@@ -68,7 +89,7 @@ nlu:
     - Turn off the [light](device_type) please
     - turn off the [lights](device_type)
     - turn off the [light](device_type)
-    - turn the [lights]((device_type)) off
+    - turn the [lights](device_type) off
     - trun off the [kitchen](room_name) [light](device_type)
     - trun off this room's [light](device_type)
     - turn off the [bedroom](room_name) [light](device_type) please

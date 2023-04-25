@@ -3,6 +3,7 @@ from firebase_admin import credentials
 from firebase_admin import db
 import pickle
 import time
+from sentence_transformers import SentenceTransformer
 # Fetch the service account key JSON file contents
 cred = credentials.Certificate('service_key.json')
 
@@ -14,10 +15,13 @@ firebase_admin.initialize_app(cred, {
 
 # listen to changes in database at /metadata ref
 ref = db.reference('/metadata')
+model = SentenceTransformer("models/all-MiniLM-L12-v2")
 
 devices_ids_map = {}
+devices = {}
+rooms = {}
 
-SAVE_PATH = "models/devices_ids.pkl"
+SAVE_PATH = "models/"
 
 def callback(event):
     print(event.event_type)  # can be 'put' or 'patch'
@@ -28,6 +32,10 @@ def callback(event):
     if event.path == "/":
         for device in event.data:
             if device is not None:
+                devices[device['device_type_id']] = device['device_type']
+                if 'room_name' in device:
+                    rooms[device["device_type_id"]] = device["room_name"]
+
                 device_room_key = device['device_type'] if 'room_name' not in device else device['room_name'] + "_" + device['device_type']
                 devices_ids_map[device_room_key] = device['device_type_id']
                 if device['device_type'] not in devices_ids_map:
@@ -38,6 +46,10 @@ def callback(event):
         path = event.path.split("/")
         field = path[-1]
         deivce_id = path[-2]
+
+        rooms[int(deivce_id)] = event.data if field == 'room_name' else rooms[int(deivce_id)]
+        devices[int(deivce_id)] = event.data if field == 'device_type' else devices[int(deivce_id)]
+
         devices_ids_map_copy = devices_ids_map.copy()
         for key , value in devices_ids_map.items():
             if value == int(deivce_id):
@@ -53,10 +65,25 @@ def callback(event):
         devices_ids_map.clear()
         devices_ids_map.update(devices_ids_map_copy)
 
+    #filter devices_list for similar values
+    devices_list = list(dict.fromkeys(list(devices.values())).keys())
+    rooms_list = list(dict.fromkeys(list(rooms.values())).keys())
+
+    devicesEmbed = model.encode(devices_list)
+    roomsEmbed = model.encode(rooms_list)
+
+    print("saving devices_embeddings.pkl")
+    with open(SAVE_PATH + 'devices_embeddings.pkl', "wb") as fOut:
+        pickle.dump({'sentences': devices_list, 'embeddings': devicesEmbed}, fOut, protocol=pickle.HIGHEST_PROTOCOL)
+    print("saving rooms_embeddings.pkl")
+    with open(SAVE_PATH + 'rooms_embeddings.pkl', "wb") as fOut:
+        pickle.dump({'sentences': rooms_list, 'embeddings': roomsEmbed}, fOut, protocol=pickle.HIGHEST_PROTOCOL)
+    print("saved successfully devices_embeddings.pkl and rooms_embeddings.pkl")
+
     print("devices_ids_map: ")
     print(devices_ids_map)
     print("saving devices_ids_map to devices_ids.pkl")
-    with open(SAVE_PATH, "wb") as fOut:
+    with open(SAVE_PATH + 'devices_ids.pkl', "wb") as fOut:
         pickle.dump(devices_ids_map, fOut, protocol=pickle.HIGHEST_PROTOCOL)
     print("saved successfully devices_ids_map to {}".format(SAVE_PATH))
 

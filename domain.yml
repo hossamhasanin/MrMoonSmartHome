@@ -18,7 +18,7 @@ entities:
 - room_name
 - device_type
 - room_number
-- device_name
+# - device_name
 - device_number
 - device_state
 - all_devices_selected
@@ -35,11 +35,11 @@ slots:
     mappings:
     - type: from_entity
       entity: room_number
-  device_name:
-    type: text
-    mappings:
-    - type: from_entity
-      entity: device_name
+  # device_name:
+  #   type: text
+  #   mappings:
+  #   - type: from_entity
+  #     entity: device_name
   device_number:
     type: text
     mappings:
@@ -77,15 +77,15 @@ slots:
       entity: temperature
 responses:
   utter_turned_on_device:
-  - text: Done , {device_name} turned on successfully
-  - text: Done , {device_name} turned on
+  - text: Done , {device_type} turned on successfully
+  - text: Done , {device_type} turned on
   utter_turned_off_device:
-  - text: Done , {device_name} turned off successfully
-  - text: Done , {device_name} turned off
+  - text: Done , {device_type} turned off successfully
+  - text: Done , {device_type} turned off
   utter_turned_on_device_with_room_name:
-  - text: Done , {device_name} in {room_name} turned on successfully
+  - text: Done , {device_type} in {room_name} turned on successfully
   utter_turned_off_device_with_room_name:
-  - text: Done , {device_name} in {room_name} turned off successfully
+  - text: Done , {device_type} in {room_name} turned off successfully
   utter_turned_on_light:
   - text: Lights turned on successfully in {room_name}
   - text: Lights turned on successfully
@@ -115,10 +115,10 @@ responses:
   - text: We do not allow these queries in here
   - text: You can't say that at all buddy be respectful a little !
   utter_cannot_turn_on_or_off_device:
-  - text: Sorry, I can't turn on or off {device_name} , this operation is not allowed currently.
+  - text: Sorry, I can't turn on or off {device_type} , this operation is not allowed currently.
   - text: Sorry, I can't turn on or off this device , this operation is not allowed currently.
   utter_device_not_found:
-  - text: Sorry, I can't find {device_name}.
+  - text: Sorry, I can't find {device_type}.
   - text: Sorry, this device is not found so I can't change its state.
 session_config:
   session_expiration_time: 60

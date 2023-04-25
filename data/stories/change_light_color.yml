@@ -4,7 +4,7 @@ stories:
 - story: change rgb light in kitchen
   steps:
   - intent: change_light_color
-  - entities:
+    entities:
     - room_name: "kitchen"
     - device_type: "rgbs"
     - light_color: "red"
@@ -17,7 +17,7 @@ stories:
 - story: change kitchen light color
   steps:
   - intent: change_light_color
-  - entities:
+    entities:
     - room_name: "kitchen"
     - light_color: "red"
   - slot_was_set:
@@ -25,16 +25,16 @@ stories:
     - light_color: "red"
   - action: action_change_light_color
 
-# I don't know if that would work or not
 - story: change light color and not mentioned room name
   steps:
   - intent: change_light_color
-  - entities:
+    entities:
     - light_color: "red"
   - slot_was_set:
     - light_color: "red"
   - action: utter_which_room_to_change_light_color
-  - entities:
+  - intent: change_light_color
+    entities:
     - room_name: "kitchen"
   - slot_was_set:
     - room_name: "kitchen"
@@ -45,7 +45,7 @@ stories:
   - intent: change_light_color
   - action: utter_please_mention_room_name_and_light_color
   - intent: change_light_color
-  - entities:
+    entities:
     - room_name: "bedroom"
     - light_color: "blue"
   - slot_was_set:

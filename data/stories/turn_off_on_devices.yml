@@ -1,50 +1,43 @@
 version: "3.1"
 
 stories:
-
 - story: trun on kitchen light
   steps:
   - intent: turn_on_device
-  - entities:
+    entities:
     - room_name: "kitchen"
     - device_type: "lights"
   - slot_was_set:
     - room_name: "kitchen"
     - device_type: "lights"
   - action: action_turn_on_device
-  - intent: goodbye
-  - action: utter_goodbye
 
 - story: trun on bedroom light
   steps:
   - intent: turn_on_device
-  - entities:
+    entities:
     - room_name: "bedroom"
-    - device_type: "lights"
+    - device_type: "rgb lights"
   - slot_was_set:
     - room_name: "bedroom"
-    - device_type: "lights"
+    - device_type: "rgb lights"
   - action: action_turn_on_device
-  - intent: goodbye
-  - action: utter_goodbye
 
 - story: trun on kithen rgbs
   steps:
   - intent: turn_on_device
-  - entities:
+    entities:
     - room_name: "kitchen"
     - device_type: "rgbs"
   - slot_was_set:
     - room_name: "kitchen"
     - device_type: "rgbs"
   - action: action_turn_on_device
-  - intent: goodbye
-  - action: utter_goodbye
 
 - story: trun on all lights
   steps:
   - intent: turn_on_device
-  - entities:
+    entities:
     - device_type: "lights"
     - all_devices_selected: "all"
   - slot_was_set:
@@ -55,22 +48,20 @@ stories:
 - story: trun off kitchen light
   steps:
   - intent: turn_off_device
-  - entities:
+    entities:
     - room_name: "kitchen"
     - device_type: "lights"
   - slot_was_set:
     - room_name: "kitchen"
     - device_type: "lights"
   - action: action_turn_off_device
-  - intent: goodbye
-  - action: utter_goodbye
 
 - story: trun off some device
   steps:
   - intent: turn_off_device
   - action: utter_which_device
   - intent: turn_off_device
-  - entities:
+    entities:
     - device_type: "lights"
     - room_name: "kitchen"
   - slot_was_set:
@@ -83,7 +74,7 @@ stories:
   - intent: turn_on_device
   - action: utter_which_device
   - intent: turn_on_device
-  - entities:
+    entities:
     - device_type: "lights"
     - room_name: "kitchen"
   - slot_was_set:
@@ -94,7 +85,7 @@ stories:
 - story: trun on all lights
   steps:
   - intent: turn_on_device
-  - entities:
+    entities:
     - device_type: "lights"
     - all_devices_selected: "all"
   - slot_was_set:

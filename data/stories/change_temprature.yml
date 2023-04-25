@@ -5,7 +5,7 @@ stories:
 - story: set the ac in the kitchen at 35 degrees
   steps:
   - intent: set_temperature_to
-  - entities:
+    entities:
     - room_name: "kitchen"
     - temperature: "25"
   - slot_was_set:
@@ -16,7 +16,7 @@ stories:
 - story: increase the ac in the kitchen by 2 degrees
   steps:
   - intent: increase_temperature_by
-  - entities:
+    entities:
     - room_name: "kitchen"
     - temperature: "2"
   - slot_was_set:
@@ -27,7 +27,7 @@ stories:
 - story: decrease the ac in the bedroom by 2 degrees
   steps:
   - intent: decrease_temperature_by
-  - entities:
+    entities:
     - room_name: "bedroom"
     - temperature: "2"
   - slot_was_set:
@@ -38,7 +38,7 @@ stories:
 - story: decrease the ac in the bedroom
   steps:
   - intent: decrease_temperature_by
-  - entities:
+    entities:
     - room_name: "bedroom"
   - slot_was_set:
     - room_name: "bedroom"
@@ -47,7 +47,7 @@ stories:
 - story: increase the ac in the kitchen
   steps:
   - intent: increase_temperature_by
-  - entities:
+    entities:
     - room_name: "kitchen"
   - slot_was_set:
     - room_name: "kitchen"
@@ -66,7 +66,7 @@ stories:
 - story: set the main ac at 35 degrees
   steps:
   - intent: set_temperature_to
-  - entities:
+    entities:
     - temperature: "35"
   - slot_was_set:
     - temperature: "35"

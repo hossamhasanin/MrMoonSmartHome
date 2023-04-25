@@ -147,6 +147,8 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
         # get the entities from the message
         extracted_room_name = ""
         extracted_device_type = ""
+        stored_device_type = ""
+        stored_room_name = ""
         extracted_entities = message.get(ENTITIES, [])
         for entity in extracted_entities:
             if entity.get(ENTITY_ATTRIBUTE_TYPE) == "room_name":
@@ -154,25 +156,26 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
             if entity.get(ENTITY_ATTRIBUTE_TYPE) == "device_type":
                 extracted_device_type = entity.get(ENTITY_ATTRIBUTE_VALUE)
         
-        if extracted_device_type == "":
-            self._return_empty_entity(message)
-            return
-        
-        device_type_embed = self.model.encode(extracted_device_type)
-        device_score , device_index = self.devices_index.search(np.array([device_type_embed]), 1)
-
-        if device_score[0][0] < self.threshold:
-            self._return_empty_entity(message)
-            return
-        
-        stored_device_type = self.current_devices[device_index[0][0]]
-        stored_room_name = ""
+        if extracted_device_type != "":
+            device_type_embed = self.model.encode(extracted_device_type)
+            device_score , device_index = self.devices_index.search(np.array([device_type_embed]), 1)        
+            stored_device_type = self.current_devices[device_index[0][0]] if device_score[0][0] > self.threshold else ""
 
         if extracted_room_name != "":
             room_name_embed = self.model.encode(extracted_room_name)
             room_score , room_index = self.rooms_index.search(np.array([room_name_embed]), 1)
-            if room_score[0][0] > self.threshold:
-                stored_room_name = self.current_rooms[room_index[0][0]]
+            stored_room_name = self.current_rooms[room_index[0][0]] if room_score[0][0] > self.threshold else ""
+
+        if stored_device_type != "" or stored_room_name != "":
+            for entity in extracted_entities:
+                if entity.get(ENTITY_ATTRIBUTE_TYPE) == "room_name":
+                    entity[ENTITY_ATTRIBUTE_VALUE] = stored_room_name if stored_room_name != "" else extracted_room_name
+                elif entity.get(ENTITY_ATTRIBUTE_TYPE) == "device_type":
+                    entity[ENTITY_ATTRIBUTE_VALUE] = stored_device_type if stored_device_type != "" else extracted_device_type
+            
+        if stored_device_type == "":
+            self._return_empty_entity(message)
+            return
 
         query = ""
         if stored_room_name == "":
@@ -180,12 +183,7 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
         else:    
             query = stored_room_name + "_" + stored_device_type
 
-        for entity in extracted_entities:
-            if entity.get(ENTITY_ATTRIBUTE_TYPE) == "room_name":
-                extracted_entities[ENTITY_ATTRIBUTE_VALUE] = stored_room_name if stored_room_name != "" else extracted_room_name
-            elif entity.get(ENTITY_ATTRIBUTE_TYPE) == "device_type":
-                extracted_entities[ENTITY_ATTRIBUTE_VALUE] = stored_device_type
-
+        logger.info("SignUpIdForEntities query: " + query)
         if query not in self.current_devices_ids:
             self._return_empty_entity(message)
             return

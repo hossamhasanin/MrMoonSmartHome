@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from results import Result
-from avialable_operations import AvialableOperations
+from actions.firebase_controller.results import Results
+from actions.firebase_controller.avialable_operations import AvailableOperations
 # device types ids
 # doorStateId = 1,
 #     tempId = 2,
@@ -14,9 +14,9 @@ from avialable_operations import AvialableOperations
 device_types_avialable_operations = {
     1: [],
     2: [],
-    3: [AvialableOperations.SWITCH],
-    4: [AvialableOperations.SWITCH],
-    5: [AvialableOperations.SWITCH, AvialableOperations.SETTING_COLOR],
+    3: [AvailableOperations.SWITCH],
+    4: [AvailableOperations.SWITCH],
+    5: [AvailableOperations.SWITCH, AvailableOperations.SETTING_COLOR],
     6: [],
     7: [],
     9: [],
@@ -26,5 +26,5 @@ device_types_avialable_operations = {
 class IController(ABC):
 
     @abstractmethod
-    def updateSwitchingState(self, state: bool , device_type_id: int , device_id: int) -> Result:
+    def updateSwitchingState(self, state: bool , device_type_id: int , device_id: int , device_type: str) -> Results:
         pass
