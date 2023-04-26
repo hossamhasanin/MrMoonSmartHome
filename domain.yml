@@ -1,27 +1,26 @@
 version: '3.1'
 intents:
+- change_light_color
 - check_temprature_value
-- set_temperature_to
-- increase_temperature_by
 - decrease_temperature_by
 - electricity_usage
+- increase_temperature_by
 - number_of_people_in_home
 - out_of_scope_electricity_usage_queries
+- set_temperature_to
 - show_home_state
 - turn_off_device
 - turn_on_device
 - turn_on_device_false
-- change_light_color
 - unlock_door_lock
 entities:
 - device_id
-- room_name
+- all_devices_selected
 - device_type
+- room_name
 - room_number
-# - device_name
 - device_number
 - device_state
-- all_devices_selected
 - light_color
 - temperature
 slots:
@@ -35,11 +34,6 @@ slots:
     mappings:
     - type: from_entity
       entity: room_number
-  # device_name:
-  #   type: text
-  #   mappings:
-  #   - type: from_entity
-  #     entity: device_name
   device_number:
     type: text
     mappings:
@@ -120,17 +114,39 @@ responses:
   utter_device_not_found:
   - text: Sorry, I can't find {device_type}.
   - text: Sorry, this device is not found so I can't change its state.
+  utter_no_devices_found_with_given_specs:
+  - text: Sorry, I can't find any devices with given specifications.
+  utter_turned_on_all_devices_with_room_name:
+  - text: Done , all {device_type} devices in {room_name} turned on successfully
+  utter_turned_off_all_devices_with_room_name:
+  - text: Done , all {device_type} devices in {room_name} turned off successfully
+  utter_turned_off_all_devices:
+  - text: Done , all {device_type} devices turned off successfully
+  utter_turned_on_all_devices:
+  - text: Done , all {device_type} devices turned on successfully
+  utter_changed_color_all_lights:
+  - text: Done , all {device_type} changed to {light_color} successfully
+  utter_changed_color_all_lights_with_room_name:
+  - text: Done , all {device_type} in {room_name} changed to {light_color} successfully
+  utter_not_allowed_color:
+  - text: Sorry, I can't change light color to {light_color} , this color is not supported currently.
+  utter_can_not_change_color_of_device:
+  - text: Sorry, I can't change light color of {device_type} , this operation is not allowed currently.
+  utter_changed_color_device_with_room_name:
+  - text: Done , {device_type} in {room_name} changed to {light_color} successfully
+  utter_changed_color_device:
+  - text: Done , {device_type} changed to {light_color} successfully
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 actions:
+- action_turn_off_device
 - action_turn_on_device
 - utter_goodbye
 - utter_turned_on_light
 - utter_which_device
 - utter_fallback_to_llm
 - action_fallback_to_llm
-- action_turn_off_device
 - action_check_temprature_value
 - action_number_of_people_in_home
 - action_electricity_usage
@@ -147,3 +163,14 @@ actions:
 - utter_turned_off_device_with_room_name
 - utter_device_not_found
 - utter_cannot_turn_on_or_off_device
+- utter_no_devices_found_with_given_specs
+- utter_turned_on_all_devices_with_room_name
+- utter_turned_off_all_devices_with_room_name
+- utter_turned_off_all_devices
+- utter_turned_on_all_devices
+- utter_changed_color_all_lights
+- utter_not_allowed_color
+- utter_changed_color_all_lights_with_room_name
+- utter_can_not_change_color_of_device
+- utter_changed_color_device_with_room_name
+- utter_changed_color_device

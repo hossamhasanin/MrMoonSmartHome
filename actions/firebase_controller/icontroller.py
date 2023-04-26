@@ -28,3 +28,15 @@ class IController(ABC):
     @abstractmethod
     def updateSwitchingState(self, state: bool , device_type_id: int , device_id: int , device_type: str) -> Results:
         pass
+
+    @abstractmethod
+    def updateAllSwitchingStates(self, state: bool , device_type: str , room_name: str) -> Results:
+        pass
+
+    @abstractmethod
+    def updateColorLight(self, color: int , device_type_id: int , device_id: int , device_type: str) -> Results:
+        pass
+
+    @abstractmethod
+    def updateAllColorLights(self, color: int , device_type: str , room_name: str) -> Results:
+        pass

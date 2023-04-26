@@ -32,14 +32,14 @@ def callback(event):
     if event.path == "/":
         for device in event.data:
             if device is not None:
-                devices[device['device_type_id']] = device['device_type']
+                devices[device['device_id']] = device['device_type']
                 if 'room_name' in device:
-                    rooms[device["device_type_id"]] = device["room_name"]
+                    rooms[device["device_id"]] = device["room_name"]
 
                 device_room_key = device['device_type'] if 'room_name' not in device else device['room_name'] + "_" + device['device_type']
-                devices_ids_map[device_room_key] = device['device_type_id']
+                devices_ids_map[device_room_key] = device['device_id']
                 if device['device_type'] not in devices_ids_map:
-                    devices_ids_map[device['device_type']] = device['device_type_id']
+                    devices_ids_map[device['device_type']] = device['device_id']
                 else:
                     devices_ids_map.pop(device['device_type'])
     else:

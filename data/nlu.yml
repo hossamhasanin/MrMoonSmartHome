@@ -41,24 +41,23 @@ nlu:
     - Could you turn on the [rgb leds](device_type) please ?.
     - Turn on [kitchen](room_name) [rgbs](device_type) please.
     - Turn on [all](all_devices_selected) the [rgbs](device_type).
-    - Turn on [all](all_devices_selected) the [rgbs](device_type).  
-    - Activate [everything](all_devices_selected)  
-    - Switch on [all](all_devices_selected) the lights  
+    - Activate [everything](all_devices_selected)
+    - Switch on [all](all_devices_selected) the lights
     - Turn on [each and every](all_devices_selected) device
     - Power on [any](all_devices_selected) device that is off .
     - Turn on [all](all_devices_selected) lights
-    - Activate [everything](all_devices_selected) electrical  
-    - Power on [each](all_devices_selected) appliance 
-    - Start [whatever](all_devices_selected) needs starting  
+    - Activate [everything](all_devices_selected) electrical
+    - Power on [each](all_devices_selected) appliance
+    - Start [whatever](all_devices_selected) needs starting
     - Boot [anything](all_devices_selected) that's currently off
-    - Wake [every](all_devices_selected) dormant system  
-    - Fire up [all](all_devices_selected) inactive components  
+    - Wake [every](all_devices_selected) dormant system
+    - Fire up [all](all_devices_selected) inactive components
     - Switch on [whatever's](all_devices_selected) currently disabled
     - Engage [each and every](all_devices_selected) idle device
     - Energize [all](all_devices_selected) presently offline equipment
     - Turn on [any](all_devices_selected) non-functional units
-    - Spin up [every](all_devices_selected) slumbering element    
-    - Reboot [whatsoever](all_devices_selected) is down   
+    - Spin up [every](all_devices_selected) slumbering element
+    - Reboot [whatsoever](all_devices_selected) is down
     - Reactivate [all](all_devices_selected) suspended apparatus
     - Restart [each](all_devices_selected) dormant mechanism
     - Power up [whatever](all_devices_selected) is currently offline
@@ -84,6 +83,9 @@ nlu:
     - Turn on the [smart speaker](device_type) in the [bedroom](room_name)
     - Turn on the [stereo](device_type) in the [living room](room_name)
     - Please turn off the [night light](device_type) in the [nursery](room_name)
+    - turn on [all](all_devices_selected) the [lights](device_type)
+    - could you turn on [every](all_devices_selected) [light](device_type) please ?
+    - alright I want you to turn [every single](all_devices_selected) [light](device_type) on
 - intent: turn_off_device
   examples: |
     - Turn off the [light](device_type) please
@@ -133,7 +135,7 @@ nlu:
     - Turn off the [stereo](device_type) in the [living room](room_name)
     - Please turn off the [microwave](device_type) in the [kitchen](room_name)
     - Could you turn off the [desktop computer](device_type) in the [study room](room_name)?
-
+    - alright I want you to turn [every single](all_devices_selected) [light](device_type) off
 - intent: turn_on_device_false
   examples: |
     - Oh god I am so truned on right now
@@ -227,7 +229,6 @@ nlu:
     - Can you give me a summary of our electricity usage today?
     - How much electricity have we used in the past 24 hours?
     - Could you tell me the amount of electricity we have consumed today?
-
 - intent: out_of_scope_electricity_usage_queries
   examples: |
     - What was our electricity usage over the last week ?
@@ -285,7 +286,6 @@ nlu:
     - What are some common causes of high electricity bills?
     - How can I reduce phantom power usage?
     - What are some common myths about electricity usage?
-
 - intent: show_home_state
   examples: |
     - What's the current status of my home devices?
@@ -326,7 +326,6 @@ nlu:
     - What is the state of the [coffee maker](device_type) ?
     - Is the [speaker](device_type) playing music ?
     - What is the state of the [door lock](device_type) ?
-
 - intent: change_light_color
   examples: |
     - Change the [bedroom](room_name) [light](device_type) to [red](light_color).
@@ -348,7 +347,6 @@ nlu:
     - Dim the [table lamp](device_type) in the [living room](room_name) and set its color to [white](light_color).
     - Can you change the color of the [ceiling light](device_type) in the [master bedroom](room_name) to [cyan](light_color)?
     - Adjust the [spotlights](device_type) in the [home theater](room_name) and change their color to [magenta](light_color).
-
 - intent: set_temperature_to
   examples: |
     - Set the temperature to [70](temperature) degrees in the [living room](room_name) please.
@@ -375,9 +373,6 @@ nlu:
     - Please decrease the temperature by [5](temperature) degrees.
     - Make it a bit cooler in here, can you adjust the temperature?
     - I want to set the air conditioner to [65](temperature) degrees, can you help me with that?
-
-
-
 - intent: increase_temperature_by
   examples: |
     - Increase the temperature by [5](temperature) degrees in the [living room](room_name).
@@ -401,9 +396,6 @@ nlu:
     - Please increase the temperature in the [dining room](room_name) by [7](temperature) degrees.
     - Could you make it [3](temperature) degrees warmer in the [guest bedroom](room_name), please?
     - Can you raise the temperature by [5](temperature) degrees in the [basement](room_name)?
-
-
-
 - intent: decrease_temperature_by
   examples: |
     - Decrease the temperature by [3](temperature) degrees in the [living room](room_name).
@@ -441,8 +433,6 @@ nlu:
     - Could you turn down the heat by [3](temperature) degrees in the [wine cellar](room_name)?
     - Please decrease the temperature by [4](temperature) degrees in the [foyer](room_name).
     - Lower the temperature by [2](temperature) degrees in the [entryway](room_name) please.
-
-## Note: currently we only support unlocking the front home door
 - intent: unlock_door_lock
   examples: |
     - Open the [front door](room_name) please.
@@ -480,14 +470,3 @@ nlu:
     - Can you unlock my home's back door for me?
     - I need to get inside my home, can you unlock the door?
     - Can you unlock the door to my house?
-
-
-
-# - synonym: lights
-#   examples: |
-#     - light
-#     - light bulbs
-#     - leds
-# - synonym: rgb
-#   examples: |
-#     - rgbs
