@@ -347,6 +347,16 @@ nlu:
     - Dim the [table lamp](device_type) in the [living room](room_name) and set its color to [white](light_color).
     - Can you change the color of the [ceiling light](device_type) in the [master bedroom](room_name) to [cyan](light_color)?
     - Adjust the [spotlights](device_type) in the [home theater](room_name) and change their color to [magenta](light_color).
+    - change the [office](room_name) [colored lights](device_type) to [red](light_color) please
+    - could you change [all](all_devices_selected) the [leds](device_type) to [blue](light_color) color please ?
+    - Sorry, I meant [green](light_color) color
+    - [red](light_color) color please
+    - [blue](light_color) color please
+    - [green](light_color) color please
+    - sorry, [blue](light_color) color please
+    - yeah, [green](light_color) color please
+    - i forgot pardon me, [red](light_color) color please
+    - I forgot, change it to [blue](light_color) color please
 - intent: set_temperature_to
   examples: |
     - Set the temperature to [70](temperature) degrees in the [living room](room_name) please.

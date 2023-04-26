@@ -14,14 +14,14 @@ intents:
 - turn_on_device_false
 - unlock_door_lock
 entities:
-- device_id
+- light_color
 - all_devices_selected
+- device_id
 - device_type
 - room_name
 - room_number
 - device_number
 - device_state
-- light_color
 - temperature
 slots:
   room_name:
@@ -53,7 +53,7 @@ slots:
     type: text
     mappings:
     - type: from_entity
-      entity: device_type
+      entity: all_devices_selected
   device_id:
     type: text
     mappings:
@@ -136,10 +136,14 @@ responses:
   - text: Done , {device_type} in {room_name} changed to {light_color} successfully
   utter_changed_color_device:
   - text: Done , {device_type} changed to {light_color} successfully
+  utter_no_color_detected:
+  - text: Sorry, I can't detect the color, you have to mention some color to change the light to.
+  - text: what color do you want to change the light to ?
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 actions:
+- action_change_light_color
 - action_turn_off_device
 - action_turn_on_device
 - utter_goodbye
@@ -152,7 +156,6 @@ actions:
 - action_electricity_usage
 - action_show_home_state
 - utter_out_of_scope_electricity_usage_queries
-- action_change_light_color
 - utter_which_room_to_change_light_color
 - utter_please_mention_room_name_and_light_color
 - action_set_temperature_value
@@ -174,3 +177,4 @@ actions:
 - utter_can_not_change_color_of_device
 - utter_changed_color_device_with_room_name
 - utter_changed_color_device
+- utter_no_color_detected

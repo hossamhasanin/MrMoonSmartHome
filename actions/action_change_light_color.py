@@ -19,7 +19,8 @@ class ActionChangeLightColor(Action):
 
         controller = FirebaseController.instance()
 
-        colorId = AvailableColorsToSet.map_from_text_to_color(tracker.get_slot("light_color"))
+        light_color = tracker.get_slot("light_color")
+        colorId = AvailableColorsToSet.map_from_text_to_color(text=light_color) if light_color is not None else None
 
         if tracker.get_slot("all_devices_selected") is not None:
             result = controller.updateAllColorLights(
@@ -32,6 +33,8 @@ class ActionChangeLightColor(Action):
                 dispatcher.utter_message(response="utter_no_devices_found_with_given_specs")
             elif result == Results.NOT_ALLOWED_COLOR:
                 dispatcher.utter_message(response="utter_not_allowed_color")
+            elif result == Results.NO_COLOR_DETECTED:
+                dispatcher.utter_message(response="utter_no_color_detected")
             else:
                 if tracker.get_slot("room_name") != None:
                     dispatcher.utter_message(response="utter_changed_color_all_lights_with_room_name")
@@ -52,6 +55,8 @@ class ActionChangeLightColor(Action):
                 dispatcher.utter_message(response="utter_no_devices_found_with_given_specs")
             elif result == Results.NOT_ALLOWED_COLOR:
                 dispatcher.utter_message(response="utter_not_allowed_color")
+            elif result == Results.NO_COLOR_DETECTED:
+                dispatcher.utter_message(response="utter_no_color_detected")
             else:
                 if tracker.get_slot("room_name") != None:
                     dispatcher.utter_message(response="utter_changed_color_device_with_room_name")

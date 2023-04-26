@@ -17,7 +17,7 @@ class AvailableColorsToSet(Enum):
     WHITE = 7
 
     @staticmethod
-    def map_from_text_to_color(self, text: str):
+    def map_from_text_to_color(text: str):
         if text == "red":
             return AvailableColorsToSet.RED.value
         elif text == "green":

@@ -75,6 +75,9 @@ class FirebaseController(IController):
         if device_id == -1 and device_type is not None:
             return Results.DEVICE_NOT_FOUND
         
+        if color is None:
+            return Results.NO_COLOR_DETECTED
+        
         if color == AvailableColorsToSet.NONE.value:
             return Results.NOT_ALLOWED_COLOR
         
@@ -89,6 +92,9 @@ class FirebaseController(IController):
     def updateAllColorLights(self, color: int, device_type: str, room_name: str) -> Results:
         if device_type is None:
             return Results.DEVICE_NOT_FOUND
+        
+        if color is None:
+            return Results.NO_COLOR_DETECTED
 
         if color == AvailableColorsToSet.NONE.value:
             return Results.NOT_ALLOWED_COLOR
