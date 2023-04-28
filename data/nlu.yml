@@ -480,3 +480,15 @@ nlu:
     - Can you unlock my home's back door for me?
     - I need to get inside my home, can you unlock the door?
     - Can you unlock the door to my house?
+
+- intent: thanks
+  examples: |
+    - great thanks buddy if I needed anything I will let you know.
+    - thanks
+    - thank you
+    - alright thanks
+    - Nice, thanks
+    - Nope, thanks
+    - Thanks, bye
+    - Thanks, see you later
+    - Great, thank you buddy

@@ -17,8 +17,19 @@ class ActionFallBackToLlm(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
+
+        coversation_history = ""
+        for event in tracker.events:
+            # get the latest messages between user and bot
+            if event.get('event') == 'user':
+                coversation_history += event.get('text')
+                coversation_history += "\n"
+            elif event.get('event') == 'bot':
+                coversation_history += event.get('text')
+                coversation_history += "\n"
+        
         # call an API to get the response from LLM
-        response = self.call_llm_api(tracker.latest_message['text'])
+        response = self.call_llm_api(coversation_history)
 
         dispatcher.utter_message(text=response)
 

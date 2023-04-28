@@ -43,7 +43,7 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
         return {
                 "symantic_model": "all-MiniLM-L12-v2" ,
                 "embedding_dim": 384,
-                "entity_name": "device_id",
+                "entity_name": "devices_ids",
                 "threshold": 0.55,
                 "non_sign_up_id": -1
             }

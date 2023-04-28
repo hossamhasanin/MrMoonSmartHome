@@ -45,7 +45,6 @@ class ActionChangeLightColor(Action):
             result = controller.updateColorLight(
                 color= colorId ,
                 device_type_id = device_id ,
-                device_id= device_id ,
                 device_type= tracker.get_slot("device_type")
             )
 
@@ -63,4 +62,4 @@ class ActionChangeLightColor(Action):
                 else:
                     dispatcher.utter_message(response="utter_changed_color_device")
 
-        return [AllSlotsReset()]
+        return []

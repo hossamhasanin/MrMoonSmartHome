@@ -13,10 +13,11 @@ intents:
 - turn_on_device
 - turn_on_device_false
 - unlock_door_lock
+- thanks
 entities:
 - light_color
 - all_devices_selected
-- device_id
+- devices_ids
 - device_type
 - room_name
 - room_number
@@ -54,11 +55,11 @@ slots:
     mappings:
     - type: from_entity
       entity: all_devices_selected
-  device_id:
-    type: text
+  devices_ids:
+    type: list
     mappings:
     - type: from_entity
-      entity: device_id
+      entity: devices_ids
   light_color:
     type: text
     mappings:
@@ -139,6 +140,9 @@ responses:
   utter_no_color_detected:
   - text: Sorry, I can't detect the color, you have to mention some color to change the light to.
   - text: what color do you want to change the light to ?
+  utter_you_are_welcome:
+  - text: You are welcome
+  - text: No problem , I am always here to help
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -178,3 +182,4 @@ actions:
 - utter_changed_color_device_with_room_name
 - utter_changed_color_device
 - utter_no_color_detected
+- utter_you_are_welcome

@@ -180,19 +180,15 @@ stories:
     - device_type: "ac"
   - action: action_turn_on_device
   - intent: show_home_state
-    entities:
-    - device_type: "ac"
-  - slot_was_set:
-    - device_type: "ac"
   - action: action_show_home_state
 
 - story: trun on all lights
   steps:
   - intent: turn_on_device
     entities:
-    - device_type: "lights"
+    - device_type: "rgb lights"
     - all_devices_selected: "all"
   - slot_was_set:
-    - device_type: "lights"
+    - device_type: "rgb lights"
     - all_devices_selected: "all"
   - action: action_turn_on_device

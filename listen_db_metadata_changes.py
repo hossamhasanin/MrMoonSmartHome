@@ -20,6 +20,7 @@ model = SentenceTransformer("models/all-MiniLM-L12-v2")
 devices_ids_map = {}
 devices = {}
 rooms = {}
+meta_data = {}
 
 SAVE_PATH = "models/"
 
@@ -37,11 +38,16 @@ def callback(event):
                     rooms[device["device_id"]] = device["room_name"]
 
                 device_room_key = device['device_type'] if 'room_name' not in device else device['room_name'] + "_" + device['device_type']
-                devices_ids_map[device_room_key] = device['device_id']
-                if device['device_type'] not in devices_ids_map:
-                    devices_ids_map[device['device_type']] = device['device_id']
+                if device_room_key not in devices_ids_map:
+                    devices_ids_map[device_room_key] = [device['device_id']]
                 else:
-                    devices_ids_map.pop(device['device_type'])
+                    devices_ids_map[device_room_key].append(device['device_id'])
+                if device['device_type'] not in devices_ids_map:
+                    devices_ids_map[device['device_type']] = [device['device_id']]
+                else:
+                    devices_ids_map[device['device_type']].append(device['device_id'])
+                
+                meta_data[device['device_id']] = device
     else:
         path = event.path.split("/")
         field = path[-1]
@@ -49,6 +55,8 @@ def callback(event):
 
         rooms[int(deivce_id)] = event.data if field == 'room_name' else rooms[int(deivce_id)]
         devices[int(deivce_id)] = event.data if field == 'device_type' else devices[int(deivce_id)]
+
+        meta_data[int(deivce_id)][field] = event.data
 
         devices_ids_map_copy = devices_ids_map.copy()
         for key , value in devices_ids_map.items():
@@ -79,6 +87,11 @@ def callback(event):
     with open(SAVE_PATH + 'rooms_embeddings.pkl', "wb") as fOut:
         pickle.dump({'sentences': rooms_list, 'embeddings': roomsEmbed}, fOut, protocol=pickle.HIGHEST_PROTOCOL)
     print("saved successfully devices_embeddings.pkl and rooms_embeddings.pkl")
+
+    print("saving metadata.pkl")
+    with open(SAVE_PATH + 'metadata.pkl', "wb") as fOut:
+        pickle.dump(meta_data, fOut, protocol=pickle.HIGHEST_PROTOCOL)
+    print("saved successfully metadata.pkl")
 
     print("devices_ids_map: ")
     print(devices_ids_map)

@@ -60,13 +60,15 @@ stories:
     - all_devices_selected: all
     - device_type: rgb leds
     - light_color: blue
-    - device_id: 5
+    - devices_ids:
+      - 5
   - slot_was_set:
     - device_type: rgb leds
   - slot_was_set:
     - all_devices_selected: all
   - slot_was_set:
-    - device_id: 5
+    - devices_ids:
+      - 5
   - slot_was_set:
     - light_color: blue
   - action: action_change_light_color
