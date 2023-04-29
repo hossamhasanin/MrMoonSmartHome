@@ -89,7 +89,7 @@ class FirebaseController(IController):
 
 
     def updateSwitchingState(self, state: bool , devices_ids: List[int]) -> Results:
-        if devices_ids is None or devices_ids == -1:
+        if devices_ids is None or len(devices_ids) == 0:
             return Results.DEVICE_NOT_FOUND
         
         update_dict = {}

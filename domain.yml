@@ -183,3 +183,4 @@ actions:
 - utter_changed_color_device
 - utter_no_color_detected
 - utter_you_are_welcome
+- action_ask_llm_for_entities

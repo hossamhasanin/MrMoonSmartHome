@@ -201,7 +201,7 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
         extracted_entities = message.get(ENTITIES, [])
         extracted_entities.append({
             ENTITY_ATTRIBUTE_TYPE: self.entity_name,
-            ENTITY_ATTRIBUTE_VALUE: self.non_sign_up_id,
+            ENTITY_ATTRIBUTE_VALUE: [],
             ENTITY_ATTRIBUTE_START: 0,
             ENTITY_ATTRIBUTE_END: 0
         })
