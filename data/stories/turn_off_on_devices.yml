@@ -23,6 +23,32 @@ stories:
     - device_type: "rgb lights"
   - action: action_turn_on_device
 
+- story: trun on bedroom light then turn it on again
+  steps:
+  - intent: turn_on_device
+    entities:
+    - room_name: "bedroom"
+    - device_type: "rgb lights"
+  - slot_was_set:
+    - room_name: "bedroom"
+    - device_type: "rgb lights"
+  - action: action_turn_on_device
+  - intent: turn_on_device
+  - action: action_turn_on_device
+
+- story: trun on living room light then turn it on again
+  steps:
+  - intent: turn_on_device
+    entities:
+    - room_name: "living room"
+    - device_type: "lights"
+  - slot_was_set:
+    - room_name: "living room"
+    - device_type: "lights"
+  - action: action_turn_on_device
+  - intent: turn_on_device
+  - action: action_turn_on_device
+
 - story: trun on kithen rgbs
   steps:
   - intent: turn_on_device

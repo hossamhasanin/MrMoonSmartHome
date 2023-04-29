@@ -41,11 +41,13 @@ def callback(event):
                 if device_room_key not in devices_ids_map:
                     devices_ids_map[device_room_key] = [device['device_id']]
                 else:
-                    devices_ids_map[device_room_key].append(device['device_id'])
+                    if device["device_id"] not in devices_ids_map[device_room_key]:
+                        devices_ids_map[device_room_key].append(device['device_id'])
                 if device['device_type'] not in devices_ids_map:
                     devices_ids_map[device['device_type']] = [device['device_id']]
                 else:
-                    devices_ids_map[device['device_type']].append(device['device_id'])
+                    if device["device_id"] not in devices_ids_map[device['device_type']]:
+                        devices_ids_map[device['device_type']].append(device['device_id'])
                 
                 meta_data[device['device_id']] = device
     else:

@@ -1,4 +1,5 @@
 from typing import Any, Text, Dict, List
+from .results import Results
 from actions.firebase_controller.icontroller import IController , device_types_avialable_operations
 from actions.firebase_controller.results import Results
 from actions.firebase_controller.avialable_operations import AvailableOperations , AvailableColorsToSet
@@ -7,10 +8,14 @@ from firebase_admin import credentials
 from firebase_admin import db
 import logging
 import pickle
+from sentence_transformers import SentenceTransformer
+import faiss
+import numpy as np
 
 class FirebaseController(IController):
 
     __instance = None
+
     @classmethod
     def __getInstance(cls):
         return cls.__instance
@@ -35,9 +40,56 @@ class FirebaseController(IController):
             metadata = pickle.load(file)
             self.metadata = metadata
 
+        # with open("G:\\Projects\\AI\\rasaChat\\bot\\models\\devices_ids.pkl", "rb") as file:
+        #     devices_ids = pickle.load(file)
+        #     self.devices_ids = devices_ids
+        # with open("G:\\Projects\\AI\\rasaChat\\bot\\models\\rooms_embeddings.pkl", "rb") as file:
+        #     rooms_data = pickle.load(file)
+        #     self.current_rooms = rooms_data['sentences']
+        # with open("G:\\Projects\\AI\\rasaChat\\bot\\models\\devices_embeddings.pkl", "rb") as file:
+        #     devices_data = pickle.load(file)
+        #     self.current_devices = devices_data['sentences']
+        # self.model = SentenceTransformer("G:\\Projects\\AI\\rasaChat\\bot\\models\\all-MiniLM-L12-v2")
+        # self.devices_index = faiss.IndexFlatIP(self.embedding_dim)
+        # self.rooms_index = faiss.IndexFlatIP(self.embedding_dim)
+        # self.rooms_index.add(rooms_data['embeddings'])
+        # self.devices_index.add(devices_data['embeddings'])
+
+    # def getDevicesIds(self, device_type: str, room_name: str) -> list[int]:
+    #     stored_device_type = ""
+
+    #     if device_type is not None:
+    #         device_type_embed = self.model.encode(device_type)
+    #         device_score , device_index = self.devices_index.search(np.array([device_type_embed]), 1) 
+    #         stored_device_type = self.current_devices[device_index[0][0]] if device_score[0][0] > self.threshold else ""
+        
+    #     stored_room_name = ""
+    #     if room_name is not None:
+    #         room_name_embed = self.model.encode(room_name)
+    #         room_score , room_index = self.rooms_index.search(np.array([room_name_embed]), 1)
+    #         stored_room_name = self.current_rooms[room_index[0][0]] if room_score[0][0] > self.threshold else ""    
+        
+    #     logging.info("stored_device_type: " + stored_device_type)
+    #     logging.info("stored_room_name: " + stored_room_name)
+    #     if stored_device_type == "":
+    #         return []
+        
+    #     query = ""
+    #     if stored_room_name != "":
+    #         query = stored_room_name + "_" + stored_device_type
+    #     else:
+    #         query = stored_device_type
+        
+    #     logging.info("query: " + query)
+    #     if query in self.devices_ids:
+    #         logging.info("found "+ str(self.devices_ids[query]) + " devices")
+    #         return self.devices_ids[query]
+    #     else:
+    #         return []
+
 
     def updateSwitchingState(self, state: bool , devices_ids: List[int]) -> Results:
-        if devices_ids is None:
+        if devices_ids is None or devices_ids == -1:
             return Results.DEVICE_NOT_FOUND
         
         update_dict = {}

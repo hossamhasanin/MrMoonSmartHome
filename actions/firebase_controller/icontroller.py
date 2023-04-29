@@ -38,6 +38,10 @@ device_types_avialable_operations = {
 
 class IController(ABC):
 
+    # @abstractmethod
+    # def getDevicesIds(self, device_type: str, room_name: str) -> list[int]:
+    #     pass
+
     @abstractmethod
     def updateSwitchingState(self, state: bool , devices_ids: list[int]) -> Results:
         pass
