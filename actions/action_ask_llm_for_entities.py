@@ -23,7 +23,7 @@ class ActionChangeLightColor(Action):
         room_name = answer["room_name"]
 
         return [
-            SlotSet("devices_ids", devices_ids),
+            SlotSet("devices_ids", [devices_ids]),
             SlotSet("device_type", device_type),
             SlotSet("room_name", room_name)
         ]

@@ -290,3 +290,39 @@ stories:
     - device_type: "rgb leds"
     - room_name: "kitchen"
   - action: action_turn_on_device
+
+- story: turn on kitchen lights then turn it off again
+  steps:
+  - intent: turn_on_device
+    entities:
+    - device_type: "lights"
+    - room_name: "kitchen"
+  - slot_was_set:
+    - device_type: "lights"
+    - room_name: "kitchen"
+  - action: action_turn_on_device
+  - intent: turn_off_device
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - device_type: "lights"
+    - room_name: "kitchen"
+  - action: action_turn_off_device
+
+- story: turn on kitchen lights then turn it off again then show home state
+  steps:
+  - intent: turn_on_device
+    entities:
+    - device_type: "lights"
+    - room_name: "kitchen"
+  - slot_was_set:
+    - device_type: "lights"
+    - room_name: "kitchen"
+  - action: action_turn_on_device
+  - intent: turn_off_device
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - device_type: "lights"
+    - room_name: "kitchen"
+  - action: action_turn_off_device
+  - intent: show_home_state
+  - action: action_show_home_state
