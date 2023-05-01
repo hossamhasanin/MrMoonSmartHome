@@ -11,6 +11,9 @@ stories:
     - room_name: "kitchen"
     - device_type: "lights"
   - action: action_turn_on_device
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
 
 - story: trun on bedroom light
   steps:
@@ -22,6 +25,9 @@ stories:
     - room_name: "bedroom"
     - device_type: "rgb lights"
   - action: action_turn_on_device
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
 
 - story: trun on kithen rgbs
   steps:
@@ -33,6 +39,9 @@ stories:
     - room_name: "kitchen"
     - device_type: "rgbs"
   - action: action_turn_on_device
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
 
 - story: trun on all lights
   steps:
@@ -44,6 +53,9 @@ stories:
     - device_type: "lights"
     - all_devices_selected: "all"
   - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+    - all_devices_selected: null
 
 - story: trun off all lights
   steps:
@@ -55,6 +67,9 @@ stories:
     - device_type: "lights"
     - all_devices_selected: "all"
   - action: action_turn_off_device
+  - slot_was_set:
+    - device_type: null
+    - all_devices_selected: null
 
 - story: trun off all living room lights
   steps:
@@ -68,6 +83,10 @@ stories:
     - room_name: "living room"
     - all_devices_selected: "all"
   - action: action_turn_off_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
+    - all_devices_selected: null
 
 - story: trun off kitchen light
   steps:
@@ -79,6 +98,9 @@ stories:
     - room_name: "kitchen"
     - device_type: "lights"
   - action: action_turn_off_device
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
 
 # - story: trun off some device
 #   steps:
@@ -138,6 +160,8 @@ stories:
   - slot_was_set:
     - device_type: "ac"
   - action: action_turn_off_device
+  - slot_was_set:
+    - device_type: null
   - intent: show_home_state
   - action: action_show_home_state
 
@@ -149,6 +173,8 @@ stories:
   - slot_was_set:
     - device_type: "ac"
   - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
   - intent: show_home_state
   - action: action_show_home_state
 
@@ -162,6 +188,72 @@ stories:
     - device_type: "rgb lights"
     - all_devices_selected: "all"
   - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+    - all_devices_selected: null
+
+- story: is the office ac on ? if it is off turn it on
+  steps:
+  - intent: show_home_state
+    entities:
+    - device_type: "ac"
+    - room_name: "office"
+  - slot_was_set:
+    - device_type: "ac"
+    - room_name: "office"
+  - action: action_show_home_state
+  - intent: turn_on_device
+  - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
+
+- story: is the kitchen lights on ? if it is on turn it off
+  steps:
+  - intent: show_home_state
+    entities:
+    - device_type: "lights"
+    - room_name: "kitchen"
+  - slot_was_set:
+    - device_type: "lights"
+    - room_name: "kitchen"
+  - action: action_show_home_state
+  - intent: turn_off_device
+  - action: action_turn_off_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
+
+- story: is the kitchen rgb lights on ? if it is off turn it on , then change its color
+  steps:
+  - intent: show_home_state
+    entities:
+    - device_type: "rgb lights"
+    - room_name: "kitchen"
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - room_name: "kitchen"
+  - action: action_show_home_state
+  - intent: turn_on_device
+  - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
+  - intent: change_light_color
+    entities:
+    - light_color: "red"
+  - slot_was_set:
+    - light_color: "red"
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - room_name: "kitchen"
+    - device_type: "rgb lights"
+    - light_color: "red"
+  - action: action_change_light_color
+  - slot_was_set:
+    - light_color: null
+    - room_name: null
+    - device_type: null
 
 # ask llm for entities stories
 - story: turn on office rgb lights then change its color
@@ -174,12 +266,24 @@ stories:
     - device_type: "rgb lights"
     - room_name: "office"
   - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
   - intent: change_light_color
+    entities:
+    - light_color: "red"
+  - slot_was_set:
+    - light_color: "red"
   - action: action_ask_llm_for_entities
   - slot_was_set:
     - room_name: "office"
     - device_type: "rgb lights"
+    - light_color: "red"
   - action: action_change_light_color
+  - slot_was_set:
+    - room_name: null
+    - light_color: null
+    - device_type: null
 
 - story: turn on office rgb lights then change its color then show its state
   steps:
@@ -191,12 +295,24 @@ stories:
     - device_type: "rgb lights"
     - room_name: "office"
   - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
   - intent: change_light_color
+    entities:
+    - light_color: "blue"
+  - slot_was_set:
+    - light_color: "blue"
   - action: action_ask_llm_for_entities
   - slot_was_set:
     - room_name: "office"
     - device_type: "rgb lights"
+    - light_color: "blue"
   - action: action_change_light_color
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
+    - light_color: null
   - intent: show_home_state
   - action: action_show_home_state
 
@@ -208,12 +324,23 @@ stories:
   - slot_was_set:
     - device_type: "rgb leds"
   - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
   - intent: change_light_color
+    entities:
+    - light_color: "sky blue"
+  - slot_was_set:
+    - light_color: "sky blue"
   - action: action_ask_llm_for_entities
   - slot_was_set:
     - room_name: "office"
     - device_type: "rgb leds"
+    - light_color: "sky blue"
   - action: action_change_light_color
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
+    - light_color: null
 
 - story: ask if the ac is working then requesting to turn it off
   steps:
@@ -225,11 +352,12 @@ stories:
   - action: action_show_home_state
   - intent: turn_off_device
   - action: action_turn_off_device
+  - slot_was_set:
+    - device_type: null
 
 - story: trun off unknown device
   steps:
   - intent: turn_off_device
-  - action: action_ask_llm_for_entities
   - action: utter_which_device
   - intent: turn_off_device
     entities:
@@ -239,6 +367,9 @@ stories:
     - device_type: "lights"
     - room_name: "kitchen"
   - action: action_turn_off_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
 
 - story: turn on unknown device
   steps:
@@ -252,6 +383,9 @@ stories:
     - device_type: "rgb leds"
     - room_name: "kitchen"
   - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
 
 - story: turn off device but not mentioning it
   steps:
@@ -265,6 +399,9 @@ stories:
     - device_type: "lights"
     - room_name: "kitchen"
   - action: action_turn_off_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
 
 - story: turn on kitchen lights then turn it off again
   steps:
@@ -276,12 +413,18 @@ stories:
     - device_type: "lights"
     - room_name: "kitchen"
   - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
   - intent: turn_off_device
   - action: action_ask_llm_for_entities
   - slot_was_set:
     - device_type: "lights"
     - room_name: "kitchen"
   - action: action_turn_off_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
 
 - story: turn on kitchen lights then turn it off again then show home state
   steps:
@@ -293,12 +436,18 @@ stories:
     - device_type: "lights"
     - room_name: "kitchen"
   - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
   - intent: turn_off_device
   - action: action_ask_llm_for_entities
   - slot_was_set:
     - device_type: "lights"
     - room_name: "kitchen"
   - action: action_turn_off_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
   - intent: show_home_state
   - action: action_show_home_state
 
@@ -312,6 +461,9 @@ stories:
     - device_type: "rgb lights"
     - room_name: "kitchen"
   - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
   - intent: show_home_state
   - action: action_show_home_state
   - intent: change_light_color
@@ -325,6 +477,10 @@ stories:
     - device_type: "rgb lights"
     - light_color: "red"
   - action: action_change_light_color
+  - slot_was_set:
+    - light_color: null
+    - room_name: null
+    - device_type: null
 
 - story: conversation to turn on the rgbs in the kitchen then ask about its set color
   steps:
@@ -336,6 +492,9 @@ stories:
     - device_type: "rgb lights"
     - room_name: "kitchen"
   - action: action_turn_on_device
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
   - intent: show_home_state
     entities:
     - room_name: "kitchen"
@@ -350,6 +509,10 @@ stories:
   - slot_was_set:
     - light_color: "red"
   - action: action_change_light_color
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
+    - light_color: null
 
 - story: conversation to turn on the rgbs in the office then ask about its set color
   steps:
@@ -361,6 +524,9 @@ stories:
     - device_type: "rgb lights"
     - room_name: "office"
   - action: action_turn_on_device
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
   - intent: show_home_state
   - action: action_show_home_state
   - intent: change_light_color
@@ -374,3 +540,7 @@ stories:
     - device_type: "rgb lights"
     - light_color: "sky blue"
   - action: action_change_light_color
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
+    - light_color: null

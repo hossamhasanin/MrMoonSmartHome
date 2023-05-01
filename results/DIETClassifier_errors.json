@@ -1,34 +1,5 @@
 [
   {
-    "text": "Could run the power of the whole home again ?",
-    "entities": [
-      {
-        "start": 23,
-        "end": 37,
-        "value": "the whole home",
-        "entity": "all_devices_selected"
-      }
-    ],
-    "predicted_entities": [
-      {
-        "entity": "all_devices_selected",
-        "start": 10,
-        "end": 13,
-        "confidence_entity": 0.6751848459243774,
-        "value": "the",
-        "extractor": "DIETClassifier"
-      },
-      {
-        "entity": "all_devices_selected",
-        "start": 23,
-        "end": 37,
-        "confidence_entity": 0.9340779185295105,
-        "value": "the whole home",
-        "extractor": "DIETClassifier"
-      }
-    ]
-  },
-  {
     "text": "turn off kitchen lights",
     "entities": [
       {
@@ -43,7 +14,7 @@
         "entity": "room_name",
         "start": 9,
         "end": 16,
-        "confidence_entity": 0.9996777772903442,
+        "confidence_entity": 0.999840497970581,
         "value": "kitchen",
         "extractor": "DIETClassifier"
       },
@@ -51,7 +22,7 @@
         "entity": "device_type",
         "start": 17,
         "end": 23,
-        "confidence_entity": 0.9645236730575562,
+        "confidence_entity": 0.5290194153785706,
         "value": "lights",
         "extractor": "DIETClassifier"
       }

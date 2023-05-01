@@ -1,1 +1,22 @@
-# No warnings for test stories
+version: "3.1"
+stories:
+- story: is the rgb light on ? , change its color to red then (.\tests\test_turn_off_on_devices.yml)
+  steps:
+  - intent: show_home_state
+    entities:
+    - device_type: rgb light
+  - slot_was_set:
+    - device_type: rgb light
+  - slot_was_set:
+    - device_type: rgb light
+  - action: action_show_home_state
+  - intent: change_light_color
+    entities:
+    - light_color: red
+  - slot_was_set:
+    - light_color: red
+  - action: action_change_light_color  # predicted: action_unlikely_intent
+  - slot_was_set:
+    - light_color: null
+  - slot_was_set:
+    - device_type: null

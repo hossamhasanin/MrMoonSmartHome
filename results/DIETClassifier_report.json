@@ -1,37 +1,9 @@
 {
-  "all_devices_selected": {
-    "precision": 0.975609756097561,
-    "recall": 1.0,
-    "f1-score": 0.9876543209876543,
-    "support": 40,
-    "confused_with": {}
-  },
-  "device_type": {
-    "precision": 0.995,
-    "recall": 1.0,
-    "f1-score": 0.9974937343358395,
-    "support": 199,
-    "confused_with": {}
-  },
   "device_state": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 4,
-    "confused_with": {}
-  },
-  "room_name": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 322,
-    "confused_with": {}
-  },
-  "light_color": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 29,
     "confused_with": {}
   },
   "temperature": {
@@ -41,23 +13,51 @@
     "support": 76,
     "confused_with": {}
   },
-  "micro avg": {
-    "precision": 0.9970238095238095,
+  "all_devices_selected": {
+    "precision": 1.0,
     "recall": 1.0,
-    "f1-score": 0.9985096870342772,
-    "support": 670
+    "f1-score": 1.0,
+    "support": 37,
+    "confused_with": {}
+  },
+  "light_color": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 42,
+    "confused_with": {}
+  },
+  "room_name": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 335,
+    "confused_with": {}
+  },
+  "device_type": {
+    "precision": 0.9955357142857143,
+    "recall": 1.0,
+    "f1-score": 0.9977628635346756,
+    "support": 223,
+    "confused_with": {}
+  },
+  "micro avg": {
+    "precision": 0.9986072423398329,
+    "recall": 1.0,
+    "f1-score": 0.9993031358885017,
+    "support": 717
   },
   "macro avg": {
-    "precision": 0.9951016260162602,
+    "precision": 0.9992559523809524,
     "recall": 1.0,
-    "f1-score": 0.997524675887249,
-    "support": 670
+    "f1-score": 0.9996271439224459,
+    "support": 717
   },
   "weighted avg": {
-    "precision": 0.9970587914088096,
+    "precision": 0.9986115262004382,
     "recall": 1.0,
-    "f1-score": 0.9985185462273706,
-    "support": 670
+    "f1-score": 0.9993042099975351,
+    "support": 717
   },
-  "accuracy": 0.9994943109987358
+  "accuracy": 0.9997573404513468
 }

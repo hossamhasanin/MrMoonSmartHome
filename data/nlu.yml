@@ -36,7 +36,6 @@ nlu:
     - turn the [lights](device_type) on.
     - Turn on [all](all_devices_selected) devices please.
     - Turn [every single](all_devices_selected) device on please .
-    - Could run the power of [the whole home](all_devices_selected) again ?
     - Turn on [all](all_devices_selected) [kitchen](room_name) [lights](device_type).
     - Could you turn on the [rgb leds](device_type) please ?.
     - Turn on [kitchen](room_name) [rgbs](device_type) please.
@@ -324,6 +323,25 @@ nlu:
     - Is the [speaker](device_type) playing music ?
     - What is the state of the [door lock](device_type) ?
     - could please tell me if my [living room](room_name) [lights](device_type) are on or off ?
+    - Do you know if the [bedroom](room_name) [light](device_type) is on or off ?
+    - are the [kitchen](room_name) [rgbs](device_type) on ?
+    - Is the [living room](room_name) [rgb lights](device_type) on ?
+    - Is the [bedroom](room_name) [colored leds](device_type) on ?
+    - tell me is the [kitchen](room_name) [rgb light](device_type) on ?
+    - I have an [led line strip](device_type) in the [living room](room_name), is it on ?
+    - Is the [bedroom](room_name) [led line strip](device_type) on ?
+    - I would like to know if the [kitchen](room_name) [led line strip](device_type) is on ?
+    - I would like to know if the [kitchen](room_name) [LEDS](device_type) is on ?
+    - Could you tell me what is the color of the [room A](room_name) [rgb light](device_type) ?
+    - What is the color of the [room B](room_name) [rgb light](device_type) ?
+    - What is the color of the [room C](room_name) [rgb light](device_type) ?
+    - By the way are they on or off ? 
+    - Can you tell me if they are turned on or off ?
+    - are they currently on or off ?
+    - are they working ?
+    - is it working ?
+    - is it on ?
+    - is it off ?
 - intent: change_light_color
   examples: |
     - Change the [bedroom](room_name) [light](device_type) to [red](light_color).
@@ -348,6 +366,13 @@ nlu:
     - change the [office](room_name) [colored lights](device_type) to [red](light_color) please
     - could you change [all](all_devices_selected) the [leds](device_type) to [blue](light_color) color please ?
     - Sorry, I meant [green](light_color) color
+    - could you change the [room A](room_name) [leds](device_type) to [sky blue](light_color) color please ?
+    - I meant [sky blue](light_color) color
+    - set the office [line strip](device_type) to [orange](light_color) color please
+    - change the colors of it to [sky blue](light_color) please
+    - change the [leds](device_type) to [sky blue](light_color) color please
+    - change the [rgbs](device_type) to [sky blue](light_color) color please
+    - set the [leds](device_type) to [sky blue](light_color) color please
     - [red](light_color) color please
     - [blue](light_color) color please
     - [green](light_color) color please

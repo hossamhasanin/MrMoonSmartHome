@@ -1,20 +1,42 @@
 [
   {
+    "text": "change the living room rgb lights to sky blue",
+    "entities": [
+      {
+        "start": 11,
+        "end": 22,
+        "value": "living room",
+        "entity": "room_name"
+      },
+      {
+        "start": 23,
+        "end": 33,
+        "value": "rgb lights",
+        "entity": "device_type"
+      },
+      {
+        "start": 37,
+        "end": 45,
+        "value": "sky blue",
+        "entity": "light_color"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
     "text": "is the office lights on ?",
     "entities": [
       {
-        "text": "is the office lights on ?",
         "start": 7,
         "end": 13,
-        "entity": "room_name",
-        "value": "office"
+        "value": "office",
+        "entity": "room_name"
       },
       {
-        "text": "is the office lights on ?",
         "start": 14,
         "end": 20,
-        "entity": "device_type",
-        "value": "lights"
+        "value": "lights",
+        "entity": "device_type"
       }
     ],
     "predicted_entities": []
@@ -59,18 +81,16 @@
     "text": "turn off room A lights",
     "entities": [
       {
-        "text": "turn off room A lights",
         "start": 9,
         "end": 15,
-        "entity": "room_name",
-        "value": "room A"
+        "value": "room A",
+        "entity": "room_name"
       },
       {
-        "text": "turn off room A lights",
         "start": 16,
         "end": 22,
-        "entity": "device_type",
-        "value": "lights"
+        "value": "lights",
+        "entity": "device_type"
       }
     ],
     "predicted_entities": []
@@ -91,11 +111,100 @@
     "text": "is the rgb light on ?",
     "entities": [
       {
-        "text": "is the rgb light on ?",
         "start": 7,
         "end": 16,
-        "entity": "device_type",
-        "value": "rgb light"
+        "value": "rgb light",
+        "entity": "device_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "are the office rgbs on ?",
+    "entities": [
+      {
+        "start": 8,
+        "end": 14,
+        "value": "office",
+        "entity": "room_name"
+      },
+      {
+        "start": 15,
+        "end": 19,
+        "value": "rgbs",
+        "entity": "device_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "change their color to red please",
+    "entities": [
+      {
+        "start": 22,
+        "end": 25,
+        "value": "red",
+        "entity": "light_color"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "are the office rgbs off ?",
+    "entities": [
+      {
+        "start": 8,
+        "end": 14,
+        "value": "office",
+        "entity": "room_name"
+      },
+      {
+        "start": 15,
+        "end": 19,
+        "value": "rgbs",
+        "entity": "device_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "change their color to red please",
+    "entities": [
+      {
+        "start": 22,
+        "end": 25,
+        "value": "red",
+        "entity": "light_color"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "turn the office rgb lights on",
+    "entities": [
+      {
+        "start": 9,
+        "end": 15,
+        "value": "office",
+        "entity": "room_name"
+      },
+      {
+        "start": 16,
+        "end": 26,
+        "value": "rgb lights",
+        "entity": "device_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "fine, change it to white please",
+    "entities": [
+      {
+        "start": 19,
+        "end": 24,
+        "value": "white",
+        "entity": "light_color"
       }
     ],
     "predicted_entities": []
