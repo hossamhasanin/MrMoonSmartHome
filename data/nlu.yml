@@ -68,14 +68,12 @@ nlu:
     - Can you turn off the [kettle](device_type)?
     - Turn on the [TV](device_type) in the [living room](room_name)
     - Turn on the [AC](device_type) please
-    - Turn off the [oven](device_type) in the [kitchen](room_name)
     - Could you turn on the [ceiling fan](device_type) in the [dining area](room_name)?
     - Please turn off the [lamp](device_type) in the [study room](room_name)
     - Could you turn on the [heater](device_type) in the [bedroom](room_name) please?
     - Turn on the [light bulb](device_type) in the [bathroom](room_name)
-    - Could you turn off the [air purifier](device_type) in the [living room](room_name)?
     - Please turn on the [blender](device_type) in the [kitchen](room_name)
-    - Could you turn off the [table lamp](device_type) in the [study room](room_name)?
+    - Could you turn on the [table lamp](device_type) in the [study room](room_name)?
     - Turn on the [projector](device_type) in the [home theater](room_name)
     - Can you turn off the [hair dryer](device_type) in the [bathroom](room_name)?
     - Please turn on the [microwave](device_type) in the [kitchen](room_name)
@@ -122,10 +120,8 @@ nlu:
     - Could you turn off the [ceiling fan](device_type) in the [dining area](room_name)?
     - Can you turn off the [AC](device_type) in the [office](room_name)?
     - Please turn off the [computer](device_type) in the [study room](room_name)
-    - Turn off the [oven](device_type) in the [kitchen](room_name)
     - Could you turn off the [table lamp](device_type) in the [study room](room_name)?
     - Turn off the [smart speaker](device_type) in the [bedroom](room_name)
-    - Could you turn off the [air purifier](device_type) in the [living room](room_name)?
     - Please turn off the [blender](device_type) in the [kitchen](room_name)
     - Could you turn off the [night light](device_type) in the [nursery](room_name)?
     - Turn off the [heater](device_type) in the [bedroom](room_name)
@@ -307,6 +303,7 @@ nlu:
     - what is the state of the [living room](room_name) [light](device_type) ?
     - Is [kitchen](room_name) [light](device_type) [on](device_state) ?
     - Is [bedroom](room_name) [light](device_type) [on](device_state) ?
+    - is the [kitchen](room_name) [lights](device_type) off ?
     - Is [living room](room_name) [light](device_type) [off](device_state) ?
     - Is my [bedroom](room_name) [light](device_type) [off](device_state) ?
     - What is the status of the [ceiling fan](device_type) in the [living room](room_name)?
@@ -326,6 +323,7 @@ nlu:
     - What is the state of the [coffee maker](device_type) ?
     - Is the [speaker](device_type) playing music ?
     - What is the state of the [door lock](device_type) ?
+    - could please tell me if my [living room](room_name) [lights](device_type) are on or off ?
 - intent: change_light_color
   examples: |
     - Change the [bedroom](room_name) [light](device_type) to [red](light_color).
@@ -375,16 +373,12 @@ nlu:
     - Set the temperature in the [sunroom](room_name) to [68](temperature) degrees, please.
     - Can you set the temperature in the [bedroom](room_name) for me?
     - Please adjust the temperature in the [living room](room_name).
-    - I need the air conditioner in the [office](room_name) to cool down a bit.
-    - Can you turn up the AC in the [guest room](room_name)?
-    - Make it a bit cooler in the [kitchen](room_name), please.
     - Can you set the temperature to [70](temperature) degrees?
-    - I need to turn up the AC by [3](temperature) degrees.
-    - Please decrease the temperature by [5](temperature) degrees.
-    - Make it a bit cooler in here, can you adjust the temperature?
     - I want to set the air conditioner to [65](temperature) degrees, can you help me with that?
 - intent: increase_temperature_by
   examples: |
+    - Can you turn up the AC in the [guest room](room_name)?
+    - I need to turn up the AC by [3](temperature) degrees.
     - Increase the temperature by [5](temperature) degrees in the [living room](room_name).
     - Can you make the room [2](temperature) degrees warmer in the [bedroom](room_name)?
     - Please increase the temperature by [3](temperature) degrees in the [kitchen](room_name).
@@ -443,6 +437,12 @@ nlu:
     - Could you turn down the heat by [3](temperature) degrees in the [wine cellar](room_name)?
     - Please decrease the temperature by [4](temperature) degrees in the [foyer](room_name).
     - Lower the temperature by [2](temperature) degrees in the [entryway](room_name) please.
+    - Please decrease the temperature by [5](temperature) degrees.
+    - Can you decrease the ac temperature by [2](temperature) degrees?
+    - Mr Moon , please decrease the temperature by [2](temperature) degrees.
+    - I need the air conditioner in the [office](room_name) to cool down a bit.
+    - Make it a bit cooler in the [kitchen](room_name), please.
+    - Make it a bit cooler in here, can you adjust the temperature?
 - intent: unlock_door_lock
   examples: |
     - Open the [front door](room_name) please.

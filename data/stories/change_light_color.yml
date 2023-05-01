@@ -19,31 +19,29 @@ stories:
   - intent: change_light_color
     entities:
     - room_name: "kitchen"
+    - device_type: "lights"
     - light_color: "red"
   - slot_was_set:
     - room_name: "kitchen"
+    - device_type: "lights"
     - light_color: "red"
   - action: action_change_light_color
 
-- story: change light color and not mentioned room name
+- story: change light color and not mentioning room name
   steps:
   - intent: change_light_color
     entities:
     - light_color: "red"
+    - device_type: "rgb light"
   - slot_was_set:
     - light_color: "red"
-  - action: utter_which_room_to_change_light_color
-  - intent: change_light_color
-    entities:
-    - room_name: "kitchen"
-  - slot_was_set:
-    - room_name: "kitchen"
+    - device_type: "rgb light"
   - action: action_change_light_color
 
 - story: change light color and not mentioned room name or light color
   steps:
   - intent: change_light_color
-  - action: utter_please_mention_room_name_and_light_color
+  - action: utter_no_color_detected
   - intent: change_light_color
     entities:
     - room_name: "bedroom"
@@ -60,16 +58,9 @@ stories:
     - all_devices_selected: all
     - device_type: rgb leds
     - light_color: blue
-    - devices_ids:
-      - 5
   - slot_was_set:
     - device_type: rgb leds
-  - slot_was_set:
     - all_devices_selected: all
-  - slot_was_set:
-    - devices_ids:
-      - 5
-  - slot_was_set:
     - light_color: blue
   - action: action_change_light_color
 
@@ -103,4 +94,145 @@ stories:
     - light_color: blue
   - slot_was_set:
     - light_color: blue
+  - action: action_change_light_color
+
+- story: ask about the rgb state is it on ? then change its color to red
+  steps:
+  - intent: show_home_state
+    entities:
+    - device_type: rgb leds
+    - room_name: office
+  - slot_was_set:
+    - device_type: rgb leds
+    - room_name: office
+  - action: action_show_home_state
+  - intent: change_light_color
+    entities:
+    - light_color: red
+  - slot_was_set:
+    - light_color: red
+  - action: action_change_light_color
+
+- story: change room A rgbs to blue then ask if room B is turned to blue as well then change it to blue
+  steps:
+  - intent: change_light_color
+    entities:
+    - room_name: room A
+    - device_type: rgb leds
+    - light_color: blue
+  - slot_was_set:
+    - room_name: room A
+    - device_type: rgb leds
+    - light_color: blue
+  - action: action_change_light_color
+  - intent: show_home_state
+    entities:
+    - room_name: room B
+    - device_type: rgb leds
+  - slot_was_set:
+    - room_name: room B
+    - device_type: rgb leds
+  - action: action_show_home_state
+  - intent: change_light_color
+    entities:
+    - light_color: blue
+  - slot_was_set:
+    - light_color: blue
+  - action: action_change_light_color
+
+- story: change living room lights to red then ask to change the bedroom lights to the same color
+  steps:
+  - intent: change_light_color
+    entities:
+    - room_name: living room
+    - device_type: lights
+    - light_color: red
+  - slot_was_set:
+    - room_name: living room
+    - device_type: lights
+    - light_color: red
+  - action: action_change_light_color
+  - intent: change_light_color
+    entities:
+    - room_name: bedroom
+    - device_type: lights
+    - light_color: red
+  - slot_was_set:
+    - room_name: bedroom
+    - device_type: lights
+    - light_color: red
+  - action: action_change_light_color
+
+- story: change living room lights to red then ask to change the bedroom lights to the same color but not metioning it directly
+  steps:
+  - intent: change_light_color
+    entities:
+    - room_name: living room
+    - device_type: lights
+    - light_color: red
+  - slot_was_set:
+    - room_name: living room
+    - device_type: lights
+    - light_color: red
+  - action: action_change_light_color
+  - intent: change_light_color
+    entities:
+    - room_name: bedroom
+    - device_type: lights
+  - slot_was_set:
+    - room_name: bedroom
+    - device_type: lights
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - light_color: red
+    - room_name: bedroom
+    - device_type: lights
+  - action: action_change_light_color
+
+- story: ask what is the color bedroom is set to , the change the office room to the same color.
+  steps:
+  - intent: show_home_state
+    entities:
+    - room_name: bedroom
+    - device_type: lights
+  - slot_was_set:
+    - room_name: bedroom
+    - device_type: lights
+  - action: action_show_home_state
+  - intent: change_light_color
+    entities:
+    - room_name: office
+    - device_type: lights
+  - slot_was_set:
+    - room_name: office
+    - device_type: lights
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - light_color: red
+    - room_name: office
+    - device_type: lights
+  - action: action_change_light_color
+
+- story: ask what is the color room A is set to , the change the office room to the same color.
+  steps:
+  - intent: show_home_state
+    entities:
+    - room_name: room A
+    - device_type: lights
+  - slot_was_set:
+    - room_name: room A
+    - device_type: lights
+  - action: action_show_home_state
+  - intent: change_light_color
+    entities:
+    - room_name: office
+    - device_type: lights
+  - slot_was_set:
+    - room_name: office
+    - device_type: lights
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - light_color: red
+    - room_name: office
+    - device_type: lights
   - action: action_change_light_color

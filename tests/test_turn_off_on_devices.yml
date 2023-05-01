@@ -1,0 +1,74 @@
+stories:
+- story: is the office lights on ? if so turn it off
+  steps:
+  - user: |
+      is the [office](room_name) [lights](device_type) on ?
+    intent: show_home_state
+  - action: action_show_home_state
+  - user: |
+      great turn them off please
+    intent: turn_off_device
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - room_name: office
+    - device_type: lights
+  - action: action_turn_off_device
+
+- story: is the kitchen lights off ? if so turn it on
+  steps:
+  - user: |
+      is the [kitchen](room_name) [lights](device_type) off ?
+    intent: show_home_state
+  - action: action_show_home_state
+  - user: |
+      great turn them on please
+    intent: turn_on_device
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - room_name: kitchen
+    - device_type: lights
+  - action: action_turn_on_device
+
+- story: turn on kitchen lights
+  steps:
+  - user: |
+      turn on [kitchen](room_name) [lights](device_type)
+    intent: turn_on_device
+  - slot_was_set:
+    - room_name: kitchen
+    - device_type: lights
+  - action: action_turn_on_device
+
+- story: turn off room A lights
+  steps:
+  - user: |
+      turn off [room A](room_name) [lights](device_type)
+    intent: turn_off_device
+  - slot_was_set:
+    - room_name: room A
+    - device_type: lights
+  - action: action_turn_off_device
+
+- story: turn on the AC please
+  steps:
+  - user: |
+      turn on the [AC](device_type) please
+    intent: turn_on_device
+  - slot_was_set:
+    - device_type: ac
+  - action: action_turn_on_device
+
+- story: is the rgb light on ? , change its color to red then
+  steps:
+  - user: |
+      is the [rgb light](device_type) on ?
+    intent: show_home_state
+  - action: action_show_home_state
+  - user: |
+      change its color to [red](light_color) please
+    intent: change_light_color
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - device_type: rgb light
+    - light_color: red
+  - action: action_change_light_color

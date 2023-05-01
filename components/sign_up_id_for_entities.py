@@ -44,9 +44,8 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
                 "symantic_model": "all-MiniLM-L12-v2" ,
                 "embedding_dim": 384,
                 "entity_name": "devices_ids",
-                "threshold": 0.55,
-                "non_sign_up_id": -1
-            }
+                "threshold": 0.55
+        }
 
     def __init__(
         self,
@@ -59,7 +58,6 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
         self.embedding_dim = config.get("embedding_dim")
         self.entity_name = config.get("entity_name")
         self.threshold = config.get("threshold")
-        self.non_sign_up_id = config.get("non_sign_up_id")
         self.devices_index = faiss.IndexFlatIP(self.embedding_dim)
         self.rooms_index = faiss.IndexFlatIP(self.embedding_dim)
         self.current_rooms = []
@@ -174,7 +172,7 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
                     entity[ENTITY_ATTRIBUTE_VALUE] = stored_device_type if stored_device_type != "" else extracted_device_type
             
         if stored_device_type == "":
-            self._return_empty_entity(message)
+            # self._return_empty_entity(message)
             return
 
         query = ""
@@ -185,7 +183,7 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
 
         logger.info("SignUpIdForEntities query: " + query)
         if query not in self.current_devices_ids:
-            self._return_empty_entity(message)
+            # self._return_empty_entity(message)
             return
 
         logger.info("SignUpIdForEntities query: " + query)
@@ -197,15 +195,15 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
         })
         message.set(ENTITIES, extracted_entities, add_to_output=True)
     
-    def _return_empty_entity(self, message: Message) -> None:
-        extracted_entities = message.get(ENTITIES, [])
-        extracted_entities.append({
-            ENTITY_ATTRIBUTE_TYPE: self.entity_name,
-            ENTITY_ATTRIBUTE_VALUE: [],
-            ENTITY_ATTRIBUTE_START: 0,
-            ENTITY_ATTRIBUTE_END: 0
-        })
-        message.set(ENTITIES, extracted_entities, add_to_output=True)
+    # def _return_empty_entity(self, message: Message) -> None:
+    #     extracted_entities = message.get(ENTITIES, [])
+    #     extracted_entities.append({
+    #         ENTITY_ATTRIBUTE_TYPE: self.entity_name,
+    #         ENTITY_ATTRIBUTE_VALUE: [],
+    #         ENTITY_ATTRIBUTE_START: 0,
+    #         ENTITY_ATTRIBUTE_END: 0
+    #     })
+    #     message.set(ENTITIES, extracted_entities, add_to_output=True)
 
     def process_training_data(self, training_data: TrainingData) -> TrainingData:
         self.process(training_data.training_examples)

@@ -1,0 +1,71 @@
+version: "3.1"
+stories:
+- story: is the office lights on ? if so turn it off (.\tests\test_turn_off_on_devices.yml)
+  steps:
+  - intent: show_home_state
+    entities:
+    - room_name: office
+    - device_type: lights
+  - slot_was_set:
+    - room_name: office
+  - slot_was_set:
+    - device_type: lights
+  - action: action_show_home_state
+  - intent: turn_off_device
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - room_name: office
+  - slot_was_set:
+    - device_type: lights
+  - action: action_turn_off_device
+- story: is the kitchen lights off ? if so turn it on (.\tests\test_turn_off_on_devices.yml)
+  steps:
+  - intent: show_home_state
+    entities:
+    - room_name: kitchen
+    - device_type: lights
+  - slot_was_set:
+    - room_name: kitchen
+  - slot_was_set:
+    - device_type: lights
+  - action: action_show_home_state
+  - intent: turn_on_device
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - room_name: kitchen
+  - slot_was_set:
+    - device_type: lights
+  - action: action_turn_on_device  # predicted: utter_which_device
+- story: turn off room A lights (.\tests\test_turn_off_on_devices.yml)
+  steps:
+  - intent: turn_off_device
+    entities:
+    - device_type: lights
+  - slot_was_set:
+    - room_name: room A
+  - slot_was_set:
+    - device_type: lights
+  - slot_was_set:
+    - room_name: room A
+  - slot_was_set:
+    - device_type: lights
+  - action: action_turn_off_device
+- story: is the rgb light on ? , change its color to red then (.\tests\test_turn_off_on_devices.yml)
+  steps:
+  - intent: show_home_state  # predicted: nlu_fallback: is the [rgb light](device_type) on ?
+    entities:
+    - device_type: rgb light
+  - slot_was_set:
+    - device_type: rgb light
+  - action: action_show_home_state
+  - intent: change_light_color
+    entities:
+    - light_color: red
+  - slot_was_set:
+    - light_color: red
+  - action: action_ask_llm_for_entities  # predicted: action_change_light_color after action_unlikely_intent
+  - slot_was_set:
+    - device_type: rgb light
+  - slot_was_set:
+    - light_color: red
+  - action: action_change_light_color  # predicted: action_turn_off_device

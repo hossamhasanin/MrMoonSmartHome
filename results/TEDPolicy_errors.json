@@ -1,0 +1,103 @@
+[
+  {
+    "text": "is the office lights on ?",
+    "entities": [
+      {
+        "text": "is the office lights on ?",
+        "start": 7,
+        "end": 13,
+        "entity": "room_name",
+        "value": "office"
+      },
+      {
+        "text": "is the office lights on ?",
+        "start": 14,
+        "end": 20,
+        "entity": "device_type",
+        "value": "lights"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "is the kitchen lights off ?",
+    "entities": [
+      {
+        "start": 7,
+        "end": 14,
+        "value": "kitchen",
+        "entity": "room_name"
+      },
+      {
+        "start": 15,
+        "end": 21,
+        "value": "lights",
+        "entity": "device_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "turn on kitchen lights",
+    "entities": [
+      {
+        "start": 8,
+        "end": 15,
+        "value": "kitchen",
+        "entity": "room_name"
+      },
+      {
+        "start": 16,
+        "end": 22,
+        "value": "lights",
+        "entity": "device_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "turn off room A lights",
+    "entities": [
+      {
+        "text": "turn off room A lights",
+        "start": 9,
+        "end": 15,
+        "entity": "room_name",
+        "value": "room A"
+      },
+      {
+        "text": "turn off room A lights",
+        "start": 16,
+        "end": 22,
+        "entity": "device_type",
+        "value": "lights"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "turn on the AC please",
+    "entities": [
+      {
+        "start": 12,
+        "end": 14,
+        "value": "AC",
+        "entity": "device_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "is the rgb light on ?",
+    "entities": [
+      {
+        "text": "is the rgb light on ?",
+        "start": 7,
+        "end": 16,
+        "entity": "device_type",
+        "value": "rgb light"
+      }
+    ],
+    "predicted_entities": []
+  }
+]
