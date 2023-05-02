@@ -82,7 +82,18 @@ nlu:
     - Please turn off the [night light](device_type) in the [nursery](room_name)
     - turn on [all](all_devices_selected) the [lights](device_type)
     - could you turn on [every](all_devices_selected) [light](device_type) please ?
-    - alright I want you to turn [every single](all_devices_selected) [light](device_type) on
+    - alright I want you to turn [every single](all_devices_selected) [light](device_type) on.
+    - great turn them on please.
+    - awesome turn them on.
+    - alright turn them on.
+    - turn them on.
+    - alright could you turn them on please ?
+    - I need you to turn them on as well.
+    - damn It is so hot in here turn on the [ac](device_type) please.
+    - turn on the [ac](device_type) please.
+    - turn on the [ac](device_type) in the [living room](room_name) please.
+    - turn on the [ac](device_type) in the [bedroom](room_name) please.
+    - turn on the [ac](device_type) in the [kitchen](room_name) please.
 - intent: turn_off_device
   examples: |
     - Turn off the [light](device_type) please
@@ -130,7 +141,18 @@ nlu:
     - Turn off the [stereo](device_type) in the [living room](room_name)
     - Please turn off the [microwave](device_type) in the [kitchen](room_name)
     - Could you turn off the [desktop computer](device_type) in the [study room](room_name)?
-    - alright I want you to turn [every single](all_devices_selected) [light](device_type) off
+    - alright I want you to turn [every single](all_devices_selected) [light](device_type) off.
+    - great turn them off please.
+    - awesome turn them off.
+    - alright turn them off.
+    - turn them off.
+    - alright could you turn them off please ?
+    - I need you to turn them off as well.
+    - turn these devices off.
+    - turn off this device please buddy.
+    - I think I am cold turn off the [ac](device_type) please.
+    - damn I am freezing turn off the [ac](device_type) please.
+    - turn off the [ac](device_type) please.
 - intent: turn_on_device_false
   examples: |
     - Oh god I am so truned on right now
@@ -161,6 +183,21 @@ nlu:
     - It is so cold in here , I can't stand it ! what is the current temprature in the [kitchen](room_name) ?
     - It is so cold in here , I can't stand it ! what is the current temprature in the [bedroom](room_name) ?
     - It is so cold in here , I can't stand it ! what is the current temprature in the [living room](room_name)?
+    - Oh it is so cold in here what is the current [ac](device_type) temperature buddy?
+    - what is the main [ac](device_type) current temperature?
+    - is it cold in here? what is the current [ac](device_type) temperature?
+    - is it hot in here? what is the current [ac](device_type) temperature?
+    - oh i am sweating so much tell me the current [ac](device_type) temperature buddy.
+    - could you tell me the current [ac](device_type) temperature?
+    - could you tell me the current [ac](device_type) temperature in the [kitchen](room_name)?
+    - could you tell me the current [ac](device_type) temperature in the [bedroom](room_name)?
+    - could you tell me the current [ac](device_type) temperature in the [living room](room_name)?
+    - could you tell me the current [ac](device_type) temperature in the [room A](room_name)?
+    - could you tell me the current [ac](device_type) temperature in the [room B](room_name)?
+    - could you tell me the current [ac](device_type) temperature in the [room C](room_name)?
+    - could you tell me the current [ac](device_type) temperature in the [office](room_name) please?
+    - i was asking about the tepmrature of the house please.
+    - i was asking about the tepmrature of the house please buddy.
 - intent: number_of_people_in_home
   examples: |
     - How many people are in the house ?
@@ -506,7 +543,7 @@ nlu:
     - I need to get inside my home, can you unlock the door?
     - Can you unlock the door to my house?
 
-- intent: thanks
+- intent: thanks_done_task
   examples: |
     - great thanks buddy if I needed anything I will let you know.
     - thanks
@@ -517,3 +554,8 @@ nlu:
     - Thanks, bye
     - Thanks, see you later
     - Great, thank you buddy
+    - thank you buddy 
+    - no thanks
+    - nope I don't need anything else thank you
+    - nope I don't need anything else
+    - great thank you

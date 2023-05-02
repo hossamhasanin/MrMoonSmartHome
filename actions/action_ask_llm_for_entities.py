@@ -7,7 +7,7 @@ from actions.firebase_controller.ask_llm import AskLlm
 
 
 
-class ActionChangeLightColor(Action):
+class ActionAskLlmForEntities(Action):
 
     def name(self) -> Text:
         return "action_ask_llm_for_entities"

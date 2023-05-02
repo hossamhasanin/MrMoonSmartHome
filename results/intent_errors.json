@@ -1,34 +1,10 @@
 [
   {
-    "text": "Turn off the oven in the kitchen",
+    "text": "Please turn off the night light in the nursery",
     "intent": "turn_on_device",
     "intent_prediction": {
       "name": "turn_off_device",
-      "confidence": 0.6739232540130615
-    }
-  },
-  {
-    "text": "Could you turn off the table lamp in the study room?",
-    "intent": "turn_off_device",
-    "intent_prediction": {
-      "name": "turn_on_device",
-      "confidence": 0.5198075175285339
-    }
-  },
-  {
-    "text": "Could you turn off the air purifier in the living room?",
-    "intent": "turn_off_device",
-    "intent_prediction": {
-      "name": "turn_on_device",
-      "confidence": 0.6293153762817383
-    }
-  },
-  {
-    "text": "Please decrease the temperature by 5 degrees.",
-    "intent": "set_temperature_to",
-    "intent_prediction": {
-      "name": "decrease_temperature_by",
-      "confidence": 0.972870409488678
+      "confidence": 0.8816838264465332
     }
   }
 ]

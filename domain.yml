@@ -13,7 +13,7 @@ intents:
 - turn_on_device
 - turn_on_device_false
 - unlock_door_lock
-- thanks
+- thanks_done_task
 entities:
 - light_color
 - all_devices_selected
@@ -184,3 +184,4 @@ actions:
 - utter_no_color_detected
 - utter_you_are_welcome
 - action_ask_llm_for_entities
+- action_reset_filled_slots

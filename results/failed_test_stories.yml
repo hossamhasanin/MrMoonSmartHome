@@ -1,5 +1,45 @@
 version: "3.1"
 stories:
+- story: turn the office rgb lights on then ask about its current light and change it to white (.\tests\test_turn_off_on_devices.yml)
+  steps:
+  - intent: turn_on_device
+    entities:
+    - room_name: office
+    - device_type: rgb lights
+  - slot_was_set:
+    - room_name: office
+  - slot_was_set:
+    - device_type: rgb lights
+  - slot_was_set:
+    - room_name: office
+  - slot_was_set:
+    - device_type: rgb lights
+  - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+  - slot_was_set:
+    - room_name: null
+  - intent: show_home_state  # predicted: nlu_fallback: what is its current [light](device_type) color ?
+  - action: action_show_home_state
+  - intent: change_light_color
+    entities:
+    - light_color: white
+  - slot_was_set:
+    - light_color: white
+  - slot_was_set:
+    - light_color: white
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - device_type: rgb lights
+  - slot_was_set:
+    - room_name: office
+  - action: action_change_light_color
+  - slot_was_set:
+    - light_color: null
+  - slot_was_set:
+    - device_type: null
+  - slot_was_set:
+    - room_name: null
 - story: asking about the lights in the office then turn them on then ask if there is rgb lights at the office and change their color to blue (.\tests\test_turn_off_on_devices.yml)
   steps:
   - intent: show_home_state
@@ -61,43 +101,68 @@ stories:
     - device_type: null
   - slot_was_set:
     - room_name: null
-- story: turn the office rgb lights on then ask about its current light and change it to white (.\tests\test_turn_off_on_devices.yml)
+- story: set the ac in the office at 15 degrees (.\tests\test_change_temp.yml)
   steps:
-  - intent: turn_on_device
+  - intent: set_temperature_to
     entities:
     - room_name: office
-    - device_type: rgb lights
+    - temperature: '15'
   - slot_was_set:
     - room_name: office
   - slot_was_set:
-    - device_type: rgb lights
+    - device_type: ac
+  - slot_was_set:
+    - temperature: '15'
   - slot_was_set:
     - room_name: office
   - slot_was_set:
-    - device_type: rgb lights
-  - action: action_turn_on_device
+    - temperature: '15'
   - slot_was_set:
-    - device_type: null
+    - device_type: ac
+  - action: action_set_temperature_value
   - slot_was_set:
     - room_name: null
-  - intent: show_home_state  # predicted: show_home_state: what is its current [light](device_type) color ?
-  - action: action_show_home_state
-  - intent: change_light_color
+  - slot_was_set:
+    - temperature: null
+  - slot_was_set:
+    - device_type: null
+- story: ask about the current temperature and decrease the ac (.\tests\test_change_temp.yml)
+  steps:
+  - intent: check_temprature_value
+  - action: action_check_temprature_value
+  - intent: decrease_temperature_by
     entities:
-    - light_color: white
+    - temperature: '2'
   - slot_was_set:
-    - light_color: white
+    - device_type: ac
   - slot_was_set:
-    - light_color: white
-  - action: action_ask_llm_for_entities
+    - temperature: '2'
   - slot_was_set:
-    - device_type: rgb lights
+    - temperature: '2'
   - slot_was_set:
-    - room_name: office
-  - action: action_change_light_color
+    - device_type: ac
+  - action: action_decrease_temperature_value
   - slot_was_set:
-    - light_color: null
+    - temperature: null
   - slot_was_set:
     - device_type: null
+- story: ask about the current temperature and increase the ac (.\tests\test_change_temp.yml)
+  steps:
+  - intent: check_temprature_value
+  - action: action_check_temprature_value
+  - intent: increase_temperature_by
+    entities:
+    - temperature: '2'
   - slot_was_set:
-    - room_name: null
+    - device_type: ac
+  - slot_was_set:
+    - temperature: '2'
+  - slot_was_set:
+    - temperature: '2'
+  - slot_was_set:
+    - device_type: ac
+  - action: action_increase_temperature_value
+  - slot_was_set:
+    - temperature: null
+  - slot_was_set:
+    - device_type: null
