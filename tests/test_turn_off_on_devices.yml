@@ -200,3 +200,81 @@ stories:
     - device_type: null
     - room_name: null
     - light_color: null
+
+- story: asking about the lights in the office then turn them on and change their color
+  steps:
+  - user: |
+      are the [office](room_name) [lights](device_type) on ?
+    intent: show_home_state
+  - slot_was_set:
+    - room_name: office
+    - device_type: lights
+  - action: action_show_home_state
+  - user: |
+      turn them on please
+    intent: turn_on_device
+  - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
+  - user: |
+      change their color to [red](light_color) please
+    intent: change_light_color
+  - slot_was_set:
+    - light_color: red
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - light_color: red
+    - device_type: lights
+    - room_name: office
+  - action: action_change_light_color
+  - slot_was_set:
+    - light_color: null
+    - device_type: null
+    - room_name: null
+
+- story: asking about the lights in the office then turn them on then ask if there is rgb lights at the office and change their color to blue
+  steps:
+  - user: |
+      are the [office](room_name) [lights](device_type) on ?
+    intent: show_home_state
+  - slot_was_set:
+    - room_name: office
+    - device_type: lights
+  - action: action_show_home_state
+  - user: |
+      turn them on please
+    intent: turn_on_device
+  - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
+  - user: |
+      are there any [rgb lights](device_type) at the [office](room_name) ?
+    intent: show_home_state
+  - slot_was_set:
+    - room_name: office
+    - device_type: rgb lights
+  - action: action_show_home_state
+  - user: |
+      alright,  turn them on please
+    intent: turn_on_device
+  - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
+  - user: |
+      And also change their color to [blue](light_color) please
+    intent: change_light_color
+  - slot_was_set:
+    - light_color: blue
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - light_color: blue
+    - device_type: rgb lights
+    - room_name: office
+  - action: action_change_light_color
+  - slot_was_set:
+    - light_color: null
+    - device_type: null
+    - room_name: null

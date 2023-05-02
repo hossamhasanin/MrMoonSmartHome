@@ -1,27 +1,39 @@
 {
-  "[living room](room_name)": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 1
-  },
-  "action_listen": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 20
-  },
-  "[sky blue](light_color)": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 1
-  },
-  "show_home_state": {
+  "[office](room_name)": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 7
+  },
+  "[rgb lights](device_type)": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3
+  },
+  "None": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 2
+  },
+  "[red](light_color)": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 4
+  },
+  "[rgb light](device_type)": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "[blue](light_color)": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
   },
   "[white](light_color)": {
     "precision": 1.0,
@@ -29,31 +41,49 @@
     "f1-score": 1.0,
     "support": 1
   },
-  "action_show_home_state": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 7
-  },
-  "[room A](room_name)": {
+  "[sky blue](light_color)": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 1
   },
-  "[lights](device_type)": {
+  "[AC](device_type)": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 4
+    "support": 1
   },
-  "[rgbs](device_type)": {
+  "action_turn_off_device": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 2
   },
+  "action_ask_llm_for_entities": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 5
+  },
+  "turn_on_device": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 9
+  },
+  "action_turn_on_device": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 9
+  },
   "[kitchen](room_name)": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "turn_off_device": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
@@ -63,103 +93,79 @@
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 5
+    "support": 7
   },
-  "turn_off_device": {
+  "[living room](room_name)": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "[room A](room_name)": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "action_show_home_state": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10
+  },
+  "action_listen": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 28
+  },
+  "show_home_state": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10
+  },
+  "[rgbs](device_type)": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 2
   },
-  "[office](room_name)": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 4
-  },
-  "[red](light_color)": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 3
-  },
-  "action_turn_off_device": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2
-  },
-  "action_turn_on_device": {
+  "[lights](device_type)": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 6
-  },
-  "[AC](device_type)": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 1
-  },
-  "None": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 1
-  },
-  "action_ask_llm_for_entities": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 3
-  },
-  "[rgb light](device_type)": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 1
   },
   "action_change_light_color": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 5
-  },
-  "[rgb lights](device_type)": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2
-  },
-  "turn_on_device": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 6
+    "support": 7
   },
   "micro avg": {
     "precision": 1.0,
-    "recall": 0.9885057471264368,
-    "f1-score": 0.9942196531791908,
-    "support": 87
+    "recall": 0.9836065573770492,
+    "f1-score": 0.9917355371900827,
+    "support": 122
   },
   "macro avg": {
-    "precision": 0.9565217391304348,
-    "recall": 0.9565217391304348,
-    "f1-score": 0.9565217391304348,
-    "support": 87
+    "precision": 0.9583333333333334,
+    "recall": 0.9583333333333334,
+    "f1-score": 0.9583333333333334,
+    "support": 122
   },
   "weighted avg": {
-    "precision": 0.9885057471264368,
-    "recall": 0.9885057471264368,
-    "f1-score": 0.9885057471264368,
-    "support": 87
+    "precision": 0.9836065573770492,
+    "recall": 0.9836065573770492,
+    "f1-score": 0.9836065573770492,
+    "support": 122
   },
-  "accuracy": 0.9885057471264368,
+  "accuracy": 0.9836065573770492,
   "conversation_accuracy": {
-    "accuracy": 0.9,
-    "correct": 9,
-    "with_warnings": 1,
-    "total": 10
+    "accuracy": 0.8333333333333334,
+    "correct": 10,
+    "with_warnings": 0,
+    "total": 12
   }
 }

@@ -12,6 +12,9 @@ stories:
     - room_name: "kitchen"
     - temperature: "25"
   - action: action_set_temperature_value
+  - slot_was_set:
+    - room_name: null
+    - temperature: null
 
 - story: increase the ac in the kitchen by 2 degrees
   steps:
@@ -23,6 +26,9 @@ stories:
     - room_name: "kitchen"
     - temperature: "2"
   - action: action_increase_temperature_value
+  - slot_was_set:
+    - room_name: null
+    - temperature: null
 
 - story: decrease the ac in the bedroom by 2 degrees
   steps:
@@ -34,6 +40,9 @@ stories:
     - room_name: "bedroom"
     - temperature: "2"
   - action: action_decrease_temperature_value
+  - slot_was_set:
+    - room_name: null
+    - temperature: null
 
 - story: decrease the ac in the bedroom
   steps:
@@ -43,6 +52,8 @@ stories:
   - slot_was_set:
     - room_name: "bedroom"
   - action: action_decrease_temperature_value
+  - slot_was_set:
+    - room_name: null
 
 - story: increase the ac in the kitchen
   steps:
@@ -52,6 +63,8 @@ stories:
   - slot_was_set:
     - room_name: "kitchen"
   - action: action_increase_temperature_value
+  - slot_was_set:
+    - room_name: null
 
 - story: increase the main ac
   steps:
@@ -71,3 +84,71 @@ stories:
   - slot_was_set:
     - temperature: "35"
   - action: action_set_temperature_value
+  - slot_was_set:
+    - temperature: null
+
+- story: ask about the current temperature then decrease the ac set point a little
+  steps:
+  - intent: check_temprature_value
+  - action: action_check_temprature_value
+  - intent: decrease_temperature_by
+    entities:
+    - temperature: "2"
+  - slot_was_set:
+    - temperature: "2"
+  - action: action_decrease_temperature_value
+  - slot_was_set:
+    - temperature: null
+
+- story: ask about the current temperature then decrease the ac set point a little but it is still hot decrease it a little bit more
+  steps:
+  - intent: check_temprature_value
+  - action: action_check_temprature_value
+  - intent: decrease_temperature_by
+    entities:
+    - temperature: "2"
+  - slot_was_set:
+    - temperature: "2"
+  - action: action_decrease_temperature_value
+  - slot_was_set:
+    - temperature: null
+  - intent: decrease_temperature_by
+  - action: action_decrease_temperature_value
+  - slot_was_set:
+    - temperature: null
+
+- story: ask about the current temperature then increase the ac set point a little but it is still cold increase it a little bit more
+  steps:
+  - intent: check_temprature_value
+  - action: action_check_temprature_value
+  - intent: increase_temperature_by
+    entities:
+    - temperature: "2"
+  - slot_was_set:
+    - temperature: "2"
+  - action: action_increase_temperature_value
+  - slot_was_set:
+    - temperature: null
+  - intent: increase_temperature_by
+  - action: action_increase_temperature_value
+  - slot_was_set:
+    - temperature: null
+
+- story: ask about the current temperature then increase the ac set point a little but it is still cold increase it by 5 degrees
+  steps:
+  - intent: check_temprature_value
+  - action: action_check_temprature_value
+  - intent: increase_temperature_by
+    entities:
+    - temperature: "2"
+  - slot_was_set:
+    - temperature: "2"
+  - action: action_increase_temperature_value
+  - slot_was_set:
+    - temperature: null
+  - intent: increase_temperature_by
+    entities:
+    - temperature: "5"
+  - action: action_increase_temperature_value
+  - slot_was_set:
+    - temperature: null

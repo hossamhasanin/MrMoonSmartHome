@@ -1,0 +1,49 @@
+stories:
+- story: set the ac in the office at 15 degrees
+  steps:
+  - user: |
+      set the [ac](device_type) in the [office](room_name) at [15](temperature) degrees
+    intent: set_temperature_to
+  - slot_was_set:
+    - room_name: "office"
+    - temperature: "15"
+    - device_type: "ac"
+  - action: action_set_temperature_value
+  - slot_was_set:
+    - room_name: null
+    - temperature: null
+    - device_type: null
+
+- story: ask about the current temperature and decrease the ac
+  steps:
+  - user: |
+      Oh it is so hot in here what is the current temperature buddy?
+    intent: check_temprature_value
+  - action: action_check_temprature_value
+  - user: |
+      alright lower the [ac](device_type) temperature by [2](temperature) degrees please
+    intent: decrease_temperature_by
+  - slot_was_set:
+    - temperature: "2"
+    - device_type: "ac"
+  - action: action_decrease_temperature_value
+  - slot_was_set:
+    - temperature: null
+    - device_type: null
+
+- story: ask about the current temperature and increase the ac
+  steps:
+  - user: |
+      Oh it is so cold in here what is the current temperature buddy?
+    intent: check_temprature_value
+  - action: action_check_temprature_value
+  - user: |
+      alright increase the [ac](device_type) temperature by [2](temperature) degrees please
+    intent: increase_temperature_by
+  - slot_was_set:
+    - temperature: "2"
+    - device_type: "ac"
+  - action: action_increase_temperature_value
+  - slot_was_set:
+    - temperature: null
+    - device_type: null

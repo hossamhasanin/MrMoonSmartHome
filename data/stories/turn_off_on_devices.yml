@@ -544,3 +544,28 @@ stories:
     - room_name: null
     - device_type: null
     - light_color: null
+
+# turn on ac stories
+- story: turn on ac then ask about the temperature and lower the ac by 2 degrees
+  steps:
+  - intent: turn_on_device
+    entities:
+    - device_type: "ac"
+    - room_name: "living room"
+  - slot_was_set:
+    - device_type: "ac"
+    - room_name: "living room"
+  - action: action_turn_on_device
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
+  - intent: check_temprature_value
+  - action: action_check_temprature_value
+  - intent: decrease_temperature_by
+    entities:
+    - temperature: "2"
+  - slot_was_set:
+    - temperature: "2"
+  - action: action_decrease_temperature_value
+  - slot_was_set:
+    - temperature: null

@@ -24,6 +24,86 @@
     "predicted_entities": []
   },
   {
+    "text": "are the office lights on ?",
+    "entities": [
+      {
+        "start": 8,
+        "end": 14,
+        "value": "office",
+        "entity": "room_name"
+      },
+      {
+        "start": 15,
+        "end": 21,
+        "value": "lights",
+        "entity": "device_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "change their color to red please",
+    "entities": [
+      {
+        "start": 22,
+        "end": 25,
+        "value": "red",
+        "entity": "light_color"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "are the office lights on ?",
+    "entities": [
+      {
+        "start": 8,
+        "end": 14,
+        "value": "office",
+        "entity": "room_name"
+      },
+      {
+        "start": 15,
+        "end": 21,
+        "value": "lights",
+        "entity": "device_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "are there any rgb lights at the office ?",
+    "entities": [
+      {
+        "text": "are there any rgb lights at the office ?",
+        "start": 14,
+        "end": 24,
+        "entity": "device_type",
+        "value": "rgb lights"
+      },
+      {
+        "text": "are there any rgb lights at the office ?",
+        "start": 32,
+        "end": 38,
+        "entity": "room_name",
+        "value": "office"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "And also change their color to blue please",
+    "entities": [
+      {
+        "start": 31,
+        "end": 35,
+        "value": "blue",
+        "entity": "light_color"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
     "text": "is the office lights on ?",
     "entities": [
       {
@@ -115,6 +195,18 @@
         "end": 16,
         "value": "rgb light",
         "entity": "device_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "change its color to red please",
+    "entities": [
+      {
+        "start": 20,
+        "end": 23,
+        "value": "red",
+        "entity": "light_color"
       }
     ],
     "predicted_entities": []
