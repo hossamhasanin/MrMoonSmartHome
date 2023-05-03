@@ -14,10 +14,10 @@ stories:
     - room_name: "kitchen"
     - temperature: "25"
   - action: action_set_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
-    - room_name: null
     - temperature: null
-    - device_type: null
 
 - story: increase the ac in the kitchen by 2 degrees
   steps:
@@ -31,10 +31,6 @@ stories:
     - temperature: "2"
     - device_type: "ac"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - room_name: null
-    - temperature: null
-    - device_type: null
 
 - story: decrease the ac in the bedroom by 2 degrees
   steps:
@@ -48,10 +44,10 @@ stories:
     - temperature: "2"
     - device_type: "ac"
   - action: action_decrease_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
-    - room_name: null
     - temperature: null
-    - device_type: null
 
 - story: decrease the ac in the bedroom
   steps:
@@ -61,8 +57,10 @@ stories:
   - slot_was_set:
     - room_name: "bedroom"
   - action: action_decrease_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
-    - room_name: null
+    - temperature: null
 
 - story: increase the ac in the kitchen
   steps:
@@ -72,13 +70,15 @@ stories:
   - slot_was_set:
     - room_name: "kitchen"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - room_name: null
 
 - story: increase the main ac
   steps:
   - intent: increase_temperature_by
   - action: action_increase_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - temperature: null
 
 - story: decrease the main ac
   steps:
@@ -93,6 +93,8 @@ stories:
   - slot_was_set:
     - temperature: "35"
   - action: action_set_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - temperature: null
 
@@ -106,10 +108,8 @@ stories:
   - slot_was_set:
     - temperature: "2"
   - action: action_decrease_temperature_value
-  - slot_was_set:
-    - temperature: null
 
-- story: ask about the current temperature then decrease the ac set point a little but it is still hot decrease it a little bit more
+- story: ask about the current temperature then decrease the ac set point a little and thanks but it is still hot decrease it a little bit more
   steps:
   - intent: check_temprature_value
   - action: action_check_temprature_value
@@ -119,10 +119,29 @@ stories:
   - slot_was_set:
     - temperature: "2"
   - action: action_decrease_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - temperature: null
   - intent: decrease_temperature_by
   - action: action_decrease_temperature_value
+
+- story: ask about the current temperature then increase the ac set point a little then thx but it is still cold increase it a little bit more
+  steps:
+  - intent: check_temprature_value
+  - action: action_check_temprature_value
+  - intent: increase_temperature_by
+    entities:
+    - temperature: "2"
+  - slot_was_set:
+    - temperature: "2"
+  - action: action_increase_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - temperature: null
+  - intent: increase_temperature_by
+  - action: action_increase_temperature_value
 
 - story: ask about the current temperature then increase the ac set point a little but it is still cold increase it a little bit more
   steps:
@@ -134,8 +153,6 @@ stories:
   - slot_was_set:
     - temperature: "2"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - temperature: null
   - intent: increase_temperature_by
   - action: action_increase_temperature_value
 
@@ -151,17 +168,12 @@ stories:
     - temperature: "2"
     - device_type: "ac"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - temperature: null
-    - device_type: null
   - intent: increase_temperature_by
     entities:
     - temperature: "5"
   - slot_was_set:
     - temperature: "5"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - temperature: null
 
 - story: ask about the current temperature at kitchen then increase the ac set point a little but it is still cold increase it by 5 degrees
   steps:
@@ -179,9 +191,11 @@ stories:
     - temperature: "1"
     - room_name: "kitchen"
   - action: action_increase_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
-    - room_name: null
     - temperature: null
+    - room_name: null
   - intent: increase_temperature_by
     entities:
     - temperature: "5"
@@ -191,8 +205,6 @@ stories:
   - slot_was_set:
     - room_name: "kitchen"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - temperature: null
 
 - story: ask about the current temperature at office then increase the ac set point a little but it is still cold increase it by 5 degrees
   steps:
@@ -208,6 +220,8 @@ stories:
   - slot_was_set:
     - temperature: "5"
   - action: action_increase_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - room_name: null
     - temperature: null
@@ -220,8 +234,6 @@ stories:
   - slot_was_set:
     - room_name: "office"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - temperature: null
 
 
 - story: ask about the current temperature at room A then decrease the ac set point there a little but it is still hot decrease it by 3 degrees
@@ -242,24 +254,12 @@ stories:
     - device_type: "ac"
     - room_name: "room A"
   - action: action_decrease_temperature_value
-  - slot_was_set:
-    - room_name: null
-    - temperature: null
-    - device_type: null
   - intent: decrease_temperature_by
     entities:
     - temperature: "3"
   - slot_was_set:
     - temperature: "3"
-  - action: action_ask_llm_for_entities
-  - slot_was_set:
-    - room_name: "room A"
-    - device_type: "ac"
   - action: action_decrease_temperature_value
-  - slot_was_set:
-    - temperature: null
-    - device_type: null
-    - room_name: null
 
 - story: increase the current ac temperature in room B and ask about room A temperature then set it to 15
   steps:
@@ -273,10 +273,6 @@ stories:
     - device_type: "ac"
     - room_name: "room B"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - room_name: null
-    - temperature: null
-    - device_type: null
   - intent: check_temprature_value
     entities:
     - room_name: "room A"
@@ -289,9 +285,6 @@ stories:
   - slot_was_set:
     - temperature: "15"
   - action: action_set_temperature_value
-  - slot_was_set:
-    - temperature: null
-    - room_name: null
 
 - story: ask about the current temperature at office then decrease the ac set point there a little but it is still hot decrease it by 3 degrees
   steps:
@@ -311,24 +304,18 @@ stories:
     - device_type: "ac"
     - room_name: "office"
   - action: action_decrease_temperature_value
-  - slot_was_set:
-    - room_name: null
-    - temperature: null
-    - device_type: null
   - intent: decrease_temperature_by
     entities:
     - temperature: "3"
   - slot_was_set:
     - temperature: "3"
-  - action: action_ask_llm_for_entities
-  - slot_was_set:
-    - room_name: "office"
-    - device_type: "ac"
   - action: action_decrease_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
+    - room_name: null
     - temperature: null
     - device_type: null
-    - room_name: null
 
 - story: decrease the ac set point in the office a little but it is still hot decrease it by 3 degrees
   steps:
@@ -342,24 +329,12 @@ stories:
     - device_type: "ac"
     - room_name: "office"
   - action: action_decrease_temperature_value
-  - slot_was_set:
-    - room_name: null
-    - temperature: null
-    - device_type: null
   - intent: decrease_temperature_by
     entities:
     - temperature: "3"
   - slot_was_set:
     - temperature: "3"
-  - action: action_ask_llm_for_entities
-  - slot_was_set:
-    - room_name: "office"
-    - device_type: "ac"
   - action: action_decrease_temperature_value
-  - slot_was_set:
-    - temperature: null
-    - device_type: null
-    - room_name: null
 
 - story: decrease the central ac set point a little but it is still hot decrease it by 3 degrees
   steps:
@@ -371,17 +346,12 @@ stories:
     - temperature: "5"
     - device_type: "ac"
   - action: action_decrease_temperature_value
-  - slot_was_set:
-    - temperature: null
-    - device_type: null
   - intent: decrease_temperature_by
     entities:
     - temperature: "3"
   - slot_was_set:
     - temperature: "3"
   - action: action_decrease_temperature_value
-  - slot_was_set:
-    - temperature: null
 
 - story: increase the central ac set point a little but it is still cold decrease it by 3 degrees
   steps:
@@ -393,17 +363,12 @@ stories:
     - temperature: "5"
     - device_type: "ac"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - temperature: null
-    - device_type: null
   - intent: increase_temperature_by
     entities:
     - temperature: "3"
   - slot_was_set:
     - temperature: "3"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - temperature: null
 
 - story: ask about the current temperature then increase the main ac set point a little but it is still cold increase it by 5 degrees
   steps:
@@ -415,16 +380,12 @@ stories:
   - slot_was_set:
     - temperature: "5"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - temperature: null
   - intent: increase_temperature_by
     entities:
     - temperature: "5"
   - slot_was_set:
     - temperature: "5"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - temperature: null
 
 - story: ask about the current temperature at office then increase its the ac set point a little and also increase the main ac by 5 degrees
   steps:
@@ -440,17 +401,16 @@ stories:
   - slot_was_set:
     - temperature: "5"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - room_name: null
-    - temperature: null
   - intent: increase_temperature_by
     entities:
     - temperature: "5"
   - slot_was_set:
     - temperature: "5"
-  - action: action_ask_llm_for_entities
   - action: action_increase_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
+    - room_name: null
     - temperature: null
 
 - story: it is so cold in the office increase the current ac temperature by 10 degrees but it got so hot so decrease it by 5 degrease
@@ -465,24 +425,12 @@ stories:
     - temperature: "10"
     - device_type: "ac"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - room_name: null
-    - temperature: null
-    - device_type: null
-  - user: |
-      Oh I think it got so hot so decrease it by [5](temperature) degrees please
-    intent: decrease_temperature_by
+  - intent: decrease_temperature_by
+    entities:
+    - temperature: "5"
   - slot_was_set:
     - temperature: "5"
-  - action: action_ask_llm_for_entities
-  - slot_was_set:
-    - device_type: "ac"
-    - room_name: "office"
   - action: action_decrease_temperature_value
-  - slot_was_set:
-    - room_name: null
-    - temperature: null
-    - device_type: null
 
 - story: it is so hot in the office decrease the current ac temperature by 5 degrees but it got so cold actually so increase it by 3 degrease
   steps:
@@ -496,20 +444,14 @@ stories:
     - temperature: "5"
     - device_type: "ac"
   - action: action_decrease_temperature_value
-  - slot_was_set:
-    - room_name: null
-    - temperature: null
-    - device_type: null
   - intent: increase_temperature_by
     entities:
     - temperature: "3"
   - slot_was_set:
     - temperature: "3"
-  - action: action_ask_llm_for_entities
-  - slot_was_set:
-    - device_type: "ac"
-    - room_name: "office"
   - action: action_increase_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - room_name: null
     - temperature: null
@@ -525,19 +467,12 @@ stories:
     - temperature: "5"
     - device_type: "ac"
   - action: action_decrease_temperature_value
-  - slot_was_set:
-    - temperature: null
-    - device_type: null
   - intent: increase_temperature_by
     entities:
     - temperature: "3"
   - slot_was_set:
     - temperature: "3"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - room_name: null
-    - temperature: null
-    - device_type: null
 
 - story: it is so cold, increase the current main ac's temperature by 7 degrees but it got so hot actually so decrease it by 6 degrease
   steps:
@@ -549,19 +484,12 @@ stories:
     - temperature: "7"
     - device_type: "ac"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - temperature: null
-    - device_type: null
   - intent: decrease_temperature_by
     entities:
     - temperature: "6"
   - slot_was_set:
     - temperature: "6"
   - action: action_decrease_temperature_value
-  - slot_was_set:
-    - room_name: null
-    - temperature: null
-    - device_type: null
 
 - story: increase the temperature of the main ac then the office ac
   steps:
@@ -573,7 +501,10 @@ stories:
     - temperature: "5"
     - device_type: "ac"
   - action: action_increase_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
+    - room_name: null
     - temperature: null
     - device_type: null
   - intent: increase_temperature_by
@@ -586,6 +517,8 @@ stories:
     - temperature: "5"
     - device_type: "ac"
   - action: action_increase_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - room_name: null
     - temperature: null
@@ -601,9 +534,6 @@ stories:
     - temperature: "5"
     - device_type: "ac"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - temperature: null
-    - device_type: null
   - intent: decrease_temperature_by
     entities:
     - room_name: "office"
@@ -614,7 +544,74 @@ stories:
     - temperature: "3"
     - device_type: "ac"
   - action: action_decrease_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - room_name: null
     - temperature: null
     - device_type: null
+
+- story: decrease the living room ac temperature then change the rgb lights as well
+  steps:
+  - intent: decrease_temperature_by
+    entities:
+    - room_name: "living room"
+    - temperature: "5"
+    - device_type: "ac"
+  - slot_was_set:
+    - room_name: "living room"
+    - temperature: "5"
+    - device_type: "ac"
+  - action: action_decrease_temperature_value
+  - intent: change_color
+    entities:
+    - device_type: "rgb lights"
+    - light_color: "red"
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - light_color: "red"
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - room_name: null
+    - temperature: null
+    - device_type: null
+    - light_color: null
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - room_name: "living room"
+    - light_color: "red"
+  - action: action_change_color
+
+- story: increase the office ac temperature then change the rgb lights as well
+  steps:
+  - intent: increase_temperature_by
+    entities:
+    - room_name: "office"
+    - temperature: "5"
+    - device_type: "ac"
+  - slot_was_set:
+    - room_name: "office"
+    - temperature: "5"
+    - device_type: "ac"
+  - action: action_increase_temperature_value
+  - intent: change_color
+    entities:
+    - device_type: "rgb lights"
+    - light_color: "green"
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - light_color: "green"
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - room_name: null
+    - temperature: null
+    - device_type: null
+    - light_color: null
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - room_name: "office"
+    - light_color: "green"
+  - action: action_change_color
+

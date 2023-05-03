@@ -11,6 +11,8 @@ stories:
     - room_name: "kitchen"
     - device_type: "lights"
   - action: action_turn_on_device
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - room_name: null
     - device_type: null
@@ -25,9 +27,6 @@ stories:
     - room_name: "bedroom"
     - device_type: "rgb lights"
   - action: action_turn_on_device
-  - slot_was_set:
-    - room_name: null
-    - device_type: null
 
 - story: trun on kithen rgbs
   steps:
@@ -39,6 +38,8 @@ stories:
     - room_name: "kitchen"
     - device_type: "rgbs"
   - action: action_turn_on_device
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - room_name: null
     - device_type: null
@@ -53,9 +54,6 @@ stories:
     - device_type: "lights"
     - all_devices_selected: "all"
   - action: action_turn_on_device
-  - slot_was_set:
-    - device_type: null
-    - all_devices_selected: null
 
 - story: trun off all lights
   steps:
@@ -67,6 +65,8 @@ stories:
     - device_type: "lights"
     - all_devices_selected: "all"
   - action: action_turn_off_device
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - device_type: null
     - all_devices_selected: null
@@ -83,10 +83,6 @@ stories:
     - room_name: "living room"
     - all_devices_selected: "all"
   - action: action_turn_off_device
-  - slot_was_set:
-    - device_type: null
-    - room_name: null
-    - all_devices_selected: null
 
 - story: trun off kitchen light
   steps:
@@ -98,6 +94,8 @@ stories:
     - room_name: "kitchen"
     - device_type: "lights"
   - action: action_turn_off_device
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - room_name: null
     - device_type: null
@@ -160,8 +158,6 @@ stories:
   - slot_was_set:
     - device_type: "ac"
   - action: action_turn_off_device
-  - slot_was_set:
-    - device_type: null
   - intent: show_home_state
   - action: action_show_home_state
 
@@ -177,6 +173,10 @@ stories:
     - device_type: null
   - intent: show_home_state
   - action: action_show_home_state
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
 
 - story: trun on all lights
   steps:
@@ -188,6 +188,8 @@ stories:
     - device_type: "rgb lights"
     - all_devices_selected: "all"
   - action: action_turn_on_device
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - device_type: null
     - all_devices_selected: null
@@ -204,6 +206,8 @@ stories:
   - action: action_show_home_state
   - intent: turn_on_device
   - action: action_turn_on_device
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - device_type: null
     - room_name: null
@@ -220,9 +224,6 @@ stories:
   - action: action_show_home_state
   - intent: turn_off_device
   - action: action_turn_off_device
-  - slot_was_set:
-    - device_type: null
-    - room_name: null
 
 - story: is the kitchen rgb lights on ? if it is off turn it on , then change its color
   steps:
@@ -236,24 +237,18 @@ stories:
   - action: action_show_home_state
   - intent: turn_on_device
   - action: action_turn_on_device
-  - slot_was_set:
-    - device_type: null
-    - room_name: null
   - intent: change_light_color
     entities:
     - light_color: "red"
   - slot_was_set:
     - light_color: "red"
-  - action: action_ask_llm_for_entities
-  - slot_was_set:
-    - room_name: "kitchen"
-    - device_type: "rgb lights"
-    - light_color: "red"
   - action: action_change_light_color
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
-    - light_color: null
-    - room_name: null
     - device_type: null
+    - room_name: null
+    - light_color: null
 
 # ask llm for entities stories
 - story: turn on office rgb lights then change its color
@@ -266,24 +261,140 @@ stories:
     - device_type: "rgb lights"
     - room_name: "office"
   - action: action_turn_on_device
-  - slot_was_set:
-    - device_type: null
-    - room_name: null
   - intent: change_light_color
     entities:
     - light_color: "red"
   - slot_was_set:
     - light_color: "red"
-  - action: action_ask_llm_for_entities
-  - slot_was_set:
-    - room_name: "office"
+  - action: action_change_light_color
+
+- story: turn on office rgb lights then change its color with thanks done task
+  steps:
+  - intent: turn_on_device
+    entities:
     - device_type: "rgb lights"
+    - room_name: "office"
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - room_name: "office"
+  - action: action_turn_on_device
+  - intent: change_light_color
+    entities:
+    - light_color: "red"
+  - slot_was_set:
     - light_color: "red"
   - action: action_change_light_color
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
+    - device_type: null
     - room_name: null
     - light_color: null
+
+- story: turn on office rgb lights then change its color then change the kitchen rgb lights color as well
+  steps:
+  - intent: turn_on_device
+    entities:
+    - device_type: "rgb lights"
+    - room_name: "office"
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - room_name: "office"
+  - action: action_turn_on_device
+  - intent: change_light_color
+    entities:
+    - light_color: "red"
+  - slot_was_set:
+    - light_color: "red"
+  - action: action_change_light_color
+  - intent: change_light_color
+    entities:
+    - light_color: "blue"
+    - device_type: "rgb lights"
+    - room_name: "kitchen"
+  - slot_was_set:
+    - light_color: "blue"
+    - device_type: "rgb lights"
+    - room_name: "kitchen"
+  - action: action_change_light_color
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
     - device_type: null
+    - room_name: null
+    - light_color: null
+
+- story: turn on office rgb lights then change its color then change the kitchen rgb lights color to the same color as well
+  steps:
+  - intent: turn_on_device
+    entities:
+    - device_type: "rgb lights"
+    - room_name: "office"
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - room_name: "office"
+  - action: action_turn_on_device
+  - intent: change_light_color
+    entities:
+    - light_color: "red"
+  - slot_was_set:
+    - light_color: "red"
+  - action: action_change_light_color
+  - intent: change_light_color
+    entities:
+    - device_type: "rgb lights"
+    - room_name: "kitchen"
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - room_name: "kitchen"
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - room_name: "kitchen"
+    - light_color: "red"
+  - action: action_change_light_color
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
+    - light_color: null
+
+- story: turn on office rgb lights then change its color then change the kitchen colors to the same color as well
+  steps:
+  - intent: turn_on_device
+    entities:
+    - device_type: "rgb lights"
+    - room_name: "office"
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - room_name: "office"
+  - action: action_turn_on_device
+  - intent: change_light_color
+    entities:
+    - light_color: "red"
+  - slot_was_set:
+    - light_color: "red"
+  - action: action_change_light_color
+  - intent: change_light_color
+    entities:
+    - device_type: "rgb lights"
+  - slot_was_set:
+    - device_type: "rgb lights"
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - room_name: "kitchen"
+    - light_color: "red"
+  - action: action_change_light_color
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
+    - light_color: null
+
+#####
 
 - story: turn on office rgb lights then change its color then show its state
   steps:
@@ -295,26 +406,47 @@ stories:
     - device_type: "rgb lights"
     - room_name: "office"
   - action: action_turn_on_device
-  - slot_was_set:
-    - device_type: null
-    - room_name: null
   - intent: change_light_color
     entities:
     - light_color: "blue"
   - slot_was_set:
     - light_color: "blue"
-  - action: action_ask_llm_for_entities
-  - slot_was_set:
-    - room_name: "office"
-    - device_type: "rgb lights"
-    - light_color: "blue"
   - action: action_change_light_color
-  - slot_was_set:
-    - room_name: null
-    - device_type: null
-    - light_color: null
   - intent: show_home_state
   - action: action_show_home_state
+# new type
+- story: turn on office rgb lights then change its color and ask about the current temperature state
+  steps:
+  - intent: turn_on_device
+    entities:
+    - device_type: "rgb lights"
+    - room_name: "office"
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - room_name: "office"
+  - action: action_turn_on_device
+  - intent: change_light_color
+    entities:
+    - light_color: "blue"
+  - slot_was_set:
+    - light_color: "blue"
+  - action: action_change_light_color
+  - intent: show_home_state
+  - action: action_show_home_state
+  - intent: turn_on_device
+    entities:
+    - device_type: "ac"
+  - slot_was_set:
+    - device_type: "ac"
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
+    - light_color: null
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - device_type: "ac"
+  - action: action_turn_on_device
 
 - story: turn on rgb leds then change its color
   steps:
@@ -324,21 +456,15 @@ stories:
   - slot_was_set:
     - device_type: "rgb leds"
   - action: action_turn_on_device
-  - slot_was_set:
-    - device_type: null
   - intent: change_light_color
     entities:
     - light_color: "sky blue"
   - slot_was_set:
     - light_color: "sky blue"
-  - action: action_ask_llm_for_entities
-  - slot_was_set:
-    - room_name: "office"
-    - device_type: "rgb leds"
-    - light_color: "sky blue"
   - action: action_change_light_color
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
-    - room_name: null
     - device_type: null
     - light_color: null
 
@@ -352,8 +478,6 @@ stories:
   - action: action_show_home_state
   - intent: turn_off_device
   - action: action_turn_off_device
-  - slot_was_set:
-    - device_type: null
 
 - story: trun off unknown device
   steps:
@@ -367,9 +491,6 @@ stories:
     - device_type: "lights"
     - room_name: "kitchen"
   - action: action_turn_off_device
-  - slot_was_set:
-    - device_type: null
-    - room_name: null
 
 - story: turn on unknown device
   steps:
@@ -383,9 +504,6 @@ stories:
     - device_type: "rgb leds"
     - room_name: "kitchen"
   - action: action_turn_on_device
-  - slot_was_set:
-    - device_type: null
-    - room_name: null
 
 - story: turn off device but not mentioning it
   steps:
@@ -399,11 +517,8 @@ stories:
     - device_type: "lights"
     - room_name: "kitchen"
   - action: action_turn_off_device
-  - slot_was_set:
-    - device_type: null
-    - room_name: null
 
-- story: turn on kitchen lights then turn it off again
+- story: turn on kitchen lights then turn them off again
   steps:
   - intent: turn_on_device
     entities:
@@ -413,15 +528,10 @@ stories:
     - device_type: "lights"
     - room_name: "kitchen"
   - action: action_turn_on_device
-  - slot_was_set:
-    - device_type: null
-    - room_name: null
   - intent: turn_off_device
-  - action: action_ask_llm_for_entities
-  - slot_was_set:
-    - device_type: "lights"
-    - room_name: "kitchen"
   - action: action_turn_off_device
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - device_type: null
     - room_name: null
@@ -436,6 +546,28 @@ stories:
     - device_type: "lights"
     - room_name: "kitchen"
   - action: action_turn_on_device
+  - intent: turn_off_device
+  - action: action_turn_off_device
+  - intent: show_home_state
+  - action: action_show_home_state
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
+
+- story: turn on the office lights then thnx turn if off again and turn on the living room rgbs
+  steps:
+  - intent: turn_on_device
+    entities:
+    - device_type: "lights"
+    - room_name: "office"
+  - slot_was_set:
+    - device_type: "lights"
+    - room_name: "office"
+  - action: action_turn_on_device
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - device_type: null
     - room_name: null
@@ -443,44 +575,93 @@ stories:
   - action: action_ask_llm_for_entities
   - slot_was_set:
     - device_type: "lights"
-    - room_name: "kitchen"
+    - room_name: "office"
   - action: action_turn_off_device
-  - slot_was_set:
-    - device_type: null
-    - room_name: null
-  - intent: show_home_state
-  - action: action_show_home_state
-
-- story: conversation to turn on the rgbs in the kitchen then ask about its set color
-  steps:
   - intent: turn_on_device
     entities:
     - device_type: "rgb lights"
-    - room_name: "kitchen"
+    - room_name: "living room"
   - slot_was_set:
     - device_type: "rgb lights"
-    - room_name: "kitchen"
+    - room_name: "living room"
   - action: action_turn_on_device
+
+- story: turn on the office lights then thnx turn off office lights again and turn on the living room rgbs
+  steps:
+  - intent: turn_on_device
+    entities:
+    - device_type: "lights"
+    - room_name: "office"
+  - slot_was_set:
+    - device_type: "lights"
+    - room_name: "office"
+  - action: action_turn_on_device
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
     - device_type: null
     - room_name: null
-  - intent: show_home_state
-  - action: action_show_home_state
-  - intent: change_light_color
+  - intent: turn_off_device
     entities:
-    - light_color: "red"
+    - device_type: "lights"
+    - room_name: "office"
   - slot_was_set:
-    - light_color: "red"
+    - device_type: "lights"
+    - room_name: "office"
+  - intent: turn_on_device
+    entities:
+    - device_type: "rgb lights"
+    - room_name: "living room"
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - room_name: "living room"
+  - action: action_turn_on_device
+
+- story: turn off the office lights then thnx turn on office lights again
+  steps:
+  - intent: turn_off_device
+    entities:
+    - device_type: "lights"
+    - room_name: "office"
+  - slot_was_set:
+    - device_type: "lights"
+    - room_name: "office"
+  - action: action_turn_off_device
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
+  - intent: turn_on_device
+    entities:
+    - device_type: "lights"
+    - room_name: "office"
+  - slot_was_set:
+    - device_type: "lights"
+    - room_name: "office"
+  - action: action_turn_on_device
+
+- story: turn off the office lights then thnx turn it on again and
+  steps:
+  - intent: turn_off_device
+    entities:
+    - device_type: "lights"
+    - room_name: "office"
+  - slot_was_set:
+    - device_type: "lights"
+    - room_name: "office"
+  - action: action_turn_off_device
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
+  - intent: turn_on_device
   - action: action_ask_llm_for_entities
   - slot_was_set:
-    - room_name: "kitchen"
-    - device_type: "rgb lights"
-    - light_color: "red"
-  - action: action_change_light_color
-  - slot_was_set:
-    - light_color: null
-    - room_name: null
-    - device_type: null
+    - device_type: "lights"
+    - room_name: "office"
+  - action: action_turn_on_device
 
 - story: conversation to turn on the rgbs in the kitchen then ask about its set color
   steps:
@@ -492,16 +673,7 @@ stories:
     - device_type: "rgb lights"
     - room_name: "kitchen"
   - action: action_turn_on_device
-  - slot_was_set:
-    - room_name: null
-    - device_type: null
   - intent: show_home_state
-    entities:
-    - room_name: "kitchen"
-    - device_type: "lights"
-  - slot_was_set:
-    - room_name: "kitchen"
-    - device_type: "lights"
   - action: action_show_home_state
   - intent: change_light_color
     entities:
@@ -509,10 +681,37 @@ stories:
   - slot_was_set:
     - light_color: "red"
   - action: action_change_light_color
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
-    - room_name: null
     - device_type: null
+    - room_name: null
     - light_color: null
+
+- story: conversation to turn on the rgbs in the kitchen then ask about its set color
+  steps:
+  - intent: turn_on_device
+    entities:
+    - device_type: "rgb lights"
+    - room_name: "kitchen"
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - room_name: "kitchen"
+  - action: action_turn_on_device
+  - intent: show_home_state
+    entities:
+    - room_name: "kitchen"
+    - device_type: "rgb lights"
+  - slot_was_set:
+    - room_name: "kitchen"
+    - device_type: "rgb lights"
+  - action: action_show_home_state
+  - intent: change_light_color
+    entities:
+    - light_color: "red"
+  - slot_was_set:
+    - light_color: "red"
+  - action: action_change_light_color
 
 - story: conversation to turn on the rgbs in the office then ask about its set color
   steps:
@@ -524,9 +723,6 @@ stories:
     - device_type: "rgb lights"
     - room_name: "office"
   - action: action_turn_on_device
-  - slot_was_set:
-    - room_name: null
-    - device_type: null
   - intent: show_home_state
   - action: action_show_home_state
   - intent: change_light_color
@@ -540,9 +736,47 @@ stories:
     - device_type: "rgb lights"
     - light_color: "sky blue"
   - action: action_change_light_color
+
+- story: conversation to turn on the rgbs in the office then ask about its set color then change the living room rgbs color to the same color
+  steps:
+  - intent: turn_on_device
+    entities:
+    - device_type: "rgb lights"
+    - room_name: "office"
   - slot_was_set:
-    - room_name: null
+    - device_type: "rgb lights"
+    - room_name: "office"
+  - action: action_turn_on_device
+  - intent: show_home_state
+  - action: action_show_home_state
+  - intent: change_light_color
+    entities:
+    - light_color: "sky blue"
+  - slot_was_set:
+    - light_color: "sky blue"
+  - action: action_change_light_color
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
     - device_type: null
+    - room_name: null
+    - light_color: null
+  - intent: change_light_color
+    entities:
+    - room_name: "living room"
+  - slot_was_set:
+    - room_name: "living room"
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - room_name: "living room"
+    - device_type: "rgb lights"
+    - light_color: "sky blue"
+  - action: action_change_light_color
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
+    - room_name: null
     - light_color: null
 
 # turn on ac stories
@@ -556,9 +790,6 @@ stories:
     - device_type: "ac"
     - room_name: "living room"
   - action: action_turn_on_device
-  - slot_was_set:
-    - device_type: null
-    - room_name: null
   - intent: check_temprature_value
   - action: action_check_temprature_value
   - intent: decrease_temperature_by
@@ -567,5 +798,3 @@ stories:
   - slot_was_set:
     - temperature: "2"
   - action: action_decrease_temperature_value
-  - slot_was_set:
-    - temperature: null
