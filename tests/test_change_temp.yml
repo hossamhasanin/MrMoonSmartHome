@@ -76,19 +76,11 @@ stories:
     - temperature: "10"
     - device_type: "ac"
   - action: action_decrease_temperature_value
-  - slot_was_set:
-    - room_name: null
-    - temperature: null
-    - device_type: null
   - user: |
       Oh I think it got so cold so increase it by [5](temperature) degrease please
     intent: increase_temperature_by
   - slot_was_set:
     - temperature: "5"
-  - action: action_ask_llm_for_entities
-  - slot_was_set:
-    - device_type: "ac"
-    - room_name: "living room"
   - action: action_increase_temperature_value
   - slot_was_set:
     - room_name: null
@@ -105,21 +97,42 @@ stories:
     - temperature: "10"
     - device_type: "ac"
   - action: action_increase_temperature_value
-  - slot_was_set:
-    - room_name: null
-    - temperature: null
-    - device_type: null
   - user: |
       Oh I think it got so hot so decrease it by [5](temperature) degrees please
     intent: decrease_temperature_by
   - slot_was_set:
     - temperature: "5"
-  - action: action_ask_llm_for_entities
-  - slot_was_set:
-    - device_type: "ac"
-    - room_name: "living room"
   - action: action_decrease_temperature_value
   - slot_was_set:
     - room_name: null
     - temperature: null
     - device_type: null
+  
+- story: it is so hot in living room decrease the current ac temperature by 10 degrees then thanks but it got so cold so increase it by 5 degrease
+  steps:
+  - user: |
+      I am sweating so much, decrease the current [living room](room_name) [ac](device_type) temperature by [10](temperature) degrees.
+    intent: decrease_temperature_by
+  - slot_was_set:
+    - room_name: "living room"
+    - temperature: "10"
+    - device_type: "ac"
+  - action: action_decrease_temperature_value
+  - user: |
+      thanks buddy.
+    intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - room_name: null
+    - temperature: null
+    - device_type: null
+  - user: |
+      oh actually it got so cold so increase the temperature by [5](temperature) degrease please
+    intent: increase_temperature_by
+  - slot_was_set:
+    - temperature: "5"
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - room_name: "living room"
+    - device_type: "ac"
+  - action: action_increase_temperature_value

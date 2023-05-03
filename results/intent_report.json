@@ -1,23 +1,58 @@
 {
-  "set_temperature_to": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 18,
-    "confused_with": {}
-  },
-  "check_temprature_value": {
+  "change_light_color": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 36,
     "confused_with": {}
   },
+  "show_home_state": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 66,
+    "confused_with": {}
+  },
   "decrease_temperature_by": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 42,
+    "support": 41,
+    "confused_with": {}
+  },
+  "number_of_people_in_home": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 25,
+    "confused_with": {}
+  },
+  "turn_off_device": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 57,
+    "confused_with": {}
+  },
+  "unlock_door_lock": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 35,
+    "confused_with": {}
+  },
+  "increase_temperature_by": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 23,
+    "confused_with": {}
+  },
+  "turn_on_device": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 92,
     "confused_with": {}
   },
   "electricity_usage": {
@@ -34,55 +69,25 @@
     "support": 5,
     "confused_with": {}
   },
-  "change_light_color": {
+  "thanks_done_task": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 19,
+    "confused_with": {}
+  },
+  "check_temprature_value": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 36,
     "confused_with": {}
   },
-  "unlock_door_lock": {
+  "set_temperature_to": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 35,
-    "confused_with": {}
-  },
-  "thanks": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 9,
-    "confused_with": {}
-  },
-  "turn_off_device": {
-    "precision": 0.9827586206896551,
-    "recall": 1.0,
-    "f1-score": 0.9913043478260869,
-    "support": 57,
-    "confused_with": {}
-  },
-  "show_home_state": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 59,
-    "confused_with": {}
-  },
-  "turn_on_device": {
-    "precision": 1.0,
-    "recall": 0.9891304347826086,
-    "f1-score": 0.994535519125683,
-    "support": 92,
-    "confused_with": {
-      "turn_off_device": 1
-    }
-  },
-  "increase_temperature_by": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 23,
+    "support": 18,
     "confused_with": {}
   },
   "out_of_scope_electricity_usage_queries": {
@@ -92,30 +97,23 @@
     "support": 55,
     "confused_with": {}
   },
-  "number_of_people_in_home": {
+  "accuracy": 1.0,
+  "macro avg": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 25,
-    "confused_with": {}
-  },
-  "accuracy": 0.9980988593155894,
-  "macro avg": {
-    "precision": 0.9987684729064039,
-    "recall": 0.9992236024844721,
-    "f1-score": 0.9989885619251265,
-    "support": 526
+    "support": 542
   },
   "weighted avg": {
-    "precision": 0.9981316376032516,
-    "recall": 0.9980988593155894,
-    "f1-score": 0.9981019307711974,
-    "support": 526
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 542
   },
   "micro avg": {
-    "precision": 0.9980988593155894,
-    "recall": 0.9980988593155894,
-    "f1-score": 0.9980988593155894,
-    "support": 526
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 542
   }
 }

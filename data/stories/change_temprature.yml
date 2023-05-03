@@ -523,6 +523,41 @@ stories:
     - room_name: null
     - temperature: null
     - device_type: null
+  
+- story: increase the temperature of the office ac then thanks and increase it more
+  steps:
+  - intent: increase_temperature_by
+    entities:
+    - temperature: "5"
+    - device_type: "ac"
+    - room_name: "office"
+  - slot_was_set:
+    - temperature: "5"
+    - device_type: "ac"
+    - room_name: "office"
+  - action: action_increase_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - room_name: null
+    - temperature: null
+    - device_type: null
+  - intent: increase_temperature_by
+    entities:
+    - temperature: "5"
+  - slot_was_set:
+    - temperature: "5"
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - device_type: "ac"
+    - room_name: "office"
+  - action: action_increase_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - room_name: null
+    - temperature: null
+    - device_type: null
 
 - story: increase the temperature of the main ac and decrease it by 3 degrees at the office
   steps:
@@ -551,67 +586,97 @@ stories:
     - temperature: null
     - device_type: null
 
-# - story: decrease the living room ac temperature then change the rgb lights as well
-#   steps:
-#   - intent: decrease_temperature_by
-#     entities:
-#     - room_name: "living room"
-#     - temperature: "5"
-#     - device_type: "ac"
-#   - slot_was_set:
-#     - room_name: "living room"
-#     - temperature: "5"
-#     - device_type: "ac"
-#   - action: action_decrease_temperature_value
-#   - intent: change_color
-#     entities:
-#     - device_type: "rgb lights"
-#     - light_color: "red"
-#   - slot_was_set:
-#     - device_type: "rgb lights"
-#     - light_color: "red"
-#   - action: action_reset_filled_slots
-#   - slot_was_set:
-#     - room_name: null
-#     - temperature: null
-#     - device_type: null
-#     - light_color: null
-#   - action: action_ask_llm_for_entities
-#   - slot_was_set:
-#     - device_type: "rgb lights"
-#     - room_name: "living room"
-#     - light_color: "red"
-#   - action: action_change_light_color
+- story: decrease the living room ac temperature then change the rgb lights as well
+  steps:
+  - intent: decrease_temperature_by
+    entities:
+    - room_name: "living room"
+    - temperature: "5"
+    - device_type: "ac"
+  - slot_was_set:
+    - room_name: "living room"
+    - temperature: "5"
+    - device_type: "ac"
+  - action: action_decrease_temperature_value
+  - intent: change_light_color
+    entities:
+    - device_type: "rgb lights"
+    - light_color: "red"
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - light_color: "red"
+  - action: action_change_light_color
 
-# - story: increase the office ac temperature then change the rgb lights as well
-#   steps:
-#   - intent: increase_temperature_by
-#     entities:
-#     - room_name: "office"
-#     - temperature: "5"
-#     - device_type: "ac"
-#   - slot_was_set:
-#     - room_name: "office"
-#     - temperature: "5"
-#     - device_type: "ac"
-#   - action: action_increase_temperature_value
-#   - intent: change_color
-#     entities:
-#     - device_type: "rgb lights"
-#     - light_color: "green"
-#   - slot_was_set:
-#     - device_type: "rgb lights"
-#     - light_color: "green"
-#   - action: action_reset_filled_slots
-#   - slot_was_set:
-#     - room_name: null
-#     - temperature: null
-#     - device_type: null
-#     - light_color: null
-#   - action: action_ask_llm_for_entities
-#   - slot_was_set:
-#     - device_type: "rgb lights"
-#     - room_name: "office"
-#     - light_color: "green"
-#   - action: action_change_light_color
+- story: increase the office ac temperature then change the rgb lights as well
+  steps:
+  - intent: increase_temperature_by
+    entities:
+    - room_name: "office"
+    - temperature: "5"
+    - device_type: "ac"
+  - slot_was_set:
+    - room_name: "office"
+    - temperature: "5"
+    - device_type: "ac"
+  - action: action_increase_temperature_value
+  - intent: change_light_color
+    entities:
+    - device_type: "rgb lights"
+    - light_color: "green"
+  - slot_was_set:
+    - device_type: "rgb lights"
+    - light_color: "green"
+  - action: action_change_light_color
 
+- story: it is so cold in living room increase the current ac temperature by 3 degrees but it got so hot so decrease it by 2 degrease
+  steps:
+  - intent: increase_temperature_by
+    entities:
+    - room_name: "living room"
+    - temperature: "3"
+    - device_type: "ac"
+  - slot_was_set:
+    - room_name: "living room"
+    - temperature: "3"
+    - device_type: "ac"
+  - action: action_increase_temperature_value
+  - intent: decrease_temperature_by
+    entities:
+    - temperature: "2"
+  - slot_was_set:
+    - temperature: "2"
+  - action: action_decrease_temperature_value
+
+- story: increase the current ac temperature by 3 degrees but it got so hot so decrease it by 2 degrease
+  steps:
+  - intent: increase_temperature_by
+    entities:
+    - temperature: "3"
+    - device_type: "ac"
+  - slot_was_set:
+    - temperature: "3"
+    - device_type: "ac"
+  - action: action_increase_temperature_value
+  - intent: decrease_temperature_by
+    entities:
+    - temperature: "2"
+  - slot_was_set:
+    - temperature: "2"
+  - action: action_decrease_temperature_value
+
+- story: decrease the current ac temperature by 3 degrees but it got so cold so increase it by 2 degrease
+  steps:
+  - intent: decrease_temperature_by
+    entities:
+    - temperature: "3"
+    - device_type: "ac"
+  - slot_was_set:
+    - temperature: "3"
+    - device_type: "ac"
+  - action: action_decrease_temperature_value
+  - intent: increase_temperature_by
+    entities:
+    - temperature: "2"
+  - slot_was_set:
+    - temperature: "2"
+  - action: action_increase_temperature_value

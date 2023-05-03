@@ -779,6 +779,258 @@ stories:
     - room_name: null
     - light_color: null
 
+- story: ask about the sitting room rgb lights if they are off then thx and turn them on then changing their color
+  steps:
+  - intent: show_home_state
+    entities:
+    - room_name: sitting room
+    - device_type: rgb lights
+  - slot_was_set:
+    - room_name: sitting room
+    - device_type: rgb lights
+  - action: action_show_home_state
+  - intent: turn_on_device
+  - action: action_turn_on_device
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
+  - intent: change_light_color
+    entities:
+    - light_color: yellow
+  - slot_was_set:
+    - light_color: yellow
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - room_name: sitting room
+    - device_type: rgb lights
+    - light_color: yellow
+  - action: action_change_light_color
+
+- story: ask about the kids room colored LEDs if they are off then thx and turn them on then changing their color
+  steps:
+  - intent: show_home_state
+    entities:
+    - room_name: kids room
+    - device_type: colored LEDs
+  - slot_was_set:
+    - room_name: kids room
+    - device_type: colored LEDs
+  - action: action_show_home_state
+  - intent: turn_on_device
+  - action: action_turn_on_device
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
+  - intent: change_light_color
+    entities:
+    - light_color: yellow
+  - slot_was_set:
+    - light_color: yellow
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - room_name: kids room
+    - device_type: colored LEDs
+    - light_color: yellow
+  - action: action_change_light_color
+
+- story: ask about the rgb lights if they are off then thx and turn them on then changing their color
+  steps:
+  - intent: show_home_state
+    entities:
+    - device_type: rgb lights
+  - slot_was_set:
+    - device_type: rgb lights
+  - action: action_show_home_state
+  - intent: turn_on_device
+  - action: action_turn_on_device
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
+  - intent: change_light_color
+    entities:
+    - light_color: blue
+  - slot_was_set:
+    - light_color: blue
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - device_type: rgb lights
+    - light_color: blue
+  - action: action_change_light_color
+
+- story: ask about the rgb lights if they are on then thx and change their color
+  steps:
+  - intent: show_home_state
+    entities:
+    - device_type: rgb lights
+  - slot_was_set:
+    - device_type: rgb lights
+  - action: action_show_home_state
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
+  - intent: change_light_color
+    entities:
+    - light_color: blue
+  - slot_was_set:
+    - light_color: blue
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - device_type: rgb lights
+    - light_color: blue
+  - action: action_change_light_color
+
+- story: ask about the colored lights if they are on then thx and change their color
+  steps:
+  - intent: show_home_state
+    entities:
+    - device_type: colored lights
+  - slot_was_set:
+    - device_type: colored lights
+  - action: action_show_home_state
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
+  - intent: change_light_color
+    entities:
+    - light_color: blue
+  - slot_was_set:
+    - light_color: blue
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - device_type: colored lights
+    - light_color: blue
+  - action: action_change_light_color
+
+- story: ask about the living room colored lights if they are on then thx and turn on the kitchen rgbs aslo change its light color
+  steps:
+  - intent: show_home_state
+    entities:
+    - room_name: living room
+    - device_type: colored lights
+  - slot_was_set:
+    - room_name: living room
+    - device_type: colored lights
+  - action: action_show_home_state
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
+  - intent: turn_on_device
+    entities:
+    - room_name: kitchen
+    - device_type: rgb lights
+  - slot_was_set:
+    - room_name: kitchen
+    - device_type: rgb lights
+  - action: action_turn_on_device
+  - intent: change_light_color
+    entities:
+    - light_color: blue
+  - slot_was_set:
+    - light_color: blue
+  - action: action_change_light_color
+
+- story: ask about the office colored lights color then thx and turn on the kitchen rgbs aslo change its light color to the same color
+  steps:
+  - intent: show_home_state
+    entities:
+    - room_name: office
+    - device_type: colored lights
+  - slot_was_set:
+    - room_name: office
+    - device_type: colored lights
+  - action: action_show_home_state
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
+  - intent: turn_on_device
+    entities:
+    - room_name: kitchen
+    - device_type: rgb lights
+  - slot_was_set:
+    - room_name: kitchen
+    - device_type: rgb lights
+  - action: action_turn_on_device
+  - intent: change_light_color
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - room_name: kitchen
+    - device_type: rgb lights
+    - light_color: blue
+  - action: action_change_light_color
+
+- story: ask about the office colored lights color then thx and turn on the kids room rgbs aslo change its light color to the same color
+  steps:
+  - intent: show_home_state
+    entities:
+    - room_name: office
+    - device_type: colored lights
+  - slot_was_set:
+    - room_name: office
+    - device_type: colored lights
+  - action: action_show_home_state
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
+  - intent: turn_on_device
+    entities:
+    - room_name: kids room
+    - device_type: rgb lights
+  - slot_was_set:
+    - room_name: kids room
+    - device_type: rgb lights
+  - action: action_turn_on_device
+  - intent: change_light_color
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - room_name: kids room
+    - device_type: rgb lights
+    - light_color: green
+  - action: action_change_light_color
+
+- story: ask about room A colored lights color then thx and turn on the kids room rgbs aslo change its light color to the same color
+  steps:
+  - intent: show_home_state
+    entities:
+    - room_name: room A
+    - device_type: colored lights
+  - slot_was_set:
+    - room_name: room A
+    - device_type: colored lights
+  - action: action_show_home_state
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - room_name: null
+    - device_type: null
+  - intent: turn_on_device
+    entities:
+    - room_name: kids room
+    - device_type: rgb lights
+  - slot_was_set:
+    - room_name: kids room
+    - device_type: rgb lights
+  - action: action_turn_on_device
+  - intent: change_light_color
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - room_name: kids room
+    - device_type: rgb lights
+    - light_color: green
+  - action: action_change_light_color
+
 # turn on ac stories
 - story: turn on ac then ask about the temperature and lower the ac by 2 degrees
   steps:
@@ -798,3 +1050,101 @@ stories:
   - slot_was_set:
     - temperature: "2"
   - action: action_decrease_temperature_value
+
+- story: turn on the ac then increase the temperature by 2 degrees and decrease back again with 1 degree
+  steps:
+  - intent: turn_on_device
+    entities:
+    - device_type: "ac"
+  - slot_was_set:
+    - device_type: "ac"
+  - action: action_turn_on_device
+  - intent: increase_temperature_by
+    entities:
+    - temperature: "2"
+    - device_type: "ac"
+  - slot_was_set:
+    - temperature: "2"
+    - device_type: "ac"
+  - action: action_increase_temperature_value
+  - intent: decrease_temperature_by
+    entities:
+    - temperature: "1"
+    - device_type: "ac"
+  - slot_was_set:
+    - temperature: "1"
+    - device_type: "ac"
+  - action: action_decrease_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
+    - temperature: null
+
+- story: turn on the ac in the office then increase the temperature by 2 degrees and decrease back again with 1 degree
+  steps:
+  - intent: turn_on_device
+    entities:
+    - device_type: "ac"
+    - room_name: "office"
+  - slot_was_set:
+    - device_type: "ac"
+    - room_name: "office"
+  - action: action_turn_on_device
+  - intent: increase_temperature_by
+    entities:
+    - temperature: "2"
+  - slot_was_set:
+    - temperature: "2"
+  - action: action_increase_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
+    - temperature: null
+    - room_name: null
+  - intent: decrease_temperature_by
+    entities:
+    - temperature: "1"
+  - slot_was_set:
+    - temperature: "1"
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - room_name: "office"
+    - device_type: "ac"
+  - action: action_decrease_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
+    - temperature: null
+    - room_name: null
+  
+- story: turn on the ac in room A then increase the temperature by 2 degrees and decrease back again with 1 degree
+  steps:
+  - intent: turn_on_device
+    entities:
+    - device_type: "ac"
+    - room_name: "room A"
+  - slot_was_set:
+    - device_type: "ac"
+    - room_name: "room A"
+  - action: action_turn_on_device
+  - intent: increase_temperature_by
+    entities:
+    - temperature: "2"
+  - slot_was_set:
+    - temperature: "2"
+  - action: action_increase_temperature_value
+  - intent: decrease_temperature_by
+    entities:
+    - temperature: "1"
+  - slot_was_set:
+    - temperature: "1"
+  - action: action_decrease_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - device_type: null
+    - temperature: null
+    - room_name: null

@@ -372,6 +372,13 @@ nlu:
     - Could you tell me what is the color of the [room A](room_name) [rgb light](device_type) ?
     - What is the color of the [room B](room_name) [rgb light](device_type) ?
     - What is the color of the [room C](room_name) [rgb light](device_type) ?
+    - Could you tell me what is the [light](device_type) color of [room A](room_name) ?
+    - do you know the [light](device_type) color of the [kitchen](room_name) ?
+    - tell me the [light](device_type) color of the [living room](room_name).
+    - what is the color of the [bedroom](room_name) [rgbs](device_type) ?
+    - what is the color of the [office](room_name) [colored leds](device_type) ?
+    - what is the color of the [office](room_name) [colored rgbs](device_type) ?
+    - what is the color of the [office](room_name) [colored LEDs](device_type) ?
     - By the way are they on or off ? 
     - Can you tell me if they are turned on or off ?
     - are they currently on or off ?
@@ -558,4 +565,9 @@ nlu:
     - no thanks
     - nope I don't need anything else thank you
     - nope I don't need anything else
-    - great thank you
+    - great thank you.
+    - great.
+    - thanks I don't need anything else.
+    - nope buddy thanks.
+    - nope buddy thank you.
+    - great, nothing else for now.
