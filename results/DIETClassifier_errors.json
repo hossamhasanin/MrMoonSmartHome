@@ -14,7 +14,7 @@
         "entity": "all_devices_selected",
         "start": 8,
         "end": 11,
-        "confidence_entity": 0.9990372657775879,
+        "confidence_entity": 0.9997468590736389,
         "value": "all",
         "extractor": "DIETClassifier"
       },
@@ -22,7 +22,36 @@
         "entity": "device_type",
         "start": 12,
         "end": 18,
-        "confidence_entity": 0.9564646482467651,
+        "confidence_entity": 0.8229718208312988,
+        "value": "lights",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "turn off kitchen lights",
+    "entities": [
+      {
+        "start": 9,
+        "end": 16,
+        "value": "kitchen",
+        "entity": "room_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "room_name",
+        "start": 9,
+        "end": 16,
+        "confidence_entity": 0.9997312426567078,
+        "value": "kitchen",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "device_type",
+        "start": 17,
+        "end": 23,
+        "confidence_entity": 0.6862135529518127,
         "value": "lights",
         "extractor": "DIETClassifier"
       }

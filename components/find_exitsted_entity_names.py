@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 @DefaultV1Recipe.register(
     component_types = [DefaultV1Recipe.ComponentType.ENTITY_EXTRACTOR], is_trainable=False
 )
-class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
+class FindExsistedEntityNames(EntityExtractorMixin, GraphComponent):
     @classmethod
     def required_components(cls) -> List[Type]:
         return []
@@ -43,7 +43,6 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
         return {
                 "symantic_model": "all-MiniLM-L12-v2" ,
                 "embedding_dim": 384,
-                "entity_name": "devices_ids",
                 "threshold": 0.55
         }
 
@@ -56,13 +55,11 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
     ) -> None:
         self.symantic_model = config.get("symantic_model")
         self.embedding_dim = config.get("embedding_dim")
-        self.entity_name = config.get("entity_name")
         self.threshold = config.get("threshold")
         self.devices_index = faiss.IndexFlatIP(self.embedding_dim)
         self.rooms_index = faiss.IndexFlatIP(self.embedding_dim)
         self.current_rooms = []
         self.current_devices = []
-        self.current_devices_ids = {}
         self.model = None
         
         # with model_storage.read_from(resource) as directory_path:
@@ -113,17 +110,11 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
             with open(directory_path / "devices_embeddings.pkl", "rb") as file:
                 devices_data = pickle.load(file)
                 current_devices = devices_data['sentences']
-                
-            # {"<room_name>_<device_type>": <device_id>}
-            with open(directory_path / "devices_ids.pkl", "rb") as file:
-                stored_data = pickle.load(file)
-                current_devices_ids = stored_data
 
             logger.info("SignUpIdForEntities load the model")
             component.model = SentenceTransformer(directory_path / component.symantic_model)
             component.current_rooms = current_rooms
             component.current_devices = current_devices
-            component.current_devices_ids = current_devices_ids
             component.rooms_index.add(rooms_data['embeddings'])
             component.devices_index.add(devices_data['embeddings'])
             logger.info("SignUpIdForEntities load")
@@ -170,40 +161,6 @@ class SignUpIdForEntities(EntityExtractorMixin, GraphComponent):
                     entity[ENTITY_ATTRIBUTE_VALUE] = stored_room_name if stored_room_name != "" else extracted_room_name
                 elif entity.get(ENTITY_ATTRIBUTE_TYPE) == "device_type":
                     entity[ENTITY_ATTRIBUTE_VALUE] = stored_device_type if stored_device_type != "" else extracted_device_type
-            
-        if stored_device_type == "":
-            # self._return_empty_entity(message)
-            return
-
-        query = ""
-        if stored_room_name == "":
-            query = stored_device_type
-        else:    
-            query = stored_room_name + "_" + stored_device_type
-
-        logger.info("SignUpIdForEntities query: " + query)
-        if query not in self.current_devices_ids:
-            # self._return_empty_entity(message)
-            return
-
-        logger.info("SignUpIdForEntities query: " + query)
-        extracted_entities.append({
-            ENTITY_ATTRIBUTE_TYPE: self.entity_name,
-            ENTITY_ATTRIBUTE_VALUE: self.current_devices_ids[query],
-            ENTITY_ATTRIBUTE_START: 0,
-            ENTITY_ATTRIBUTE_END: 0
-        })
-        message.set(ENTITIES, extracted_entities, add_to_output=True)
-    
-    # def _return_empty_entity(self, message: Message) -> None:
-    #     extracted_entities = message.get(ENTITIES, [])
-    #     extracted_entities.append({
-    #         ENTITY_ATTRIBUTE_TYPE: self.entity_name,
-    #         ENTITY_ATTRIBUTE_VALUE: [],
-    #         ENTITY_ATTRIBUTE_START: 0,
-    #         ENTITY_ATTRIBUTE_END: 0
-    #     })
-    #     message.set(ENTITIES, extracted_entities, add_to_output=True)
 
     def process_training_data(self, training_data: TrainingData) -> TrainingData:
         self.process(training_data.training_examples)

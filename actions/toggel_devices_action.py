@@ -78,12 +78,6 @@ class ActionTurnOffDevice(Action):
             devices_ids = len(tracker.get_slot("devices_ids")) > 0 and tracker.get_slot("devices_ids")[0] or []
             device_type = tracker.get_slot("device_type")
             room_name = tracker.get_slot("room_name")
-            # if (device_type is None and room_name is None) or (len(devices_ids) == 0):
-            #     ask_llm = AskLlm(tracker=tracker)
-            #     answer = ask_llm.ask_llm_for_entity_extraction()
-            #     devices_ids = answer["devices_ids"]
-            #     device_type = answer["device_type"]
-            #     room_name = answer["room_name"]
 
             result = controller.updateSwitchingState(
                 state= False ,

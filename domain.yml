@@ -17,12 +17,10 @@ intents:
 entities:
 - light_color
 - all_devices_selected
-- devices_ids
 - device_type
 - room_name
 - room_number
 - device_number
-- device_state
 - temperature
 slots:
   room_name:
@@ -45,21 +43,11 @@ slots:
     mappings:
     - type: from_entity
       entity: device_type
-  device_state:
-    type: text
-    mappings:
-    - type: from_entity
-      entity: device_state
   all_devices_selected:
     type: text
     mappings:
     - type: from_entity
       entity: all_devices_selected
-  devices_ids:
-    type: list
-    mappings:
-    - type: from_entity
-      entity: devices_ids
   light_color:
     type: text
     mappings:

@@ -18,12 +18,11 @@ class ActionAskLlmForEntities(Action):
 
         ask_llm = AskLlm(tracker=tracker)
         answer = ask_llm.ask_llm_for_entity_extraction()
-        devices_ids = answer["devices_ids"]
+        # devices_ids = answer["devices_ids"]
         device_type = answer["device_type"]
         room_name = answer["room_name"]
 
         return [
-            SlotSet("devices_ids", [devices_ids]),
             SlotSet("device_type", device_type),
             SlotSet("room_name", room_name)
         ]

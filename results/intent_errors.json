@@ -1,10 +1,10 @@
 [
   {
-    "text": "Please turn off the night light in the nursery",
-    "intent": "turn_on_device",
+    "text": "Could you turn off the night light in the nursery?",
+    "intent": "turn_off_device",
     "intent_prediction": {
-      "name": "turn_off_device",
-      "confidence": 0.8816838264465332
+      "name": "turn_on_device",
+      "confidence": 0.6225751042366028
     }
   }
 ]

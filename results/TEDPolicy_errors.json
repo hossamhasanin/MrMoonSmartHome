@@ -1,5 +1,23 @@
 [
   {
+    "text": "is the office lights on ?",
+    "entities": [
+      {
+        "start": 7,
+        "end": 13,
+        "value": "office",
+        "entity": "room_name"
+      },
+      {
+        "start": 14,
+        "end": 20,
+        "value": "lights",
+        "entity": "device_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
     "text": "is the kitchen lights off ?",
     "entities": [
       {
@@ -39,16 +57,18 @@
     "text": "turn off room A lights",
     "entities": [
       {
+        "text": "turn off room A lights",
         "start": 9,
         "end": 15,
-        "value": "room A",
-        "entity": "room_name"
+        "entity": "room_name",
+        "value": "room A"
       },
       {
+        "text": "turn off room A lights",
         "start": 16,
         "end": 22,
-        "value": "lights",
-        "entity": "device_type"
+        "entity": "device_type",
+        "value": "lights"
       }
     ],
     "predicted_entities": []
@@ -210,30 +230,6 @@
     "predicted_entities": []
   },
   {
-    "text": "change the living room rgb lights to sky blue",
-    "entities": [
-      {
-        "start": 11,
-        "end": 22,
-        "value": "living room",
-        "entity": "room_name"
-      },
-      {
-        "start": 23,
-        "end": 33,
-        "value": "rgb lights",
-        "entity": "device_type"
-      },
-      {
-        "start": 37,
-        "end": 45,
-        "value": "sky blue",
-        "entity": "light_color"
-      }
-    ],
-    "predicted_entities": []
-  },
-  {
     "text": "what is the color of the living room rgbs ?",
     "entities": [
       {
@@ -267,6 +263,30 @@
         "end": 22,
         "entity": "device_type",
         "value": "rgbs"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "change the living room rgb lights to sky blue",
+    "entities": [
+      {
+        "start": 11,
+        "end": 22,
+        "value": "living room",
+        "entity": "room_name"
+      },
+      {
+        "start": 23,
+        "end": 33,
+        "value": "rgb lights",
+        "entity": "device_type"
+      },
+      {
+        "start": 37,
+        "end": 45,
+        "value": "sky blue",
+        "entity": "light_color"
       }
     ],
     "predicted_entities": []
@@ -347,6 +367,50 @@
         "end": 35,
         "value": "blue",
         "entity": "light_color"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "change the bedroom rgbs to blue please",
+    "entities": [
+      {
+        "start": 11,
+        "end": 18,
+        "value": "bedroom",
+        "entity": "room_name"
+      },
+      {
+        "start": 19,
+        "end": 23,
+        "value": "rgbs",
+        "entity": "device_type"
+      },
+      {
+        "start": 27,
+        "end": 31,
+        "value": "blue",
+        "entity": "light_color"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "increase the ac temperature by 2 degrees please",
+    "entities": [
+      {
+        "text": "increase the ac temperature by 2 degrees please",
+        "start": 13,
+        "end": 15,
+        "entity": "device_type",
+        "value": "ac"
+      },
+      {
+        "text": "increase the ac temperature by 2 degrees please",
+        "start": 31,
+        "end": 32,
+        "entity": "temperature",
+        "value": "2"
       }
     ],
     "predicted_entities": []
@@ -485,25 +549,22 @@
     "text": "I am freezing in here ! please increase the living room current ac temperature by 10 degrees.",
     "entities": [
       {
-        "text": "I am freezing in here ! please increase the living room current ac temperature by 10 degrees.",
         "start": 44,
         "end": 55,
-        "entity": "room_name",
-        "value": "living room"
+        "value": "living room",
+        "entity": "room_name"
       },
       {
-        "text": "I am freezing in here ! please increase the living room current ac temperature by 10 degrees.",
         "start": 64,
         "end": 66,
-        "entity": "device_type",
-        "value": "ac"
+        "value": "ac",
+        "entity": "device_type"
       },
       {
-        "text": "I am freezing in here ! please increase the living room current ac temperature by 10 degrees.",
         "start": 82,
         "end": 84,
-        "entity": "temperature",
-        "value": "10"
+        "value": "10",
+        "entity": "temperature"
       }
     ],
     "predicted_entities": []
@@ -555,24 +616,6 @@
         "end": 59,
         "value": "5",
         "entity": "temperature"
-      }
-    ],
-    "predicted_entities": []
-  },
-  {
-    "text": "is the office lights on ?",
-    "entities": [
-      {
-        "start": 7,
-        "end": 13,
-        "value": "office",
-        "entity": "room_name"
-      },
-      {
-        "start": 14,
-        "end": 20,
-        "value": "lights",
-        "entity": "device_type"
       }
     ],
     "predicted_entities": []

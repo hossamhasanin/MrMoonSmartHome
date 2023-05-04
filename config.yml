@@ -12,10 +12,9 @@ pipeline:
 - name: DIETClassifier
   epochs: 100
   constrain_similarities: true
-- name: components.sign_up_id_for_entities.SignUpIdForEntities
+- name: components.find_exitsted_entity_names.FindExsistedEntityNames
   symantic_model: all-MiniLM-L12-v2
   embedding_dim: 384
-  entity_name: devices_ids
   threshold: 0.55
 - name: ResponseSelector
   epochs: 100

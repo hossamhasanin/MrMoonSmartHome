@@ -198,6 +198,11 @@ nlu:
     - could you tell me the current [ac](device_type) temperature in the [office](room_name) please?
     - i was asking about the tepmrature of the house please.
     - i was asking about the tepmrature of the house please buddy.
+    - is it freezing in here or something ?
+    - is it freezing in here or something ? what is the current temprature buddy ?
+    - is it hot or it is just me ?
+    - it is really cold isn't it ? what is the current temprature buddy ?
+    - wow this room is freezing . 
 - intent: number_of_people_in_home
   examples: |
     - How many people are in the house ?
@@ -337,11 +342,11 @@ nlu:
     - what is the state of the [bedroom](room_name) [light](device_type) ?
     - what is the state of the [kitchen](room_name) [light](device_type) ?
     - what is the state of the [living room](room_name) [light](device_type) ?
-    - Is [kitchen](room_name) [light](device_type) [on](device_state) ?
-    - Is [bedroom](room_name) [light](device_type) [on](device_state) ?
+    - Is [kitchen](room_name) [light](device_type) on ?
+    - Is [bedroom](room_name) [light](device_type) on ?
     - is the [kitchen](room_name) [lights](device_type) off ?
-    - Is [living room](room_name) [light](device_type) [off](device_state) ?
-    - Is my [bedroom](room_name) [light](device_type) [off](device_state) ?
+    - Is [living room](room_name) [light](device_type) off ?
+    - Is my [bedroom](room_name) [light](device_type) off ?
     - What is the status of the [ceiling fan](device_type) in the [living room](room_name)?
     - Is the [coffee machine](device_type) in the [kitchen](room_name) turned on?
     - Can you check if the [TV](device_type) in the [bedroom](room_name) is off?
@@ -386,6 +391,10 @@ nlu:
     - is it working ?
     - is it on ?
     - is it off ?
+    - do you know its current light color ?
+    - I would like to know its current light color ?
+    -  what is the current color of it ?
+    - what is the current light color of it ?
 - intent: change_light_color
   examples: |
     - Change the [bedroom](room_name) [light](device_type) to [red](light_color).
@@ -469,6 +478,12 @@ nlu:
     - Please increase the temperature in the [dining room](room_name) by [7](temperature) degrees.
     - Could you make it [3](temperature) degrees warmer in the [guest bedroom](room_name), please?
     - Can you raise the temperature by [5](temperature) degrees in the [basement](room_name)?
+    - I am freezing in here can you increase the temperature by [3](temperature) degrees?
+    - I am so cold increase the temperature by [4](temperature) degrees please.
+    - i am cold increase the [ac](device_type) temperature a little bit please.
+    - increase the [ac](device_type) temperature a little bit please.
+    - it is freezing in here increase the [ac](device_type) temperature a little.
+
 - intent: decrease_temperature_by
   examples: |
     - Decrease the temperature by [3](temperature) degrees in the [living room](room_name).
@@ -512,6 +527,9 @@ nlu:
     - I need the air conditioner in the [office](room_name) to cool down a bit.
     - Make it a bit cooler in the [kitchen](room_name), please.
     - Make it a bit cooler in here, can you adjust the temperature?
+    - It is so damn hot in here I am sweating, can you please turn down the temperature by [2](temperature) degrees?
+    - It is so damn hot in here I am sweating, can you please decrease the ac temperature by [2](temperature) degrees?
+
 - intent: unlock_door_lock
   examples: |
     - Open the [front door](room_name) please.
