@@ -15,7 +15,7 @@ class AskLlm():
 
         coversation_history = self.get_conversation_history()
         # call an API to get the response from LLM
-        response = self.call_llm_api({'prompt': coversation_history} , "extract_entities")
+        response = self.call_llm_api({'conv': coversation_history} , "extract_entities")
         logging.info("LLM response: " + str(response))
         return response
 
@@ -24,7 +24,7 @@ class AskLlm():
 
         coversation_history = self.get_conversation_history()
         params = {
-            "conversation": coversation_history,
+            "conv": coversation_history,
             "state_prompts": state_prompts
         }
         # call an API to get the response from LLM
@@ -35,23 +35,21 @@ class AskLlm():
     
     def get_conversation_history(self) -> Text:
         logging.info("Getting conversation history")
-        coversation_history = ""
+        coversation_history = {}
         for event in self.tracker.events:
             # get the latest messages between user and bot
             if event.get('event') == 'user':
-                coversation_history += event.get('text')
-                coversation_history += "\n"
+                coversation_history["user"] = event.get('text')
             elif event.get('event') == 'bot':
-                coversation_history += event.get('text')
-                coversation_history += "\n"
+                coversation_history["bot"] = event.get('text')
 
         logging.info("Conversation history: " + coversation_history)
         return coversation_history
 
     def call_llm_api(self, params , endpoint : Text):
         # call LLM API and return the response
-        # do a request to LLM API
-        response = requests.get(self.llm_url+endpoint, params= params, timeout=30)
+        # do a post request to LLM API
+        response = requests.post(self.llm_url + endpoint, json=params)
         # parse the response json
         response_json = response.json()
         return response_json['output']

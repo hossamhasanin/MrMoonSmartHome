@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from actions.firebase_controller.results import Results
-from actions.firebase_controller.avialable_operations import AvailableOperations
+from actions.firebase_controller.avialable_operations import AvailableOperations , AvailableColorsToSet
 from enum import Enum
 # device types ids
 # doorStateId = 1,
@@ -37,14 +37,14 @@ device_types_avialable_operations = {
 }
 
 states_prompts_templates = {
-    AvailableDeviceTypes.DOOR.value: lambda isOn: "The door is " + ("open" if isOn else "closed"),
-    AvailableDeviceTypes.TEMP.value: lambda temp: "The temperature is " + str(temp) + " celsius",
-    AvailableDeviceTypes.LED.value: lambda isOn, room_name: "The " + room_name + " normal lights are " + ("on" if isOn else "off"),
-    AvailableDeviceTypes.SMART_PLUG.value: lambda isOn, room_name: "The " + room_name + " smart plug is " + ("on" if isOn else "off"),
-    AvailableDeviceTypes.RGBL.value: lambda isOn , room_name , color: "The " + room_name + " RGB lights are " + ("on" if isOn else "off") + " and has a " + color + " color.",
-    AvailableDeviceTypes.GAS_LEAK_ALARM.value: lambda isOn: "The gas leak alarm is " + ("on" if isOn else "off"),
-    AvailableDeviceTypes.PEOPLE_COUNTER.value: lambda numOfPeople: "The number of people in the room is " + str(numOfPeople),
-    AvailableDeviceTypes.PASSWORD_WRONG_ALARM.value: lambda isOn: "The password wrong alarm is " + ("on" if isOn else "off"),
+    AvailableDeviceTypes.DOOR.value: lambda state_dict , metadata: "The door is " + ("open" if state_dict["isOn"] else "closed"),
+    AvailableDeviceTypes.TEMP.value: lambda state_dict , metadata: "The temperature is " + str(state_dict["temperature"]) + " celsius",
+    AvailableDeviceTypes.LED.value: lambda state_dict , metadata: "The " + metadata["room_name"] + " normal lights are " + ("on" if state_dict["isOn"] else "off"),
+    AvailableDeviceTypes.SMART_PLUG.value: lambda state_dict , metadata: "The " + metadata["room_name"] + " smart plug is " + ("on" if state_dict["isOn"] else "off"),
+    AvailableDeviceTypes.RGBL.value: lambda state_dict , metadata: "The " + metadata["room_name"] + " RGB lights are " + ("on" if state_dict["isOn"] else "off") + " and has a " + AvailableColorsToSet.map_from_text_to_color(state_dict["colorId"]) + " color.",
+    AvailableDeviceTypes.GAS_LEAK_ALARM.value: lambda state_dict , metadata: "The gas leak alarm is " + ("on" if state_dict["isOn"] else "off"),
+    AvailableDeviceTypes.PEOPLE_COUNTER.value: lambda state_dict , metadata: "The number of people in the room is " + str(state_dict["peopleCounter"]),
+    AvailableDeviceTypes.PASSWORD_WRONG_ALARM.value: lambda state_dict , metadata: "The password wrong alarm is " + ("on" if state_dict["isOn"] else "off"),
     AvailableDeviceTypes.POWER_CONSUMPTION.value: lambda powerConsumption: "The power consumption is " + str(powerConsumption) + " watts"
 }
 
