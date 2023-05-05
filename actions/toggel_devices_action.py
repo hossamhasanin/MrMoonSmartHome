@@ -20,7 +20,6 @@ class ActionTurnOnDevice(Action):
         
         controller = FirebaseController.instance()
         
-        devices_ids = len(tracker.get_slot("devices_ids")) > 0 and tracker.get_slot("devices_ids")[0] or []
         device_type = tracker.get_slot("device_type")
         room_name = tracker.get_slot("room_name")
         # if (device_type is None and room_name is None) or (len(devices_ids) == 0):
@@ -41,7 +40,8 @@ class ActionTurnOnDevice(Action):
         
         result = controller.updateSwitchingState(
             state= True ,
-            devices_ids= devices_ids
+            device_type= device_type ,
+            room_name= room_name
         )
 
         if result == Results.DEVICE_NOT_FOUND:
@@ -61,7 +61,7 @@ class ActionTurnOnDevice(Action):
             else:
                 dispatcher.utter_message(response="utter_turned_on_device" , device_type=device_type)
 
-        return [AllSlotsReset()]
+        return []
     
 
 class ActionTurnOffDevice(Action):
@@ -75,13 +75,13 @@ class ActionTurnOffDevice(Action):
     
             controller = FirebaseController.instance()
 
-            devices_ids = len(tracker.get_slot("devices_ids")) > 0 and tracker.get_slot("devices_ids")[0] or []
             device_type = tracker.get_slot("device_type")
             room_name = tracker.get_slot("room_name")
 
             result = controller.updateSwitchingState(
                 state= False ,
-                devices_ids= devices_ids
+                device_type= device_type ,
+                room_name= room_name
             )
 
             if result == Results.DEVICE_NOT_FOUND:
@@ -101,4 +101,4 @@ class ActionTurnOffDevice(Action):
                 else:
                     dispatcher.utter_message(response="utter_turned_off_device" , device_type=device_type)
 
-            return [AllSlotsReset()]
+            return []

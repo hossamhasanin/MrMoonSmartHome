@@ -38,12 +38,21 @@ device_types_avialable_operations = {
 
 class IController(ABC):
 
-    # @abstractmethod
-    # def getDevicesIds(self, device_type: str, room_name: str) -> list[int]:
-    #     pass
+    devices_ids = {}
+
+    def _getDevicesIds(self, device_type: str, room_name: str) -> list[int]:
+        query = room_name + "_" + device_type
+        if query in self.devices_ids:
+            return self.devices_ids[query]
+        else:
+            query = device_type
+            if query in self.devices_ids:
+                return self.devices_ids[query]
+            else:
+                return []
 
     @abstractmethod
-    def updateSwitchingState(self, state: bool , devices_ids: list[int]) -> Results:
+    def updateSwitchingState(self, state: bool ,device_type: str, room_name: str) -> Results:
         pass
 
     # @abstractmethod
@@ -51,9 +60,9 @@ class IController(ABC):
     #     pass
 
     @abstractmethod
-    def updateColorLight(self, color: int , device_type_id: int , device_type: str) -> Results:
+    def updateColorLight(self, color: int , device_type: str, room_name: str) -> Results:
         pass
 
-    @abstractmethod
-    def updateAllColorLights(self, color: int , device_type: str , room_name: str) -> Results:
-        pass
+    # @abstractmethod
+    # def updateAllColorLights(self, color: int , device_type: str , room_name: str) -> Results:
+    #     pass
