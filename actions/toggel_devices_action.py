@@ -1,12 +1,9 @@
 from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
-from rasa_sdk.events import AllSlotsReset
 from rasa_sdk.executor import CollectingDispatcher
 from actions.firebase_controller.results import Results
 from actions.firebase_controller.firebase_controller import FirebaseController
-from actions.firebase_controller.ask_llm import AskLlm
-import logging
 
 
 class ActionTurnOnDevice(Action):
@@ -22,21 +19,6 @@ class ActionTurnOnDevice(Action):
         
         device_type = tracker.get_slot("device_type")
         room_name = tracker.get_slot("room_name")
-        # if (device_type is None and room_name is None) or (len(devices_ids) == 0):
-        #     ask_llm = AskLlm(tracker=tracker)
-        #     answer = ask_llm.ask_llm_for_entity_extraction()
-        #     devices_ids = answer["devices_ids"]
-        #     device_type = answer["device_type"]
-        #     room_name = answer["room_name"]
-            # if answer["room_name"] is not None or answer["device_type"] is not None:
-            #     devices_ids = controller.getDevicesIds(device_type=answer["device_type"] , room_name=answer["room_name"])
-            #     devices_ids = len(devices_ids) > 0 and devices_ids or -1
-            #     logging.info("devices_ids: " + str(devices_ids))
-            #     device_type = answer["device_type"]
-            #     room_name = answer["room_name"]
-
-        # devices_ids supports mentioning multiple devices types so the sape of it is : devices_ids: [[3]]
-        # currently we support only one device type at a time so we take the first element of the list
         
         result = controller.updateSwitchingState(
             state= True ,

@@ -88,4 +88,8 @@ class FirebaseController(IController):
         
         return Results.DONE_SUCCESSFULLY
 
+    def getDevicesStates(self):
+        ref = db.reference("states")
+        return ref.get()
+
         

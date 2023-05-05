@@ -15,24 +15,23 @@ class AskLlm():
 
         coversation_history = self.get_conversation_history()
         # call an API to get the response from LLM
-        response = self.call_llm_api(coversation_history , "extract_entities")
+        response = self.call_llm_api({'prompt': coversation_history} , "extract_entities")
         logging.info("LLM response: " + str(response))
-        # room_name = None
-        # device_type = None
-        
-        # # Search for room name and device type using regular expressions
-        # match = re.search(r"room_name\((.*?)\)", response)
-        # if match:
-        #     room_name = match.group(1)
-        
-        # match = re.search(r"device_type\((.*?)\)", response)
-        # if match:
-        #     device_type = match.group(1)
-
-        # logging.info("Extracted entities: " + str({"room_name" : room_name , "device_type" : device_type}))
-        
-        # Return extracted entities
         return response
+
+    def ask_llm_for_device_state(self , state_prompts):
+        logging.info("Asking LLM for device state")
+
+        coversation_history = self.get_conversation_history()
+        params = {
+            "conversation": coversation_history,
+            "state_prompts": state_prompts
+        }
+        # call an API to get the response from LLM
+        response = self.call_llm_api(params , "get_device_state")
+        logging.info("LLM response: " + str(response))
+        return response
+
     
     def get_conversation_history(self) -> Text:
         logging.info("Getting conversation history")
@@ -49,10 +48,10 @@ class AskLlm():
         logging.info("Conversation history: " + coversation_history)
         return coversation_history
 
-    def call_llm_api(self, message , endpoint : Text):
+    def call_llm_api(self, params , endpoint : Text):
         # call LLM API and return the response
         # do a request to LLM API
-        response = requests.get(self.llm_url+endpoint, params={'prompt': message} , timeout=30)
+        response = requests.get(self.llm_url+endpoint, params= params, timeout=30)
         # parse the response json
         response_json = response.json()
         return response_json['output']
