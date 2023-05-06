@@ -2,13 +2,11 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-import requests
-
+from actions.firebase_controller.firebase_controller import FirebaseController
+from actions.firebase_controller.icontroller import states_prompts_templates , AvailableDeviceTypes
+from actions.firebase_controller.ask_llm import AskLlm
 
 class ActionFallBackToLlm(Action):
-
-    def __init__(self):
-        self.llm_url = 'https://a07f-34-91-37-35.ngrok-free.app/message'
 
     def name(self) -> Text:
         return "action_fallback_to_llm"
@@ -17,28 +15,20 @@ class ActionFallBackToLlm(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
+        controller = FirebaseController.instance()
+        ask_llm = AskLlm(tracker=tracker)
 
-        coversation_history = ""
-        for event in tracker.events:
-            # get the latest messages between user and bot
-            if event.get('event') == 'user':
-                coversation_history += event.get('text')
-                coversation_history += "\n"
-            elif event.get('event') == 'bot':
-                coversation_history += event.get('text')
-                coversation_history += "\n"
-        
-        # call an API to get the response from LLM
-        response = self.call_llm_api(coversation_history)
+        states = controller.getDevicesStates()
 
-        dispatcher.utter_message(text=response)
+        state_prompts = ""
+        for i , state in enumerate(states):
+            if state == None:
+                continue
 
-        return []
-    
-    def call_llm_api(self, message):
-        # call LLM API and return the response
-        # do a request to LLM API
-        response = requests.get(self.llm_url, params={'prompt': message})
-        # parse the response json
-        response_json = response.json()
-        return response_json['message']
+            device_type_id = controller.metadata[i]["device_type_id"]
+            if device_type_id != AvailableDeviceTypes.POWER_CONSUMPTION:
+                state_prompts += states_prompts_templates[device_type_id](state , controller.metadata[i]) + "\n"
+
+        answer = ask_llm.ask_llm_general_conversation(state_prompts)
+
+        dispatcher.utter_message(text= answer)

@@ -32,6 +32,19 @@ class AskLlm():
         logging.info("LLM response: " + str(response))
         return response
 
+    def ask_llm_general_conversation(self , state_prompts):
+        logging.info("Asking LLM for general conversation")
+
+        coversation_history = self.get_conversation_history()
+        params = {
+            "conv": coversation_history,
+            "state_prompts": state_prompts
+        }
+        # call an API to get the response from LLM
+        response = self.call_llm_api(params , "general_conversation")
+        logging.info("LLM response: " + str(response))
+        return response
+
     
     def get_conversation_history(self) -> Text:
         logging.info("Getting conversation history")
