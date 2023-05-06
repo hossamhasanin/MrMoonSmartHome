@@ -21,10 +21,10 @@ rules:
   - intent: electricity_usage
   - action: action_electricity_usage
 
-# - rule: Show home state
-#   steps:
-#   - intent: show_home_state
-#   - action: action_show_home_state
+- rule: Show home state
+  steps:
+  - intent: show_home_state
+  - action: action_show_home_state
 
 - rule: Out of scope electricity usage queries
   steps:

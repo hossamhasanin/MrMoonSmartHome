@@ -34,3 +34,22 @@ class AvailableColorsToSet(Enum):
             return AvailableColorsToSet.WHITE.value
         else:
             return AvailableColorsToSet.NONE.value
+    
+    @staticmethod
+    def map_from_color_to_text(color: int):
+        if color == AvailableColorsToSet.RED.value:
+            return "red"
+        elif color == AvailableColorsToSet.GREEN.value:
+            return "green"
+        elif color == AvailableColorsToSet.YELLOW.value:
+            return "yellow"
+        elif color == AvailableColorsToSet.BLUE.value:
+            return "blue"
+        elif color == AvailableColorsToSet.PINCK.value:
+            return "pink"
+        elif color == AvailableColorsToSet.SKY_BLUE.value:
+            return "sky blue"
+        elif color == AvailableColorsToSet.WHITE.value:
+            return "white"
+        else:
+            return "none"

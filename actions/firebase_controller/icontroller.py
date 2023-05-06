@@ -38,10 +38,10 @@ device_types_avialable_operations = {
 
 states_prompts_templates = {
     AvailableDeviceTypes.DOOR.value: lambda state_dict , metadata: "The door is " + ("open" if state_dict["isOn"] else "closed"),
-    AvailableDeviceTypes.TEMP.value: lambda state_dict , metadata: "The temperature is " + str(state_dict["temperature"]) + " celsius",
+    AvailableDeviceTypes.TEMP.value: lambda state_dict , metadata: "The temperature is " + str(state_dict["temprature"]) + " celsius",
     AvailableDeviceTypes.LED.value: lambda state_dict , metadata: "The " + metadata["room_name"] + " normal lights are " + ("on" if state_dict["isOn"] else "off"),
     AvailableDeviceTypes.SMART_PLUG.value: lambda state_dict , metadata: "The " + metadata["room_name"] + " smart plug is " + ("on" if state_dict["isOn"] else "off"),
-    AvailableDeviceTypes.RGBL.value: lambda state_dict , metadata: "The " + metadata["room_name"] + " RGB lights are " + ("on" if state_dict["isOn"] else "off") + " and has a " + AvailableColorsToSet.map_from_text_to_color(state_dict["colorId"]) + " color.",
+    AvailableDeviceTypes.RGBL.value: lambda state_dict , metadata: "The " + metadata["room_name"] + " RGB lights are " + ("on" if state_dict["isOn"] else "off") + " and has a " + AvailableColorsToSet.map_from_color_to_text(state_dict["colorId"]) + " color.",
     AvailableDeviceTypes.GAS_LEAK_ALARM.value: lambda state_dict , metadata: "The gas leak alarm is " + ("on" if state_dict["isOn"] else "off"),
     AvailableDeviceTypes.PEOPLE_COUNTER.value: lambda state_dict , metadata: "The number of people in the room is " + str(state_dict["peopleCounter"]),
     AvailableDeviceTypes.PASSWORD_WRONG_ALARM.value: lambda state_dict , metadata: "The password wrong alarm is " + ("on" if state_dict["isOn"] else "off"),

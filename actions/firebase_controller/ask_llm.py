@@ -8,7 +8,7 @@ class AskLlm():
 
     def __init__(self , tracker: Tracker):
         self.tracker = tracker
-        self.llm_url = 'http://c7e3-34-126-69-139.ngrok-free.app/'
+        self.llm_url = 'http://b70f-34-68-46-62.ngrok-free.app/'
 
     def ask_llm_for_entity_extraction(self):
         logging.info("Asking LLM for entity extraction")
@@ -35,15 +35,15 @@ class AskLlm():
     
     def get_conversation_history(self) -> Text:
         logging.info("Getting conversation history")
-        coversation_history = {}
+        coversation_history = []
         for event in self.tracker.events:
             # get the latest messages between user and bot
             if event.get('event') == 'user':
-                coversation_history["user"] = event.get('text')
+                coversation_history.append({ "user": event.get('text') }) 
             elif event.get('event') == 'bot':
-                coversation_history["bot"] = event.get('text')
+                coversation_history.append({ "bot": event.get('text') })
 
-        logging.info("Conversation history: " + coversation_history)
+        logging.info("Conversation history: " + str(coversation_history))
         return coversation_history
 
     def call_llm_api(self, params , endpoint : Text):
