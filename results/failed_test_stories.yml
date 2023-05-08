@@ -1,54 +1,66 @@
 version: "3.1"
 stories:
-- story: turn off room A lights (.\tests\test_turn_off_on_devices.yml)
+- story: it is so hot in living room decrease the current ac temperature by 10 degrees then thanks but it got so cold so increase it by 5 degrease , then thanks and set the temperature to 15 degrees (.\tests\test_change_temp.yml)
   steps:
-  - intent: turn_off_device
-    entities:
-    - room_name: room A
-  - slot_was_set:
-    - room_name: room A
-  - slot_was_set:
-    - device_type: lights
-  - slot_was_set:
-    - room_name: room A
-  - slot_was_set:
-    - device_type: lights
-  - action: action_turn_off_device
-- story: ask what is the color living room rgbs is set to , the change the office room to the same color. (.\tests\test_change_light_color.yml)
-  steps:
-  - intent: show_home_state
+  - intent: decrease_temperature_by
     entities:
     - room_name: living room
-    - device_type: rgbs
+    - temperature: '10'
   - slot_was_set:
     - room_name: living room
   - slot_was_set:
-    - device_type: rgbs
+    - device_type: ac
+  - slot_was_set:
+    - temperature: '10'
   - slot_was_set:
     - room_name: living room
   - slot_was_set:
-    - device_type: rgbs
-  - action: action_show_home_state
-  - intent: change_light_color
+    - temperature: '10'
+  - slot_was_set:
+    - device_type: ac
+  - action: action_decrease_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
+  - slot_was_set:
+    - room_name: null
+  - slot_was_set:
+    - temperature: null
+  - slot_was_set:
+    - device_type: null
+  - intent: increase_temperature_by
     entities:
-    - room_name: office
-    - device_type: rgbs
+    - temperature: '5'
   - slot_was_set:
-    - room_name: office
+    - temperature: '5'
   - slot_was_set:
-    - device_type: rgbs
-  - slot_was_set:
-    - room_name: office
-  - slot_was_set:
-    - device_type: rgbs
+    - temperature: '5'
   - action: action_ask_llm_for_entities
   - slot_was_set:
-    - room_name: office
+    - room_name: living room
   - slot_was_set:
-    - device_type: rgbs
+    - device_type: ac
+  - action: action_increase_temperature_value
+  - intent: thanks_done_task
+  - action: action_reset_filled_slots
   - slot_was_set:
-    - light_color: red
-  - action: action_change_light_color
+    - room_name: null
+  - slot_was_set:
+    - temperature: null
+  - slot_was_set:
+    - device_type: null
+  - intent: set_temperature_to  # predicted: nlu_fallback: alright buddy so please set it to [15](temperature) degrees please
+    entities:
+    - temperature: '15'
+  - slot_was_set:
+    - temperature: '15'
+  - slot_was_set:
+    - temperature: '15'
+  - action: action_ask_llm_for_entities
+  - slot_was_set:
+    - room_name: living room
+  - slot_was_set:
+    - device_type: ac
+  - action: action_set_temperature_value
 - story: asking about the lights in the office then turn them on then ask if there is rgb lights at the office and change their color to blue (.\tests\test_turn_off_on_devices.yml)
   steps:
   - intent: show_home_state
@@ -149,7 +161,7 @@ stories:
 - story: ask about the current temperature and decrease the ac (.\tests\test_change_temp.yml)
   steps:
   - intent: check_temprature_value
-  - action: action_check_temprature_value
+  - action: action_show_home_state
   - intent: decrease_temperature_by
     entities:
     - temperature: '2'
@@ -165,7 +177,7 @@ stories:
 - story: ask about the current temperature and increase the ac (.\tests\test_change_temp.yml)
   steps:
   - intent: check_temprature_value
-  - action: action_check_temprature_value
+  - action: action_show_home_state
   - intent: increase_temperature_by
     entities:
     - temperature: '2'
@@ -205,6 +217,33 @@ stories:
   - slot_was_set:
     - temperature: '5'
   - action: action_increase_temperature_value
+- story: it is so cold in living room increase the current ac temperature by 10 degrees but it got so hot so decrease it by 5 degrease (.\tests\test_change_temp.yml)
+  steps:
+  - intent: increase_temperature_by
+    entities:
+    - room_name: living room
+    - temperature: '10'
+  - slot_was_set:
+    - room_name: living room
+  - slot_was_set:
+    - device_type: ac
+  - slot_was_set:
+    - temperature: '10'
+  - slot_was_set:
+    - room_name: living room
+  - slot_was_set:
+    - temperature: '10'
+  - slot_was_set:
+    - device_type: ac
+  - action: action_increase_temperature_value
+  - intent: decrease_temperature_by
+    entities:
+    - temperature: '5'
+  - slot_was_set:
+    - temperature: '5'
+  - slot_was_set:
+    - temperature: '5'
+  - action: action_decrease_temperature_value
 - story: it is so hot in living room decrease the current ac temperature by 10 degrees then thanks but it got so cold so increase it by 5 degrease (.\tests\test_change_temp.yml)
   steps:
   - intent: decrease_temperature_by

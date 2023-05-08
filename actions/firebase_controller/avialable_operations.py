@@ -5,6 +5,11 @@ class AvailableOperations(Enum):
     SETTING_COLOR = 1
     SETTING_AC_COMMAND = 2
 
+class AcSupportedCommands(Enum):
+    AC_LOWER_TEMPRATURE = 0
+    AC_RISE_TEMPRATURE = 1
+
+
 
 class AvailableColorsToSet(Enum):
     NONE = 0

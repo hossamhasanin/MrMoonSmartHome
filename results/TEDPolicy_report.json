@@ -1,9 +1,16 @@
 {
+  "temperature": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 14,
+    "confused_with": {}
+  },
   "room_name": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
-    "support": 25,
+    "support": 27,
     "confused_with": {}
   },
   "light_color": {
@@ -13,37 +20,30 @@
     "support": 10,
     "confused_with": {}
   },
-  "temperature": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 11,
-    "confused_with": {}
-  },
   "device_type": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
-    "support": 29,
+    "support": 30,
     "confused_with": {}
   },
   "micro avg": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
-    "support": 75
+    "support": 81
   },
   "macro avg": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
-    "support": 75
+    "support": 81
   },
   "weighted avg": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
-    "support": 75
+    "support": 81
   },
-  "accuracy": 0.7431506849315068
+  "accuracy": 0.7552870090634441
 }

@@ -9,7 +9,7 @@ rules:
 - rule: Check temprature value
   steps:
   - intent: check_temprature_value
-  - action: action_check_temprature_value
+  - action: action_show_home_state
 
 - rule: Number of people in home
   steps:

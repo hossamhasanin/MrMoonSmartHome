@@ -446,7 +446,7 @@ stories:
     - light_color: "blue"
   - action: action_change_light_color
   - intent: check_temprature_value
-  - action: action_check_temprature_value
+  - action: action_show_home_state
   - intent: turn_on_device
     entities:
     - device_type: "ac"
@@ -481,7 +481,7 @@ stories:
     - light_color: "blue"
   - action: action_change_light_color
   - intent: check_temprature_value
-  - action: action_check_temprature_value
+  - action: action_show_home_state
   - intent: turn_on_device
     entities:
     - device_type: "ac"
@@ -1115,7 +1115,7 @@ stories:
     - room_name: "living room"
   - action: action_turn_on_device
   - intent: check_temprature_value
-  - action: action_check_temprature_value
+  - action: action_show_home_state
   - intent: decrease_temperature_by
     entities:
     - temperature: "2"

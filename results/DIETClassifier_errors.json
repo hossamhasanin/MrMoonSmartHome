@@ -1,34 +1,5 @@
 [
   {
-    "text": "Turn on all lights",
-    "entities": [
-      {
-        "start": 8,
-        "end": 11,
-        "value": "all",
-        "entity": "all_devices_selected"
-      }
-    ],
-    "predicted_entities": [
-      {
-        "entity": "all_devices_selected",
-        "start": 8,
-        "end": 11,
-        "confidence_entity": 0.9997468590736389,
-        "value": "all",
-        "extractor": "DIETClassifier"
-      },
-      {
-        "entity": "device_type",
-        "start": 12,
-        "end": 18,
-        "confidence_entity": 0.8229718208312988,
-        "value": "lights",
-        "extractor": "DIETClassifier"
-      }
-    ]
-  },
-  {
     "text": "turn off kitchen lights",
     "entities": [
       {
@@ -43,7 +14,7 @@
         "entity": "room_name",
         "start": 9,
         "end": 16,
-        "confidence_entity": 0.9997312426567078,
+        "confidence_entity": 0.9996156692504883,
         "value": "kitchen",
         "extractor": "DIETClassifier"
       },
@@ -51,7 +22,7 @@
         "entity": "device_type",
         "start": 17,
         "end": 23,
-        "confidence_entity": 0.6862135529518127,
+        "confidence_entity": 0.9751957058906555,
         "value": "lights",
         "extractor": "DIETClassifier"
       }

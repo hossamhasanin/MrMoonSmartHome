@@ -1,16 +1,16 @@
 {
+  "temperature": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 80,
+    "confused_with": {}
+  },
   "room_name": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 359,
-    "confused_with": {}
-  },
-  "all_devices_selected": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 37,
     "confused_with": {}
   },
   "light_color": {
@@ -20,37 +20,37 @@
     "support": 42,
     "confused_with": {}
   },
-  "temperature": {
+  "all_devices_selected": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 80,
+    "support": 37,
     "confused_with": {}
   },
   "device_type": {
-    "precision": 1.0,
+    "precision": 0.9961240310077519,
     "recall": 1.0,
-    "f1-score": 1.0,
+    "f1-score": 0.9980582524271845,
     "support": 257,
     "confused_with": {}
   },
   "micro avg": {
-    "precision": 1.0,
+    "precision": 0.9987113402061856,
     "recall": 1.0,
-    "f1-score": 1.0,
+    "f1-score": 0.9993552546744036,
     "support": 775
   },
   "macro avg": {
-    "precision": 1.0,
+    "precision": 0.9992248062015504,
     "recall": 1.0,
-    "f1-score": 1.0,
+    "f1-score": 0.9996116504854369,
     "support": 775
   },
   "weighted avg": {
-    "precision": 1.0,
+    "precision": 0.9987146786696675,
     "recall": 1.0,
-    "f1-score": 1.0,
+    "f1-score": 0.999356091450047,
     "support": 775
   },
-  "accuracy": 1.0
+  "accuracy": 0.9997875955819882
 }

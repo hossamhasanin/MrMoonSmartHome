@@ -105,6 +105,7 @@ responses:
   - text: Sorry, this device is not found so I can't change its state.
   utter_no_devices_found_with_given_specs:
   - text: Sorry, I can't find any devices with given specifications.
+  - text: Sorry, I can't find any devices with given specifications , please try again and be clear about your commands.
   utter_turned_on_all_devices_with_room_name:
   - text: Done , all {device_type} devices in {room_name} turned on successfully
   utter_turned_off_all_devices_with_room_name:
@@ -131,6 +132,19 @@ responses:
   utter_you_are_welcome:
   - text: You are welcome
   - text: No problem , I am always here to help
+  utter_cannot_change_temperature:
+  - text: Sorry, I can't change temperature , this operation is not allowed for the specified device.
+  - text: This device doesn't support temperature change.
+  utter_temperature_increased:
+  - text: Done , ac temperature increased successfully , anything else ?
+  - text: Done , air conditioner temperature increased successfully , if you want to change anything else just tell me.
+  utter_temperature_decreased:
+  - text: Done , ac temperature decreased successfully , anything else ?
+  - text: Done , air conditioner temperature decreased successfully , anything else you need ?
+  utter_temperature_set:
+  - text: Done , set the ac to the specified temperature successfully , anything else ?
+  - text: Done , set the air conditioner to the specified temperature successfully , anything else ?
+  - text: set the temperature successfully , anything else ?
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -143,7 +157,6 @@ actions:
 - utter_which_device
 - utter_fallback_to_llm
 - action_fallback_to_llm
-- action_check_temprature_value
 - action_number_of_people_in_home
 - action_electricity_usage
 - action_show_home_state
@@ -173,3 +186,7 @@ actions:
 - utter_you_are_welcome
 - action_ask_llm_for_entities
 - action_reset_filled_slots
+- utter_cannot_change_temperature
+- utter_temperature_increased
+- utter_temperature_decreased
+- utter_temperature_set

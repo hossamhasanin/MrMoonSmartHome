@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from actions.firebase_controller.results import Results
-from actions.firebase_controller.avialable_operations import AvailableOperations , AvailableColorsToSet
+from actions.firebase_controller.avialable_operations import AvailableOperations , AvailableColorsToSet , AcSupportedCommands
 from enum import Enum
 # device types ids
 # doorStateId = 1,
@@ -54,7 +54,7 @@ class IController(ABC):
 
     def _getDevicesIds(self, device_type: str, room_name: str) -> list[int]:
         query = room_name + "_" + device_type
-        if query in self.devices_ids:
+        if room_name is not None and query in self.devices_ids:
             return self.devices_ids[query]
         else:
             query = device_type
@@ -73,4 +73,12 @@ class IController(ABC):
 
     @abstractmethod
     def updateColorLight(self, color: int , device_type: str, room_name: str) -> Results:
+        pass
+
+    @abstractmethod
+    def sendAcCommand(self, command: AcSupportedCommands , temperature: int , room_name: str) -> Results:
+        pass
+
+    @abstractmethod
+    def getCurrentHomeTemperature(self) -> int:
         pass
