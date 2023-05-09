@@ -138,6 +138,13 @@ class FirebaseController(IController):
         power = round(power, 2)
 
         return power
+    
+    def getNumOfPeople(self) -> int:
+        ref = db.reference("states/"+str(AvailableDeviceTypes.PEOPLE_COUNTER.value))
+        states = ref.get()
+        if states is None:
+            return 0
+        return states["peopleCounter"]
         
 
 

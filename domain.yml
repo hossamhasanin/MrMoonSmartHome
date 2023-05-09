@@ -146,6 +146,13 @@ responses:
   - text: Done , set the ac to the specified temperature successfully , anything else ?
   - text: Done , set the air conditioner to the specified temperature successfully , anything else ?
   - text: set the temperature successfully , anything else ?
+  utter_number_of_people_in_home:
+  - text: There are {number_of_people} people in home currently
+  - text: There are {number_of_people} people in home
+  - text: There are {number_of_people} people in home right now
+  - text: There are {number_of_people} persons in home
+  - text: There are {number_of_people} persons currently
+  - text: There are {number_of_people} people currently
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

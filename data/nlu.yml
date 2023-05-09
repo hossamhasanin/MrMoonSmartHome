@@ -230,6 +230,13 @@ nlu:
     - How many individuals are currently occupying the house?
     - How many persons are presently in the house?
     - What's the current count of people in the house?
+    - How many person that is in my house right now?
+    - tell me the current number of people in the house.
+    - how many person are in the house right now?
+    - is there anyone in the house right now?
+    - is there anyone in my house right now?
+    - is there anyone in my home right now?
+    - is there anyone in my house?
 - intent: electricity_usage
   examples: |
     - How much electricity have we used today?

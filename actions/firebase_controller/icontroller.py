@@ -86,3 +86,7 @@ class IController(ABC):
     @abstractmethod
     def getAvgLastRecordedPowerConsumptions(self) -> float:
         pass
+
+    @abstractmethod
+    def getNumOfPeople(self) -> int:
+        pass
