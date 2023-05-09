@@ -81,7 +81,8 @@ responses:
   - text: Lights turned off
   - text: Lights are off
   utter_electricity_usage:
-  - text: Electricity usage over the last {period_num} {period_type} is 500 kWh
+  - text: Electricity usage over the last {period} is {amount} watts
+  - text: the power consumption over the last {period} is {amount} watts
   utter_which_device:
   - text: Which device ?
   utter_fallback_to_llm:

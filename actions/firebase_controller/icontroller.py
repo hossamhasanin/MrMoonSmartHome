@@ -44,8 +44,8 @@ states_prompts_templates = {
     AvailableDeviceTypes.RGBL.value: lambda state_dict , metadata: "The " + metadata["room_name"] + " RGB lights are " + ("on" if state_dict["isOn"] else "off") + " and has a " + AvailableColorsToSet.map_from_color_to_text(state_dict["colorId"]) + " color.",
     AvailableDeviceTypes.GAS_LEAK_ALARM.value: lambda state_dict , metadata: "The gas leak alarm is " + ("on" if state_dict["isOn"] else "off"),
     AvailableDeviceTypes.PEOPLE_COUNTER.value: lambda state_dict , metadata: "The number of people in the room is " + str(state_dict["peopleCounter"]),
-    AvailableDeviceTypes.PASSWORD_WRONG_ALARM.value: lambda state_dict , metadata: "The password wrong alarm is " + ("on" if state_dict["isOn"] else "off"),
-    AvailableDeviceTypes.POWER_CONSUMPTION.value: lambda powerConsumption: "The power consumption is " + str(powerConsumption) + " watts"
+    AvailableDeviceTypes.PASSWORD_WRONG_ALARM.value: lambda state_dict , metadata: "The password wrong alarm is " + ("on" if state_dict["isOn"] else "off")
+    # AvailableDeviceTypes.POWER_CONSUMPTION.value: lambda powerConsumption: "The power consumption is " + str(powerConsumption) + " watts"
 }
 
 class IController(ABC):
@@ -81,4 +81,8 @@ class IController(ABC):
 
     @abstractmethod
     def getCurrentHomeTemperature(self) -> int:
+        pass
+
+    @abstractmethod
+    def getAvgLastRecordedPowerConsumptions(self) -> float:
         pass

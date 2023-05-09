@@ -266,6 +266,21 @@ nlu:
     - Can you give me a summary of our electricity usage today?
     - How much electricity have we used in the past 24 hours?
     - Could you tell me the amount of electricity we have consumed today?
+    - Could you show me my power consumption ?
+    - do you know what is my current power consumption ?
+    - i would like to know my current power consumption please.
+    - what is the last recorded power consumption ?
+    - what is the last recorded energy consumption buddy ?
+    - show me my power consumption please.
+    - I would like to know my power consumption please.
+    - What is the last recorded power consumption?
+    - what is our current power consumption ?
+    - over the past hour what was our power consumption ?
+    - over the past hour what was our energy consumption ?
+    - over the past hour what was our electricity consumption ?
+    - tell me my power consumption over the past hour.
+    - do you know what is my power consumption buddy ?
+    - do you know what is my energy consumption buddy ?
 - intent: out_of_scope_electricity_usage_queries
   examples: |
     - What was our electricity usage over the last week ?

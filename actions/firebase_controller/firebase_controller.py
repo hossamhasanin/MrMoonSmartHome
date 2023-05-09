@@ -122,6 +122,22 @@ class FirebaseController(IController):
         ref = db.reference("states/"+str(AvailableDeviceTypes.TEMP.value))
         states = ref.get()
         return states["temprature"]
+
+    def getAvgLastRecordedPowerConsumptions(self) -> float:
+        ref = db.reference("powerConsumption").order_by_child("timestamp").limit_to_last(60)
+        consumptions = ref.get()
+        if consumptions is None:
+            return 0
+        
+        sum = 0
+        for consumption in consumptions.values():
+            sum += consumption["value"]
+        
+        power = sum * 220
+        # round to 2 decimal places
+        power = round(power, 2)
+
+        return power
         
 
 
