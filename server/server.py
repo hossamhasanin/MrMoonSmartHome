@@ -22,6 +22,7 @@ app = Flask(__name__)
 
 @app.route('/ai_audios/<path:filename>')
 def download_file(filename):
+    print("filename : " + filename)
     return send_from_directory('ai_audios', filename)
 
 @app.route('/audio', methods=['POST'])
@@ -62,4 +63,4 @@ def send_message():
     return {'response': response_text}
 
 if __name__ == '__main__':
-    app.run(debug=True , port=7000 , host= '192.168.1.4')
+    app.run(debug=True , port=7000 , host= '192.168.1.6' , threaded=True)
