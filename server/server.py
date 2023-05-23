@@ -34,8 +34,11 @@ def upload_audio():
     print("transcript : " + transcript)
     # send transcript to Rasa server
     rasa_response = requests.post('http://localhost:5005/webhooks/rest/webhook', json={'message': transcript}).json()
+    print("rasa_response : " + str(rasa_response))
     # extract response text from Rasa server response
-    response_text = rasa_response[0]['text']
+    response_text = ""
+    for response in rasa_response:
+        response_text += response['text'] + "\n"
     audio = generate(
         text= response_text,
         voice="Sam"
