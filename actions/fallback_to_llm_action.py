@@ -15,20 +15,23 @@ class ActionFallBackToLlm(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        controller = FirebaseController.instance()
-        ask_llm = AskLlm(tracker=tracker)
+        # controller = FirebaseController.instance()
+        # ask_llm = AskLlm(tracker=tracker)
 
-        states = controller.getDevicesStates()
+        # states = controller.getDevicesStates()
 
-        state_prompts = ""
-        for i , state in enumerate(states):
-            if state == None:
-                continue
+        # state_prompts = ""
+        # for i , state in enumerate(states):
+        #     if state == None:
+        #         continue
 
-            device_type_id = controller.metadata[i]["device_type_id"]
-            if device_type_id != AvailableDeviceTypes.POWER_CONSUMPTION:
-                state_prompts += states_prompts_templates[device_type_id](state , controller.metadata[i]) + "\n"
+        #     device_type_id = controller.metadata[i]["device_type_id"]
+        #     if device_type_id != AvailableDeviceTypes.POWER_CONSUMPTION:
+        #         state_prompts += states_prompts_templates[device_type_id](state , controller.metadata[i]) + "\n"
 
-        answer = ask_llm.ask_llm_general_conversation(state_prompts)
+        # answer = ask_llm.ask_llm_general_conversation(state_prompts)
 
-        dispatcher.utter_message(text= answer)
+        # dispatcher.utter_message(text= answer)
+        # return []
+        dispatcher.utter_message(text= "This is test")
+        return []

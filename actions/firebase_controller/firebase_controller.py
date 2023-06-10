@@ -58,12 +58,11 @@ class FirebaseController(IController):
         for device_id in devices_ids:
             if AvailableOperations.SWITCH in device_types_avialable_operations[self.metadata[device_id]["device_type_id"]]:
                 update_dict[str(device_id) + "/isOn"] = state
+                ref = db.reference("states/" + str(device_id) + "/isOn")
+                ref.set(state)
         
         if len(update_dict) == 0:
             return Results.NOT_ALLOWED_OPERATION_ON_DEVICE
-            
-        ref = db.reference("states")
-        ref.update(update_dict)
         
         return Results.DONE_SUCCESSFULLY
 
@@ -82,13 +81,12 @@ class FirebaseController(IController):
         for device_id in devices_ids:
             if AvailableOperations.SETTING_COLOR in device_types_avialable_operations[self.metadata[device_id]["device_type_id"]]:
                 update_dict[str(device_id) + "/colorId"] = color
+                ref = db.reference("states/"+ str(device_id) + "/colorId")
+                ref.set(color)
         
         if len(update_dict) == 0:
             return Results.NOT_ALLOWED_OPERATION_ON_DEVICE
-            
-        ref = db.reference("states")
-        ref.update(update_dict)
-        
+              
         return Results.DONE_SUCCESSFULLY
 
     def getDevicesStates(self):
@@ -107,14 +105,16 @@ class FirebaseController(IController):
             if AvailableOperations.SETTING_AC_COMMAND in device_types_avialable_operations[self.metadata[device_id]["device_type_id"]]:
                 if command == AcSupportedCommands.AC_LOWER_TEMPRATURE:
                     update_dict[str(device_id) + "/lowerTempEventCount"] = temperature if temperature is not None else 1
+                    ref = db.reference("states/" + str(device_id) + "/lowerTempEventCount")
+                    ref.set(temperature if temperature is not None else 1)
                 elif command == AcSupportedCommands.AC_RISE_TEMPRATURE:
                     update_dict[str(device_id) + "/riseTempEventCount"] = temperature if temperature is not None else 1
-        
+                    ref = db.reference("states/" + str(device_id) + "/riseTempEventCount")
+                    ref.set(temperature if temperature is not None else 1)
+
         if len(update_dict) == 0:
             return Results.NOT_ALLOWED_OPERATION_ON_DEVICE
         
-        ref = db.reference("states")
-        ref.update(update_dict)
 
         return Results.DONE_SUCCESSFULLY
 

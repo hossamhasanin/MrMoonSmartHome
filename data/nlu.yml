@@ -163,26 +163,30 @@ nlu:
 - intent: check_temprature_value
   examples: |
     - what is the temprature ?
-    - What is the temprature in the [kitchen](room_name) ?
-    - What is the temprature in the [bedroom](room_name) ?
+    - what is the temperature ?
+    - what is the current temperature ?
+    - what is the current temprature ?
+    - What is the temperature in the [kitchen](room_name) ?
+    - What is the temperature in the [bedroom](room_name) ?
+    - What is the temperature in the [living room](room_name) ?
     - Could you please tell me the temprature in the [kitchen](room_name) ?
-    - Could you please tell me the temprature in the [bedroom](room_name) ?
+    - Could you please tell me the temperature in the [bedroom](room_name) ?
     - Could you please tell me the temprature in the [living room](room_name) ?
-    - Could you please tell me the temprature in the [bathroom](room_name) ?
+    - Could you please tell me the temperature in the [bathroom](room_name) ?
     - Could you please tell me the temprature in the [dining room](room_name) ?
-    - Could you please tell me the temprature in the [study room](room_name) ?
+    - Could you please tell me the temperature in the [study room](room_name) ?
     - buddy tell me the temprature in the [kitchen](room_name) .
     - Oh it is hot in the [kitchen](room_name) .
     - It is really hot in here isn't it ? what is the current temprature buddy ?
     - Oh I can't stand this heat , what is the current temprature buddy ?
     - It is really hot in here isn't it ? what is the current temprature in the [kitchen](room_name) ?
-    - Oh I can't stand this heat , what is the current temprature in the [living](room_name) ?
+    - Oh I can't stand this heat , what is the current temperature in the [living](room_name) ?
     - It is really hot in here isn't it ? what is the current temprature in the [bedroom](room_name) ?
     - It is so cold in here , I can't stand it !
     - It is so cold in here , I can't stand it ! what is the current temprature buddy ?
-    - It is so cold in here , I can't stand it ! what is the current temprature in the [kitchen](room_name) ?
+    - It is so cold in here , I can't stand it ! what is the current temperature in the [kitchen](room_name) ?
     - It is so cold in here , I can't stand it ! what is the current temprature in the [bedroom](room_name) ?
-    - It is so cold in here , I can't stand it ! what is the current temprature in the [living room](room_name)?
+    - It is so cold in here , I can't stand it ! what is the current temperature in the [living room](room_name)?
     - Oh it is so cold in here what is the current [ac](device_type) temperature buddy?
     - what is the main [ac](device_type) current temperature?
     - is it cold in here? what is the current [ac](device_type) temperature?

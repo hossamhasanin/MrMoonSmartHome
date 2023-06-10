@@ -41,11 +41,10 @@ class ActionChangeLightColor(Action):
                 else:
                     dispatcher.utter_message(response="utter_changed_color_all_lights")
         else:
-            device_id = tracker.get_slot("device_id")
             result = controller.updateColorLight(
                 color= colorId ,
-                device_type_id = device_id ,
-                device_type= tracker.get_slot("device_type")
+                device_type= tracker.get_slot("device_type"),
+                room_name= tracker.get_slot("room_name")
             )
 
             if result == Results.NOT_ALLOWED_OPERATION_ON_DEVICE:

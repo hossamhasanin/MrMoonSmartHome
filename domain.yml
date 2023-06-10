@@ -153,6 +153,10 @@ responses:
   - text: There are {number_of_people} persons in home
   - text: There are {number_of_people} persons currently
   - text: There are {number_of_people} people currently
+  utter_you_are_welcome:
+  - text: You are welcome, I am always here to help
+  - text: No problem , I am always here to help
+  - text: I am glad that I helped you
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

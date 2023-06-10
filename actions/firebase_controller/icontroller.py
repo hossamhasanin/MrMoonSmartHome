@@ -21,6 +21,7 @@ class AvailableDeviceTypes(Enum):
     RGBL = 5
     GAS_LEAK_ALARM = 6
     PEOPLE_COUNTER = 7
+    AC_CONTROLLER = 8
     PASSWORD_WRONG_ALARM = 9
     POWER_CONSUMPTION = 10
 
@@ -44,6 +45,7 @@ states_prompts_templates = {
     AvailableDeviceTypes.RGBL.value: lambda state_dict , metadata: "The " + metadata["room_name"] + " RGB lights are " + ("on" if state_dict["isOn"] else "off") + " and has a " + AvailableColorsToSet.map_from_color_to_text(state_dict["colorId"]) + " color.",
     AvailableDeviceTypes.GAS_LEAK_ALARM.value: lambda state_dict , metadata: "The gas leak alarm is " + ("on" if state_dict["isOn"] else "off"),
     AvailableDeviceTypes.PEOPLE_COUNTER.value: lambda state_dict , metadata: "The number of people in the room is " + str(state_dict["peopleCounter"]),
+    AvailableDeviceTypes.AC_CONTROLLER.value: lambda state_dict , metadata: "The air conditioner is " + ("on" if state_dict["isOn"] else "off"),
     AvailableDeviceTypes.PASSWORD_WRONG_ALARM.value: lambda state_dict , metadata: "The password wrong alarm is " + ("on" if state_dict["isOn"] else "off")
     # AvailableDeviceTypes.POWER_CONSUMPTION.value: lambda powerConsumption: "The power consumption is " + str(powerConsumption) + " watts"
 }
@@ -53,9 +55,12 @@ class IController(ABC):
     devices_ids = {}
 
     def _getDevicesIds(self, device_type: str, room_name: str) -> list[int]:
-        query = room_name + "_" + device_type
-        if room_name is not None and query in self.devices_ids:
-            return self.devices_ids[query]
+        if room_name is not None :
+            query = room_name + "_" + device_type
+            if query in self.devices_ids:
+                return self.devices_ids[query]
+            else:
+                return []
         else:
             query = device_type
             if query in self.devices_ids:

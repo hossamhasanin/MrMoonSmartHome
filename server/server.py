@@ -6,6 +6,7 @@ import torch
 from transformers import pipeline
 from elevenlabs import generate, play, set_api_key , save
 
+#d883dc37571ccbce78855a718fbf5343
 set_api_key("9fed84e04fd3592c7a9178adc97c6552")
 
 
