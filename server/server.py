@@ -38,9 +38,9 @@ def upload_audio():
     rasa_response = requests.post('http://localhost:5005/webhooks/rest/webhook', json={'message': transcript}).json()
     print("rasa_response : " + str(rasa_response))
     # extract response text from Rasa server response
-    response_text = ""
-    for response in rasa_response:
-        response_text += response['text'] + "\n"
+    response_text = rasa_response[0]['text']
+    # for response in rasa_response:
+    #     response_text += response['text'] + "\n"
     audio = generate(
         text= response_text,
         voice="Sam"
@@ -54,7 +54,9 @@ def upload_audio():
 
 @app.route('/message', methods=['POST'])
 def send_message():
+    print("request.form : " + str(request.form))
     message = request.form['message']
+    print("message : " + message)
     # send transcript to Rasa server
     rasa_response = requests.post('http://localhost:5005/webhooks/rest/webhook', json={'message': message}).json()
     # extract response text from Rasa server response
@@ -64,4 +66,4 @@ def send_message():
     return {'response': response_text}
 
 if __name__ == '__main__':
-    app.run(debug=True , port=7000 , host= '192.168.1.6' , threaded=True)
+    app.run(debug=True , port=7000 , host= '192.168.1.9' , threaded=True)

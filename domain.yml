@@ -130,9 +130,6 @@ responses:
   utter_no_color_detected:
   - text: Sorry, I can't detect the color, you have to mention some color to change the light to.
   - text: what color do you want to change the light to ?
-  utter_you_are_welcome:
-  - text: You are welcome
-  - text: No problem , I am always here to help
   utter_cannot_change_temperature:
   - text: Sorry, I can't change temperature , this operation is not allowed for the specified device.
   - text: This device doesn't support temperature change.
@@ -157,6 +154,8 @@ responses:
   - text: You are welcome, I am always here to help
   - text: No problem , I am always here to help
   - text: I am glad that I helped you
+  - text: You are welcome
+  - text: No problem , I am always here to help
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

@@ -8,7 +8,7 @@ class AskLlm():
 
     def __init__(self , tracker: Tracker):
         self.tracker = tracker
-        self.llm_url = 'http://0390-35-192-50-206.ngrok-free.app/'
+        self.llm_url = 'http://62cd-34-135-195-215.ngrok-free.app/'
 
     def ask_llm_for_entity_extraction(self):
         logging.info("Asking LLM for entity extraction")
